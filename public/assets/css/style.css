@@ -1623,22 +1623,6 @@ select {
 
 /*=====  End of container  ======*/
 
-#catdropdown{
-	height: 30px;
-	border-radius: 10px;	
-}
-
-
-
-
-.search{
- margin-left: -4px;
- width: 380px;
- border-radius: 10px;
- height: 30px;
- border: 1px solid;
- 
-}
 
 /*=============================================
 =            hero slider            =
@@ -5150,7 +5134,7 @@ select {
 	font-weight: 600;
 }
 
-.myaccount-content a.edit-address-btn {
+.myaccount-content a.address-btn {
 	font-size: 14px;
 	font-weight: 400;
 	padding: 10px 20px;
@@ -5163,11 +5147,11 @@ select {
 	background-color: #292929;
 }
 
-.myaccount-content a.edit-address-btn i {
+.myaccount-content a.address-btn i {
 	padding-right: 5px;
 }
 
-.myaccount-content a.edit-address-btn:hover {
+.myaccount-content a.address-btn:hover {
 	background-color: #e33;
 }
 
@@ -6609,6 +6593,60 @@ h3.comment-counter {
 	background-color: #e33;
 }
 
+/*=====  searchbar  ======*/
+
+#catdropdown{
+	height: 30px;	
+	border-radius: 10px;
+	color: #342a2a;
+    width:20%;
+	text-align:center;
+    text-align-last: center;
+    font-weight: 600;
+}
+
+/* #catdropdown .option{
+	text-align:center;
+    text-align-last: center;
+} */
+
+.search{
+ margin-left: -4px;
+ width: 50%;
+ border-radius: 10px;
+ height: 30px;
+ border: 1px solid;
+ padding-left: 12px;
+}
+
+.search:focus{
+	background-color:whitesmoke;
+}
+
+/*=====  navbar user details  ======*/
+.dropdown-menu span{
+	font-weight: 600;
+}
+
+/*---------- dashboard myaccount address ----------*/
+
+.modal-content .modal-footer button.save-change-btn {
+	font-weight: 400;
+	width: 140px;
+	padding: 10px 0;
+	text-transform: uppercase;
+	color: #fff;
+	border: none;
+	border-color: #292929;
+	border-radius: 3px;
+	background: none;
+	background-color: #292929;
+}
+
+.modal-content .modal-footer button.save-change-btn:hover {
+	background-color: #e33;
+}
+
 
 /*=====  End of Blog  ======*/
 
@@ -6892,6 +6930,10 @@ h3.comment-counter {
 	margin-left: 0;
 }
 
+.header-mobile-navigation d-block d-lg-none{
+	margin-top: 20px;
+}
+
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px), only screen and (max-width: 767px) {
@@ -6948,6 +6990,14 @@ h3.comment-counter {
 
 .blog-single-post-container .post-audio {
 	margin-bottom: 30px;
+}
+
+.header-mobile-navigation d-block d-lg-none{
+	margin-top: 20px;
+}
+
+.row align-items-center{
+	margin-top: 20px;
 }
 
 }
@@ -7804,6 +7854,7 @@ h3.comment-counter {
 
 }
 
+
 @media only screen and (max-width: 575px) {
 
 .section-title-wrapper .section-title {
@@ -8248,6 +8299,7 @@ h3.contact-page-title {
 }
 
 }
+
 
 @-webkit-keyframes customZoomIn {
 

@@ -6,12 +6,12 @@
     <div class="offcanvas-wrapper">
 
         <div class="offcanvas-inner-content">
-            <div class="offcanvas-mobile-search-area">
+            {{-- <div class="offcanvas-mobile-search-area">
                 <form action="#">
                     <input type="search" placeholder="Search ...">
                     <button type="submit"><i class="fa fa-search"></i></button>
                 </form>
-            </div>
+            </div> --}}
             <nav class="offcanvas-navigation">
                 <ul>
                     <li class="menu-item-has-children"><a href="#">Home</a>
@@ -144,12 +144,12 @@
 
     <!--=======  search form  =======-->
 
-    <div class="search-form">
+    {{-- <div class="search-form">
         <form action="#">
             <input type="search" placeholder="Search entire store here ...">
             <button type="submit"><i class="ion-android-search"></i></button>
         </form>
-    </div>
+    </div> --}}
 
     <!--=======  End of search form  =======-->
 </div>
@@ -261,13 +261,6 @@
                                     <p class="single-info">Brands <a href="shop-left-sidebar.html">Dolor</a> </p>
                                     <h4 class="product-title">Lorem ipsum dolor set amet decor</h4>
                                     <div class="product-rating">
-                                        <span class="rating">
-            <i class="ion-android-star active"></i>
-            <i class="ion-android-star active"></i>
-            <i class="ion-android-star active"></i>
-            <i class="ion-android-star active"></i>
-            <i class="ion-android-star-outline"></i>
-        </span>
 
                                         <span class="review-count"> <a href="#">(2 reviews)</a> | <a href="#">Write A Review</a> </span>
                                     </div>
@@ -288,7 +281,6 @@
 
                                         <div class="product-buttons">
                                             <a class="cart-btn" href="#"> <i class="ion-bag"></i> ADD TO CART</a>
-                                            <span class="wishlist-compare-btn">
                 <a> <i class="ion-heart"></i></a>
                 <a> <i class="ion-android-options"></i></a>
             </span>

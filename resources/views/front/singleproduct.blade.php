@@ -131,13 +131,6 @@
                                             <p class="single-info">Brands <a href="shop-left-sidebar.html">Dolor</a> </p>
                                             <h4 class="product-title">Lorem ipsum dolor set amet decor</h4>
                                             <div class="product-rating">
-                                                <span class="rating">
-            <i class="ion-android-star active"></i>
-            <i class="ion-android-star active"></i>
-            <i class="ion-android-star active"></i>
-            <i class="ion-android-star active"></i>
-            <i class="ion-android-star-outline"></i>
-        </span>
 
                                                 <span class="review-count"> <a href="#">(2 reviews)</a> | <a href="#">Write A Review</a> </span>
                                             </div>
@@ -158,7 +151,6 @@
 
                                                 <div class="product-buttons">
                                                     <a class="cart-btn" href="#"> <i class="ion-bag"></i> ADD TO CART</a>
-                                                    <span class="wishlist-compare-btn">
                 <a> <i class="ion-heart"></i></a>
                 <a> <i class="ion-android-options"></i></a>
             </span>
@@ -166,15 +158,7 @@
 
                                             </div>
 
-                                            <div class="social-share-buttons mt-20">
-                                                <h5>share this product</h5>
-                                                <ul>
-                                                    <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-                                                    <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-                                                    <li><a class="google-plus" href="#"><i class="fa fa-google-plus"></i></a></li>
-                                                    <li><a class="pinterest" href="#"><i class="fa fa-pinterest"></i></a></li>
-                                                </ul>
-                                            </div>
+                                            <br/>
                                             <p class="single-info mb-0">Tags: <a href="shop-left-sidebar.html">Dolor</a> , <a href="shop-left-sidebar.html">Ipsum</a>, <a href="shop-left-sidebar.html">Lorem</a> </p>
 
 
@@ -441,156 +425,8 @@
                                                     <!--=======  End of single grid product  =======-->
                                                 </div>
 
-                                                <div class="col">
-                                                    <!--=======  single grid product  =======-->
-                                                    <div class="single-grid-product">
-                                                        <div class="single-grid-product__image">
-                                                            <div class="single-grid-product__label">
-                                                                <span class="sale">-20%</span>
-                                                            </div>
-                                                            <a href="single-product.html">
-                                                                <img src="assets/img/products/2-600x800.jpg" class="img-fluid" alt="">
-                                                                <img src="assets/img/products/2_1-600x800.jpg" class="img-fluid" alt="">
-                                                            </a>
+                                        
 
-                                                            <div class="hover-icons">
-                                                                <a href="javascript:void(0)"><i class="ion-bag"></i></a>
-                                                                <a href="javascript:void(0)"><i class="ion-heart"></i></a>
-                                                                <a href="javascript:void(0)"><i class="ion-android-options"></i></a>
-                                                                <a href="javascript:void(0)" data-toggle="modal" data-target="#quick-view-modal-container"><i class="ion-android-open"></i></a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="single-grid-product__content">
-                                                            <div class="single-grid-product__category-rating">
-                                                                <span class="category"><a href="shop-left-sidebar.html">Decor</a></span>
-                                                                <span class="rating">
-                                            <i class="ion-android-star active"></i>
-                                            <i class="ion-android-star active"></i>
-                                            <i class="ion-android-star active"></i>
-                                            <i class="ion-android-star active"></i>
-                                            <i class="ion-android-star-outline"></i>
-                                        </span>
-                                                            </div>
-
-                                                            <h3 class="single-grid-product__title"> <a href="single-product.html">lorem ipsum cillium dolore decoration item</a></h3>
-                                                            <p class="single-grid-product__price"><span class="discounted-price">$20.00</span> <span class="main-price discounted">$40.00</span></p>
-                                                        </div>
-                                                    </div>
-                                                    <!--=======  End of single grid product  =======-->
-                                                </div>
-
-                                                <div class="col">
-                                                    <!--=======  single grid product  =======-->
-                                                    <div class="single-grid-product">
-                                                        <div class="single-grid-product__image">
-                                                            <div class="single-grid-product__label">
-                                                                <span class="new">New</span>
-                                                            </div>
-                                                            <a href="single-product.html">
-                                                                <img src="assets/img/products/3-600x800.jpg" class="img-fluid" alt="">
-                                                                <img src="assets/img/products/3_1-600x800.jpg" class="img-fluid" alt="">
-                                                            </a>
-
-                                                            <div class="hover-icons">
-                                                                <a href="javascript:void(0)"><i class="ion-bag"></i></a>
-                                                                <a href="javascript:void(0)"><i class="ion-heart"></i></a>
-                                                                <a href="javascript:void(0)"><i class="ion-android-options"></i></a>
-                                                                <a href="javascript:void(0)" data-toggle="modal" data-target="#quick-view-modal-container"><i class="ion-android-open"></i></a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="single-grid-product__content">
-                                                            <div class="single-grid-product__category-rating">
-                                                                <span class="category"><a href="shop-left-sidebar.html">Vase</a></span>
-                                                                <span class="rating">
-                                            <i class="ion-android-star active"></i>
-                                            <i class="ion-android-star active"></i>
-                                            <i class="ion-android-star active"></i>
-                                            <i class="ion-android-star active"></i>
-                                            <i class="ion-android-star-outline"></i>
-                                        </span>
-                                                            </div>
-
-                                                            <h3 class="single-grid-product__title"> <a href="single-product.html">cillium dolore lorem ipsum decoration item</a></h3>
-                                                            <p class="single-grid-product__price"><span class="discounted-price">$40.00</span> <span class="main-price discounted">$60.00</span></p>
-                                                        </div>
-                                                    </div>
-                                                    <!--=======  End of single grid product  =======-->
-                                                </div>
-
-                                                <div class="col">
-                                                    <!--=======  single grid product  =======-->
-                                                    <div class="single-grid-product">
-                                                        <div class="single-grid-product__image">
-
-                                                            <a href="single-product.html">
-                                                                <img src="assets/img/products/4-600x800.jpg" class="img-fluid" alt="">
-                                                                <img src="assets/img/products/4_1-600x800.jpg" class="img-fluid" alt="">
-                                                            </a>
-
-                                                            <div class="hover-icons">
-                                                                <a href="javascript:void(0)"><i class="ion-bag"></i></a>
-                                                                <a href="javascript:void(0)"><i class="ion-heart"></i></a>
-                                                                <a href="javascript:void(0)"><i class="ion-android-options"></i></a>
-                                                                <a href="javascript:void(0)" data-toggle="modal" data-target="#quick-view-modal-container"><i class="ion-android-open"></i></a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="single-grid-product__content">
-                                                            <div class="single-grid-product__category-rating">
-                                                                <span class="category"><a href="shop-left-sidebar.html">Furniture</a></span>
-                                                                <span class="rating">
-                                            <i class="ion-android-star active"></i>
-                                            <i class="ion-android-star active"></i>
-                                            <i class="ion-android-star active"></i>
-                                            <i class="ion-android-star active"></i>
-                                            <i class="ion-android-star-outline"></i>
-                                        </span>
-                                                            </div>
-
-                                                            <h3 class="single-grid-product__title"> <a href="single-product.html">Cillum dolore lorem ipsum decoration item</a></h3>
-                                                            <p class="single-grid-product__price"><span class="main-price">$120.00</span></p>
-                                                        </div>
-                                                    </div>
-                                                    <!--=======  End of single grid product  =======-->
-                                                </div>
-
-                                                <div class="col">
-                                                    <!--=======  single grid product  =======-->
-                                                    <div class="single-grid-product">
-                                                        <div class="single-grid-product__image">
-                                                            <div class="single-grid-product__label">
-                                                                <span class="sale">-20%</span>
-                                                                <span class="new">New</span>
-                                                            </div>
-                                                            <a href="single-product.html">
-                                                                <img src="assets/img/products/5-600x800.jpg" class="img-fluid" alt="">
-                                                                <img src="assets/img/products/5_1-600x800.jpg" class="img-fluid" alt="">
-                                                            </a>
-
-                                                            <div class="hover-icons">
-                                                                <a href="javascript:void(0)"><i class="ion-bag"></i></a>
-                                                                <a href="javascript:void(0)"><i class="ion-heart"></i></a>
-                                                                <a href="javascript:void(0)"><i class="ion-android-options"></i></a>
-                                                                <a href="javascript:void(0)" data-toggle="modal" data-target="#quick-view-modal-container"><i class="ion-android-open"></i></a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="single-grid-product__content">
-                                                            <div class="single-grid-product__category-rating">
-                                                                <span class="category"><a href="shop-left-sidebar.html">Decor</a></span>
-                                                                <span class="rating">
-                                            <i class="ion-android-star active"></i>
-                                            <i class="ion-android-star active"></i>
-                                            <i class="ion-android-star active"></i>
-                                            <i class="ion-android-star active"></i>
-                                            <i class="ion-android-star-outline"></i>
-                                        </span>
-                                                            </div>
-
-                                                            <h3 class="single-grid-product__title"> <a href="single-product.html">Cillum dolore lorem ipsum decoration item</a></h3>
-                                                            <p class="single-grid-product__price"><span class="discounted-price">$80.00</span> <span class="main-price discounted">$100.00</span></p>
-                                                        </div>
-                                                    </div>
-                                                    <!--=======  End of single grid product  =======-->
-                                                </div>
 
                                             </div>
                                         </div>
