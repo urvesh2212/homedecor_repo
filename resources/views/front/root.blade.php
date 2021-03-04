@@ -38,6 +38,13 @@
     <!-- Active JS -->
     <script src="{{URL::asset('assets/js/active.js')}}"></script>
 
+<!-- navbar buttton toogle js-->
+<script>
+        $(document).ready(function(){
+          $(".dropdown-toggle").dropdown();
+        });
+</script>
+
     <!--=====  End of JS files ======-->
 <script src="{{URL::asset('js/main.js')}}"></script>
 
