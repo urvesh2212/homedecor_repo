@@ -48,12 +48,14 @@
                          <div class="content registerBox" style="display:none;">
                              <div class="form">
                                  <form method="post" id="registerform" html="{:multipart=>true}" data-remote="true" action="" accept-charset="UTF-8">
+                                 @method('PUT')
+                                 @csrf
                                      <input type="text" class="form-control" placeholder="First Name" name="fname" id="fname" required>
                                      <input type="text" class="form-control" placeholder="Last Name" name="lname" id="lname" required>
                                      <input type="text" id="registernumber" class="form-control" placeholder="Phone Number" name="registernumber" maxlength="13" required>
                                      <input id="verifytxt" class="form-control" type="text" placeholder="Otp" name="verifytxt" maxlength="6">
-                                     <input id="password" class="form-control" type="password" placeholder="Password" name="password" autocomplete="">
-                                     <input id="password_confirmation" class="form-control" type="password" placeholder="Repeat Password" autocomplete="" name="password_confirmation">
+                                     <input id="password" class="form-control" type="password" placeholder="Password" name="password" autocomplete="" required>
+                                     <input id="password_confirmation" class="form-control" type="password" placeholder="Repeat Password" autocomplete="" name="password_confirmation" required>
                                      <input class="btn btn-default btn-register" type="button" value="Create account" name="commit" id="createbtn" onclick="RegisterAjax()">
                                      <input class="btn btn-default btn-register" type="button" value="Verify Otp" name="commit1" id="otpbtn" onclick="VerifyOtp()">
                                      <input class="btn btn-default btn-register" type="button" value="Register" name="commit2" id="registerbtn" onclick="CreateUser()">

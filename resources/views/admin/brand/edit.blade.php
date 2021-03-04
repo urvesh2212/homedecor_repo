@@ -19,7 +19,7 @@
                             @if($errors->has('brand_name'))
                                 <span class="help-block" role="alert">{{ $errors->first('brand_name') }}</span>
                             @endif
-                            <span class="help-block">{{ trans('cruds.brand.brand_name_helper') }}</span>
+                            <span class="help-block">{{ trans('cruds.brand.fields.brand_name_helper') }}</span>
                         </div>
                         <div class="form-group {{ $errors->has('brand_status') ? 'has-error' : '' }}">
                             <label class="required">{{ trans('cruds.brand.fields.brand_status') }}</label>

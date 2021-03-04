@@ -8,7 +8,6 @@ use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
-use Yajra\DataTables\Facades\DataTables;
 use App\Models\Order;
 
 class ManageOrdersController extends Controller

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Front\Customer;
+use Illuminate\Support\Str;
 
 class CustomerController extends Controller
 {
@@ -23,11 +24,11 @@ class CustomerController extends Controller
 
             if ($validator->fails()) {
                              $customerdata =  Customer::where('customer_number',$req->customer_number)->first();
-                               session(['loggedin_user' =>$customerdata->uid,'displaydata' => $customerdata->customer_name]);  
+                               session(['loggedin_user' =>$customerdata->uid,'displaydata' => $customerdata->customer_name]);
                 return response()->json(array('msg' => 301));
             }
 
-            $sessionid = random_bytes(15);
+            $sessionid = Str::random(28);
             $customerlogindata = new Customer();
             $customerlogindata->customer_name = $req->fname . '  ' . $req->lname;
             $customerlogindata->customer_number = $req->customer_number;
@@ -36,8 +37,8 @@ class CustomerController extends Controller
             $customerlogindata->save();
 
             if ($customerlogindata) {
-                session(['loggedin_user' => $sessionid, 'displaydata' => $req->fname]);
-                return response()->json(array('msg' => $msg), 200);
+                session(['loggedin_user' => $sessionid, 'displaydata' => $req->fname,'login_status' => true]);
+                return response()->json(array('msg' => 200));
             } else {
                 return response()->json(array('msg' => 500));
             }
@@ -45,7 +46,7 @@ class CustomerController extends Controller
         return false;
     }
 
-    public function GoogleSignup(Request $req)
+    protected function GoogleSignup(Request $req)
     {
 
         if ($req->ajax()) {
@@ -59,7 +60,7 @@ class CustomerController extends Controller
             if ($validator->fails()) {
                 $customerdata =  Customer::where('uid', $req->uid)->first();
                 session(['loggedin_user' => $customerdata->uid, 'displaydata' => $customerdata->customer_name,'login_status' => true]);
-                return response()->json(array('msg' => 200));
+                return response()->json(['msg' => 200]);
             }
 
             $customerGmaildata = new Customer();
@@ -71,15 +72,18 @@ class CustomerController extends Controller
             if ($customerGmaildata) {
 
                 session(['loggedin_user' => $req->uid, 'displaydata' => $req->name,'login_status' => true]);
-                return response()->json(array('msg' => 200));
+                return response()->json(['msg' => 200]);
             } else {
-                return response()->json(array('msg' => 500));
+                return response()->json(['msg' => 500]);
             }
         }
-        return response()->json(array('msg' => 500));
+        return response()->json(['msg' => 500]);
     }
 
+    public function CustomerLogin(Request $req)
 
+    {
+    }
     public function Logout(Request $req)
     {
 

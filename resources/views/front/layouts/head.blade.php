@@ -17,13 +17,13 @@
                              <ul>
 
                                 <li style="margin-top:15px; margin-left:80px;">
-                                        
+
                                     <select id ="catdropdown" >
-                                    <option value="">&nbsp;Select Categories&nbsp;</option>    
-                                    @foreach($categories as $catid => $cat)                                    
+                                    <option value="">&nbsp;Select Categories&nbsp;</option>
+                                    @foreach($categories as $catid => $cat)
                                             <option value="{{$catid}}">{{$cat}}</option>
                                             @endforeach
-                                           </select>                       
+                                           </select>
                                      <input type="text" class="search">
                                 </li>
                             </ul>
@@ -57,16 +57,16 @@
                                     <li class="menu-item-has-children"><a href="shop-left-sidebar.html">SHOP</a>
                                         <ul class="mega-menu four-column">
                                             <li><a href="#">Shop Grid</a>
-                                                
+
                                             </li>
                                             <li><a href="shop-list-left-sidebar.html">Shop List</a>
-                                                
+
                                             </li>
                                             <li><a href="single-product.html">Single Product</a>
-                                                
+
                                             </li>
                                             <li><a href="single-product.html">Single Product</a>
-                                                
+
                                             </li>
                                             <li class="megamenu-banner d-none d-lg-block mt-30 w-100">
                                                 <a href="shop-left-sidebar.html" class="mb-0">
@@ -77,19 +77,19 @@
                                     </li>
 
                                     <li class="menu-item-has-children"><a href="blog-left-sidebar.html">GALLERY</a>
-                                        
+
                                     </li>
 
                                     <li><a href="{{route("contact")}}">CONTACT US</a></li>
-                                
-                                    
+
+
                             </ul>
                             </nav>
                         </div>
                         <!-- header icon -->
                         <div class="header-icon-wrapper">
-                        <ul class="icon-list" style="margin-top:50px;">          
- 
+                        <ul class="icon-list" style="margin-top:50px;">
+
                                 <li>
                                     <div class="header-cart-icon">
                                         <a href="{{route('cart')}}">
@@ -159,7 +159,7 @@
             </div>
         </div>
     </div>
-    
+
     <!--====================  End of header area  ====================-->
-  
+
 
