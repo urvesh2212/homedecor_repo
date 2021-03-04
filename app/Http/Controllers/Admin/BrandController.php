@@ -21,18 +21,18 @@ class BrandController extends Controller
      */
     public function index(Request $request)
     {
-     
+
         if ($request->ajax()) {
-            $query = Brand::query()->select(sprintf('%s.*', (new Brand)->table));
+            $query = Brand::all();
             $table = Datatables::of($query);
 
-            $table->addColumn('placeholder','');
+            $table->addColumn('placeholder', '&nbsp;');
             $table->addColumn('actions', '&nbsp;');
 
             $table->editColumn('actions', function ($row) {
-                $viewGate      = 'brand_show';
-                $editGate      = 'brand_edit';
-                $deleteGate    = 'brand_delete';
+                $viewGate      = 'product_show';
+                $editGate      = 'product_edit';
+                $deleteGate    = 'product_delete';
                 $crudRoutePart = 'brand';
 
                 return view('partials.datatablesActions', compact(
@@ -51,7 +51,6 @@ class BrandController extends Controller
             $table->editColumn('brand_name', function ($row) {
                 return $row->brand_name ? $row->brand_name : "";
             });
-
             $table->editColumn('brand_status', function ($row) {
                 return $row->brand_status ? Brand::BRAND_STATUS_SELECT[$row->brand_status] : '';
             });
@@ -60,6 +59,7 @@ class BrandController extends Controller
 
             return $table->make(true);
         }
+
 
         return view('admin.brand.index',['title' => $this->title]);
 
@@ -72,7 +72,7 @@ class BrandController extends Controller
      */
     public function create()
     {
-        
+
         return view('admin.brand.create',['title' => $this->title]);
     }
 
@@ -124,5 +124,12 @@ class BrandController extends Controller
         $brand->delete();
 
         return back();
+    }
+
+    public function massDestroy(MassDestroyBrandRequest $request)
+    {
+        Brand::whereIn('id', request('ids'))->delete();
+
+        return response(null, Response::HTTP_NO_CONTENT);
     }
 }

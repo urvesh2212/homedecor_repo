@@ -164,7 +164,7 @@ function CreateUser() {
         shakeModal(value = null, data = "Password/Confirm Password does not match");
     } else {
         $.ajax({
-            type: "Post",
+            type: "post",
             url: "/register",
             data: { 'fname': fname, 'lname': lname, 'customer_number': registernumber, 'customer_password': password },
             dataType: "json",
@@ -211,7 +211,7 @@ function GoogleRegister() {
             //   // No user is signed in.
             // }
             $.ajax({
-                type: "Post",
+                type: "post",
                 url: "/GoogleAuth",
                 data: { 'uid': uid, 'name': name, 'customer_email': email },
                 dataType: "json",
@@ -250,7 +250,7 @@ function loginAjax() {
             $.ajax({
                 type: "post",
                 url: "/login",
-                data: { 'customer_number': loginnumber, 'customer_password': loginpassword },
+                data: {'customer_number': loginnumber, 'customer_password': loginpassword },
                 dataType: "json",
                 success: function (response) {
 
@@ -262,10 +262,8 @@ function loginAjax() {
         }
     } else {
 
-        shakeModal(value = 'login', data = 'Invalid Phone Number/Password Combination');
+        shakeModal(value = 'login', data = 'Please insert Phone Number/Password Combination');
     }
-    /*   Simulate error message from the server   */
-    shakeModal(value = 'login', data = null);
 }
 
 

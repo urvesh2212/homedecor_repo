@@ -26,13 +26,11 @@ class FeedbackViewController extends Controller
             $table->addColumn('actions', '&nbsp;');
 
             $table->editColumn('actions', function ($row) {
-                $viewGate      = 'feedback_view_show';
                 $editGate      = 'feedback_view_edit';
                 $deleteGate    = 'feedback_view_delete';
                 $crudRoutePart = 'feedback-views';
 
                 return view('partials.datatablesActions', compact(
-                    'viewGate',
                     'editGate',
                     'deleteGate',
                     'crudRoutePart',
@@ -53,8 +51,8 @@ class FeedbackViewController extends Controller
                 return $row->product ? $row->product->product_name : '';
             });
 
-            $table->editColumn('product.hsn_code', function ($row) {
-                return $row->product ? (is_string($row->product) ? $row->product : $row->product->hsn_code) : '';
+            $table->editColumn('product.id', function ($row) {
+                return $row->product ? (is_string($row->product) ? $row->product : $row->product->id) : '';
             });
 
             $table->rawColumns(['actions', 'placeholder', 'product']);

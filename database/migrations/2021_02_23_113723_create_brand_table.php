@@ -17,19 +17,9 @@ class CreateBrandTable extends Migration
             $table->bigIncrements('id');
             $table->string('brand_name');
             $table->string('brand_status');
-            $table->dateTime('deleted_at')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
     }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('brands');
-    } 
+ 
 }
