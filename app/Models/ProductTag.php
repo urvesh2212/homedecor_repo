@@ -30,4 +30,5 @@ class ProductTag extends Model
     {
         return $date->format('Y-m-d H:i:s');
     }
+
 }
