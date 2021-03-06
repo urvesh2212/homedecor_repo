@@ -131,8 +131,7 @@
                                             <p class="single-info">Brands <a href="shop-left-sidebar.html">Dolor</a> </p>
                                             <h4 class="product-title">Lorem ipsum dolor set amet decor</h4>
                                             <div class="product-rating">
-
-                                                <span class="review-count"> <a href="#">(2 reviews)</a> | <a href="#">Write A Review</a> </span>
+                                                {{-- <span class="review-count"> <a href="#">(2 reviews)</a> | <a href="#">Write A Review</a> </span> --}}
                                             </div>
 
                                             <p class="single-grid-product__price"><span class="discounted-price">$100.00</span> <span class="main-price discounted">$120.00</span></p>
@@ -140,6 +139,17 @@
                                             <p class="single-info">Product Code: <span class="value">CODE123</span> </p>
                                             <p class="single-info">Reward Points: <span class="value">200</span> </p>
                                             <p class="single-info">Availability: <span class="value">In Stock</span> </p>
+
+                                            <div class="product-buttons">  
+                                                <p class="single-info">Product Variant:</p>   
+                                                <span class="wishlist-compare-btn">
+                                                    <a>M</a>
+                                                    <a>S</a>
+                                                    <a>L</a>
+                                                    <a>XL</a>
+                                                </span>
+                                            </div>
+
 
                                             <p class="product-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. At, delectus. Voluptates omnis distinctio vitae quo quia veniam minima dolorem hic necessitatibus pariatur, quae fuga similique optio laboriosam assumenda voluptatum aperiam.</p>
 
@@ -150,14 +160,10 @@
                                                 </div>
 
                                                 <div class="product-buttons">
-                                                    <a class="cart-btn" href="#"> <i class="ion-bag"></i> ADD TO CART</a>
-                <a> <i class="ion-heart"></i></a>
-                <a> <i class="ion-android-options"></i></a>
-            </span>
+                                                    <a class="cart-btn" href="#" style="margin-top: 0px;"> <i class="ion-bag"></i> ADD TO CART</a>
                                                 </div>
 
                                             </div>
-
                                             <br/>
                                             <p class="single-info mb-0">Tags: <a href="shop-left-sidebar.html">Dolor</a> , <a href="shop-left-sidebar.html">Ipsum</a>, <a href="shop-left-sidebar.html">Lorem</a> </p>
 
@@ -187,9 +193,7 @@
                                                     <!--=======  product description  =======-->
 
                                                     <div class="product-description">
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla.</p>
-
-                                                        <p>Pellentesque aliquet, sem eget laoreet ultrices, ipsum metus feugiat sem, quis fermentum turpis eros eget velit. Donec ac tempus ante. Fusce ultricies massa massa. Fusce aliquam, purus eget sagittis vulputate, sapien libero hendrerit est, sed commodo augue nisi non neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempor, lorem et placerat vestibulum, metus nisi posuere nisl, in accumsan elit odio quis mi. Cras neque metus, consequat et blandit et, luctus a nunc. Etiam gravida vehicula tellus, in imperdiet ligula euismod eget.</p>
+                                                    
                                                     </div>
 
                                                     <!--=======  End of product description  =======-->
@@ -264,45 +268,6 @@
                                                                     quisquam est, qui dolorem ipsum quia dolor sit
                                                                     amet, consectetur, adipisci veli</p>
                                                             </div>
-
-                                                            <div class="sin-ratings">
-                                                                <div class="rating-author">
-                                                                    <h3>Rashed Mahmud</h3>
-                                                                    <div class="rating-star">
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <span>(5)</span>
-                                                                    </div>
-                                                                </div>
-                                                                <p>enim ipsam voluptatem quia voluptas sit
-                                                                    aspernatur aut odit aut fugit, sed quia res eos
-                                                                    qui ratione voluptatem sequi Neque porro
-                                                                    quisquam est, qui dolorem ipsum quia dolor sit
-                                                                    amet, consectetur, adipisci veli</p>
-                                                            </div>
-
-                                                            <div class="sin-ratings">
-                                                                <div class="rating-author">
-                                                                    <h3>Hasan Mubarak</h3>
-                                                                    <div class="rating-star">
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <span>(5)</span>
-                                                                    </div>
-                                                                </div>
-                                                                <p>enim ipsam voluptatem quia voluptas sit
-                                                                    aspernatur aut odit aut fugit, sed quia res eos
-                                                                    qui ratione voluptatem sequi Neque porro
-                                                                    quisquam est, qui dolorem ipsum quia dolor sit
-                                                                    amet, consectetur, adipisci veli</p>
-                                                            </div>
-
                                                         </div>
                                                         <div class="rating-form-wrapper fix">
                                                             <h3>Add your Comments</h3>
@@ -390,36 +355,22 @@
                                                     <div class="single-grid-product">
                                                         <div class="single-grid-product__image">
                                                             <div class="single-grid-product__label">
-                                                                <span class="sale">-20%</span>
-                                                                <span class="new">New</span>
+                                                                {{-- <span class="sale">-20%</span>
+                                                                <span class="new">New</span> --}}
                                                             </div>
                                                             <a href="single-product.html">
                                                                 <img src="assets/img/products/1-600x800.jpg" class="img-fluid" alt="">
                                                                 <img src="assets/img/products/1_1-600x800.jpg" class="img-fluid" alt="">
                                                             </a>
-
-                                                            <div class="hover-icons">
-                                                                <a href="javascript:void(0)"><i class="ion-bag"></i></a>
-                                                                <a href="javascript:void(0)"><i class="ion-heart"></i></a>
-                                                                <a href="javascript:void(0)"><i class="ion-android-options"></i></a>
-                                                                <a href="javascript:void(0)" data-toggle="modal" data-target="#quick-view-modal-container"><i class="ion-android-open"></i></a>
-                                                            </div>
                                                         </div>
                                                         <div class="single-grid-product__content">
                                                             <div class="single-grid-product__category-rating">
                                                                 <span class="category"><a href="shop-left-sidebar.html">Decor</a></span>
-                                                                <span class="rating">
-                                            <i class="ion-android-star active"></i>
-                                            <i class="ion-android-star active"></i>
-                                            <i class="ion-android-star active"></i>
-                                            <i class="ion-android-star active"></i>
-                                            <i class="ion-android-star-outline"></i>
-                                        </span>
                                                             </div>
 
                                                             <h3 class="single-grid-product__title"> <a href="single-product.html">Cillum dolore lorem ipsum decoration item</a></h3>
                                                             <p class="single-grid-product__price"><span class="discounted-price">$100.00</span> <span class="main-price discounted">$120.00</span></p>
-                                                            <div class="product-countdown" data-countdown="2020/06/01"></div>
+                                                            {{-- <div class="product-countdown" data-countdown="2020/06/01"></div> --}}
                                                         </div>
                                                     </div>
                                                     <!--=======  End of single grid product  =======-->

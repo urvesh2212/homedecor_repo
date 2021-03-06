@@ -8,7 +8,7 @@ $categories = \App\Models\ProductCategory::orderby('category_name')->get()->pluc
             <div class="row">
                 <div class="col-lg-12">
                     <ul>
-                        <li style="margin-top:20px; margin-left:250px;">
+                        <li style="margin-top:20px; margin-left:25%;">
                                 
                             <select id ="catdropdown">
                             <option value="" style="color: #342a2a;">&nbsp;All&nbsp;</option>    
@@ -59,21 +59,39 @@ $categories = \App\Models\ProductCategory::orderby('category_name')->get()->pluc
 
                                     <li class="menu-item-has-children"><a href="shop-left-sidebar.html">SHOP</a>
                                         <ul class="mega-menu four-column">
-                                            <li><a href="#">Shop Grid</a>
-                                                
+                                            <li><a href="#">Shop By Brands</a>
+                                                <ul>
+                                                    <li><a>xyz</a></li>
+                                                    <li><a>abc</a></li>
+                                                    <li><a>pqr</a></li>
+                                                    <li><a>stu</a></li>
+                                                    <li><a>asp</a></li>
+                                                </ul>
                                             </li>
-                                            <li><a href="shop-list-left-sidebar.html">Shop List</a>
-                                                
+                                            <li><a href="shop-list-left-sidebar.html">Shop By Sub Categories</a>
+                                                <ul>
+                                                    <li><a>xyz</a></li>
+                                                    <li><a>abc</a></li>
+                                                    <li><a>pqr</a></li>
+                                                    <li><a>stu</a></li>
+                                                    <li><a>asp</a></li>
+                                                </ul>
                                             </li>
                                             <li><a href="single-product.html">Single Product</a>
-                                                
+                                                <ul>
+                                                    <li><a>xyz</a></li>
+                                                    <li><a>abc</a></li>
+                                                    <li><a>pqr</a></li>
+                                                    <li><a>stu</a></li>
+                                                    <li><a>asp</a></li>
+                                                </ul>
                                             </li>
                                             <li><a href="single-product.html">Single Product</a>
                                                 
                                             </li>
                                             <li class="megamenu-banner d-none d-lg-block mt-30 w-100">
                                                 <a href="shop-left-sidebar.html" class="mb-0">
-                                                    <img src="assets/img/banners/img-bottom-menu.jpg" class="img-fluid" alt="">
+                                                    
                                                 </a>
                                             </li>
                                         </ul>

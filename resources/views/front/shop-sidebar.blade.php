@@ -141,31 +141,25 @@
                                                 <div class="single-grid-product grid-view-product">
                                                     <div class="single-grid-product__image">
                                                         <div class="single-grid-product__label">
-                                                            <span class="sale">-20%</span>
-                                                            <span class="new">New</span>
+                                                            {{-- <span class="sale">-20%</span>
+                                                            <span class="new">New</span> --}}
                                                         </div>
                                                         <a href="single-product.html">
                                                             <img src="assets/img/products/1-600x800.jpg" class="img-fluid" alt="">
                                                             <img src="assets/img/products/1_1-600x800.jpg" class="img-fluid" alt="">
                                                         </a>
 
-                                                        <div class="hover-icons">
+                                                        {{-- <div class="hover-icons">
                                                             <a href="javascript:void(0)"><i class="ion-bag"></i></a>
                                                             <a href="javascript:void(0)"><i class="ion-heart"></i></a>
                                                             <a href="javascript:void(0)"><i class="ion-android-options"></i></a>
                                                             <a href="javascript:void(0)" data-toggle="modal" data-target="#quick-view-modal-container"><i class="ion-android-open"></i></a>
-                                                        </div>
+                                                        </div> --}}
                                                     </div>
                                                     <div class="single-grid-product__content">
                                                         <div class="single-grid-product__category-rating">
                                                             <span class="category"><a href="shop-left-sidebar.html">Decor</a></span>
-                                                            <span class="rating">
-                    <i class="ion-android-star active"></i>
-                    <i class="ion-android-star active"></i>
-                    <i class="ion-android-star active"></i>
-                    <i class="ion-android-star active"></i>
-                    <i class="ion-android-star-outline"></i>
-                </span>
+                                                          
                                                         </div>
 
                                                         <h3 class="single-grid-product__title"> <a href="single-product.html">Cillum dolore lorem ipsum decoration item</a></h3>
@@ -177,32 +171,17 @@
                                                 <div class="single-grid-product single-grid-product--list-view list-view-product">
                                                     <div class="single-grid-product__image single-grid-product--list-view__image">
                                                         <div class="single-grid-product__label">
-                                                            <span class="sale">-20%</span>
-                                                            <span class="new">New</span>
                                                         </div>
                                                         <a href="single-product.html">
                                                             <img src="assets/img/products/1-600x800.jpg" class="img-fluid" alt="">
                                                             <img src="assets/img/products/1_1-600x800.jpg" class="img-fluid" alt="">
                                                         </a>
-
-                                                        <div class="hover-icons">
-                                                            <a href="javascript:void(0)"><i class="ion-bag"></i></a>
-                                                            <a href="javascript:void(0)"><i class="ion-heart"></i></a>
-                                                            <a href="javascript:void(0)"><i class="ion-android-options"></i></a>
-                                                            <a href="javascript:void(0)" data-toggle="modal" data-target="#quick-view-modal-container"><i class="ion-android-open"></i></a>
-                                                        </div>
                                                     </div>
                                                     <div class="single-grid-product__content single-grid-product--list-view__content">
 
                                                         <div class="category"><a href="shop-left-sidebar.html">Decor</a></div>
                                                         <h3 class="single-grid-product__title single-grid-product--list-view__title"> <a href="single-product.html">Cillum dolore lorem ipsum decoration item</a></h3>
-                                                        <div class="rating">
-                                                            <i class="ion-android-star active"></i>
-                                                            <i class="ion-android-star active"></i>
-                                                            <i class="ion-android-star active"></i>
-                                                            <i class="ion-android-star active"></i>
-                                                            <i class="ion-android-star-outline"></i>
-                                                        </div>
+                                        
                                                         <p class="single-grid-product__price single-grid-product--list-view__price"><span class="discounted-price">$100.00</span> <span class="main-price discounted">$120.00</span></p>
                                                         <p class="single-grid-product--list-view__product-short-desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate cupiditate provident praesentium, esse omnis quis!</p>
                                                     </div>
@@ -215,31 +194,19 @@
                                                 <div class="single-grid-product grid-view-product">
                                                     <div class="single-grid-product__image">
                                                         <div class="single-grid-product__label">
-                                                            <span class="sale">-20%</span>
-                                                            <span class="new">New</span>
+                                                            
                                                         </div>
                                                         <a href="single-product.html">
                                                             <img src="assets/img/products/5-600x800.jpg" class="img-fluid" alt="">
                                                             <img src="assets/img/products/5_1-600x800.jpg" class="img-fluid" alt="">
                                                         </a>
 
-                                                        <div class="hover-icons">
-                                                            <a href="javascript:void(0)"><i class="ion-bag"></i></a>
-                                                            <a href="javascript:void(0)"><i class="ion-heart"></i></a>
-                                                            <a href="javascript:void(0)"><i class="ion-android-options"></i></a>
-                                                            <a href="javascript:void(0)" data-toggle="modal" data-target="#quick-view-modal-container"><i class="ion-android-open"></i></a>
-                                                        </div>
+                                                       
                                                     </div>
                                                     <div class="single-grid-product__content">
                                                         <div class="single-grid-product__category-rating">
                                                             <span class="category"><a href="shop-left-sidebar.html">Decor</a></span>
-                                                            <span class="rating">
-                    <i class="ion-android-star active"></i>
-                    <i class="ion-android-star active"></i>
-                    <i class="ion-android-star active"></i>
-                    <i class="ion-android-star active"></i>
-                    <i class="ion-android-star-outline"></i>
-                </span>
+                                            
                                                         </div>
 
                                                         <h3 class="single-grid-product__title"> <a href="single-product.html">Cillum dolore lorem ipsum decoration item</a></h3>
@@ -251,32 +218,20 @@
                                                 <div class="single-grid-product single-grid-product--list-view list-view-product">
                                                     <div class="single-grid-product__image single-grid-product--list-view__image">
                                                         <div class="single-grid-product__label">
-                                                            <span class="sale">-20%</span>
-                                                            <span class="new">New</span>
+                                                          
                                                         </div>
                                                         <a href="single-product.html">
                                                             <img src="assets/img/products/5-600x800.jpg" class="img-fluid" alt="">
                                                             <img src="assets/img/products/5_1-600x800.jpg" class="img-fluid" alt="">
                                                         </a>
 
-                                                        <div class="hover-icons">
-                                                            <a href="javascript:void(0)"><i class="ion-bag"></i></a>
-                                                            <a href="javascript:void(0)"><i class="ion-heart"></i></a>
-                                                            <a href="javascript:void(0)"><i class="ion-android-options"></i></a>
-                                                            <a href="javascript:void(0)" data-toggle="modal" data-target="#quick-view-modal-container"><i class="ion-android-open"></i></a>
-                                                        </div>
+                                                        
                                                     </div>
                                                     <div class="single-grid-product__content single-grid-product--list-view__content">
 
                                                         <div class="category"><a href="shop-left-sidebar.html">Decor</a></div>
                                                         <h3 class="single-grid-product__title single-grid-product--list-view__title"> <a href="single-product.html">Cillum dolore lorem ipsum decoration item</a></h3>
-                                                        <div class="rating">
-                                                            <i class="ion-android-star active"></i>
-                                                            <i class="ion-android-star active"></i>
-                                                            <i class="ion-android-star active"></i>
-                                                            <i class="ion-android-star active"></i>
-                                                            <i class="ion-android-star-outline"></i>
-                                                        </div>
+                                                       
                                                         <p class="single-grid-product__price single-grid-product--list-view__price"><span class="discounted-price">$80.00</span> <span class="main-price discounted">$100.00</span></p>
                                                         <p class="single-grid-product--list-view__product-short-desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate cupiditate provident praesentium, esse omnis quis!</p>
                                                     </div>
