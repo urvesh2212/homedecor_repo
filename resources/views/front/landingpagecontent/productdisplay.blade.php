@@ -20,10 +20,11 @@
 
                         <div class="tab-product-navigation">
                             <div class="nav nav-tabs justify-content-center" id="nav-tab2" role="tablist">
-                                <a class="nav-item nav-link active" id="product-tab-1" data-toggle="tab" href="#product-series-1" role="tab" aria-selected="true">Decoration</a>
-                                <a class="nav-item nav-link" id="product-tab-2" data-toggle="tab" href="#product-series-2" role="tab" aria-selected="false">Lighting</a>
-                                <a class="nav-item nav-link" id="product-tab-3" data-toggle="tab" href="#product-series-3" role="tab" aria-selected="false">Storage</a>
-                                <a class="nav-item nav-link" id="product-tab-4" data-toggle="tab" href="#product-series-4" role="tab" aria-selected="false">Living Room</a>
+                                @php $i = 1;@endphp
+                                @foreach($categories as $categorydata)
+                                <a class="nav-item nav-link {{$i === 1 ? 'active': ''}}" id="product-tab-{{$i}}" data-toggle="tab" href="#product-series-{{$i}}" role="tab" aria-selected="true">{{$categorydata->category_name}}</a>
+                                @php $i++; @endphp
+                                @endforeach
                             </div>
                         </div>
 
@@ -56,14 +57,14 @@
 
                                         <div class="col">
                                             <!--=======  single grid product  =======-->
+                                            @foreach($categories as $productdata)
                                             <div class="single-grid-product">
                                                 <div class="single-grid-product__image">
 
                                                     <a href="single-product.html">
-                                                        <img src="assets/img/products/4-600x800.jpg" class="img-fluid" alt="">
-                                                        <img src="assets/img/products/4_1-600x800.jpg" class="img-fluid" alt="">
+                                                        <img src="" class="img-fluid" alt="">
                                                     </a>
-{{-- 
+{{--
                                                     <div class="hover-icons">
                                                         <a href="javascript:void(0)"><i class="ion-bag"></i></a>
                                                         <a href="javascript:void(0)"><i class="ion-heart"></i></a>
@@ -73,179 +74,21 @@
                                                 </div>
                                                 <div class="single-grid-product__content">
                                                     <div class="single-grid-product__category-rating">
-                                                        <span class="category"><a href="shop-left-sidebar.html">Furniture</a></span>
+                                                        <span class="category"><a href="shop-left-sidebar.html"></a></span>
                                                     </div>
 
-                                                    <h3 class="single-grid-product__title"> <a href="single-product.html">Cillum dolore lorem ipsum decoration item</a></h3>
+                                                    <h3 class="single-grid-product__title"> <a href="single-product.html"></a></h3>
                                                     {{-- <p class="single-grid-product__price"><span class="main-price">$120.00</span></p> --}}
                                                 </div>
                                             </div>
+                                        @endforeach
                                             <!--=======  End of single grid product  =======-->
                                         </div>
                                     </div>
                                 </div>
                                 <!--=======  End of single row slider wrapper  =======-->
                             </div>
-                            <div class="tab-pane fade" id="product-series-2" role="tabpanel" aria-labelledby="product-tab-2">
-                                <!--=======  single row slider wrapper  =======-->
-                                <div class="single-row-slider-wrapper">
-                                    <div class="ht-slick-slider" data-slick-setting='{
-                                    "slidesToShow": 4,
-                                    "slidesToScroll": 1,
-                                    "arrows": true,
-                                    "autoplay": false,
-                                    "autoplaySpeed": 5000,
-                                    "speed": 1000,
-                                    "infinite": false,
-                                    "prevArrow": {"buttonClass": "slick-prev", "iconClass": "ion-chevron-left" },
-                                    "nextArrow": {"buttonClass": "slick-next", "iconClass": "ion-chevron-right" }
-                                }' data-slick-responsive='[
-                                    {"breakpoint":1501, "settings": {"slidesToShow": 4} },
-                                    {"breakpoint":1199, "settings": {"slidesToShow": 4, "arrows": false} },
-                                    {"breakpoint":991, "settings": {"slidesToShow": 3, "arrows": false} },
-                                    {"breakpoint":767, "settings": {"slidesToShow": 2, "arrows": false} },
-                                    {"breakpoint":575, "settings": {"slidesToShow": 2, "arrows": false} },
-                                    {"breakpoint":479, "settings": {"slidesToShow": 1, "arrows": false} }
-                                ]'>
 
-                                        <div class="col">
-                                            <!--=======  single grid product  =======-->
-                                            <div class="single-grid-product">
-                                                <div class="single-grid-product__image">
-                                                    <div class="single-grid-product__label">
-                                                        {{-- <span class="new">New</span> --}}
-                                                    </div>
-                                                    <a href="single-product.html">
-                                                        <img src="assets/img/products/3-600x800.jpg" class="img-fluid" alt="">
-                                                        <img src="assets/img/products/3_1-600x800.jpg" class="img-fluid" alt="">
-                                                    </a>
-                                                </div>
-                                                <div class="single-grid-product__content">
-                                                    <div class="single-grid-product__category-rating">
-                                                        <span class="category"><a href="shop-left-sidebar.html">Vase</a></span>
-                                                
-                                                    </div>
-
-                                                    <h3 class="single-grid-product__title"> <a href="single-product.html">lorem ipsum cillium dolore decoration item</a></h3>
-                                                   
-                                                </div>
-                                            </div>
-                                            <!--=======  End of single grid product  =======-->
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <!--=======  End of single row slider wrapper  =======-->
-                            </div>
-                            <div class="tab-pane fade" id="product-series-3" role="tabpanel" aria-labelledby="product-tab-3">
-                                <!--=======  single row slider wrapper  =======-->
-                                <div class="single-row-slider-wrapper">
-                                    <div class="ht-slick-slider" data-slick-setting='{
-                                    "slidesToShow": 4,
-                                    "slidesToScroll": 1,
-                                    "arrows": true,
-                                    "autoplay": false,
-                                    "autoplaySpeed": 5000,
-                                    "speed": 1000,
-                                    "infinite": false,
-                                    "prevArrow": {"buttonClass": "slick-prev", "iconClass": "ion-chevron-left" },
-                                    "nextArrow": {"buttonClass": "slick-next", "iconClass": "ion-chevron-right" }
-                                }' data-slick-responsive='[
-                                    {"breakpoint":1501, "settings": {"slidesToShow": 4} },
-                                    {"breakpoint":1199, "settings": {"slidesToShow": 4, "arrows": false} },
-                                    {"breakpoint":991, "settings": {"slidesToShow": 3, "arrows": false} },
-                                    {"breakpoint":767, "settings": {"slidesToShow": 2, "arrows": false} },
-                                    {"breakpoint":575, "settings": {"slidesToShow": 2, "arrows": false} },
-                                    {"breakpoint":479, "settings": {"slidesToShow": 1, "arrows": false} }
-                                ]'>
-
-                                        <div class="col">
-                                            <!--=======  single grid product  =======-->
-                                            <div class="single-grid-product">
-                                                <div class="single-grid-product__image">
-                                                    <div class="single-grid-product__label">
-                                                        {{-- <span class="sale">-20%</span>
-                                                        <span class="new">New</span> --}}
-                                                    </div>
-                                                    <a href="single-product.html">
-                                                        <img src="assets/img/products/5-600x800.jpg" class="img-fluid" alt="">
-                                                        <img src="assets/img/products/5_1-600x800.jpg" class="img-fluid" alt="">
-                                                    </a>
-
-                                                </div>
-                                                <div class="single-grid-product__content">
-                                                    <div class="single-grid-product__category-rating">
-                                                        <span class="category"><a href="shop-left-sidebar.html">Decor</a></span>
-                    
-                                                    </div>
-
-                                                    <h3 class="single-grid-product__title"> <a href="single-product.html">Cillum dolore lorem ipsum decoration item</a></h3>
-
-                                                </div>
-                                            </div>
-                                            <!--=======  End of single grid product  =======-->
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <!--=======  End of single row slider wrapper  =======-->
-                            </div>
-                            <div class="tab-pane fade" id="product-series-4" role="tabpanel" aria-labelledby="product-tab-4">
-                                <!--=======  single row slider wrapper  =======-->
-                                <div class="single-row-slider-wrapper">
-                                    <div class="ht-slick-slider" data-slick-setting='{
-                                    "slidesToShow": 4,
-                                    "slidesToScroll": 1,
-                                    "arrows": true,
-                                    "autoplay": false,
-                                    "autoplaySpeed": 5000,
-                                    "speed": 1000,
-                                    "infinite": false,
-                                    "prevArrow": {"buttonClass": "slick-prev", "iconClass": "ion-chevron-left" },
-                                    "nextArrow": {"buttonClass": "slick-next", "iconClass": "ion-chevron-right" }
-                                }' data-slick-responsive='[
-                                    {"breakpoint":1501, "settings": {"slidesToShow": 4} },
-                                    {"breakpoint":1199, "settings": {"slidesToShow": 4, "arrows": false} },
-                                    {"breakpoint":991, "settings": {"slidesToShow": 3, "arrows": false} },
-                                    {"breakpoint":767, "settings": {"slidesToShow": 2, "arrows": false} },
-                                    {"breakpoint":575, "settings": {"slidesToShow": 2, "arrows": false} },
-                                    {"breakpoint":479, "settings": {"slidesToShow": 1, "arrows": false} }
-                                ]'>
-
-                                        <div class="col">
-                                            <!--=======  single grid product  =======-->
-                                            <div class="single-grid-product">
-                                                <div class="single-grid-product__image">
-                                                    <div class="single-grid-product__label">
-                                                    </div>
-                                                    <a href="single-product.html">
-                                                        <img src="assets/img/products/3-600x800.jpg" class="img-fluid" alt="">
-                                                        <img src="assets/img/products/3_1-600x800.jpg" class="img-fluid" alt="">
-                                                    </a>
-
-                                                    <div class="hover-icons">
-                                                        <a href="javascript:void(0)"><i class="ion-bag"></i></a>
-                                                        <a href="javascript:void(0)"><i class="ion-heart"></i></a>
-                                                        <a href="javascript:void(0)"><i class="ion-android-options"></i></a>
-                                                        <a href="javascript:void(0)" data-toggle="modal" data-target="#quick-view-modal-container"><i class="ion-android-open"></i></a>
-                                                    </div>
-                                                </div>
-                                                <div class="single-grid-product__content">
-                                                    <div class="single-grid-product__category-rating">
-                                                        <span class="category"><a href="shop-left-sidebar.html">Vase</a></span>
-                                                    </div>
-
-                                                    <h3 class="single-grid-product__title"> <a href="single-product.html">lorem ipsum cilium dolore decoration item</a></h3>
-                            
-                                                </div>
-                                            </div>
-                                            <!--=======  End of single grid product  =======-->
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <!--=======  End of single row slider wrapper  =======-->
-                            </div>
                         </div>
                         <!--=======  End of tab product content  =======-->
                     </div>

@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
             PermissionRoleTableSeeder::class,
             UsersTableSeeder::class,
             RoleUserTableSeeder::class,
-            OrderSeeder::class,
+           OrderSeeder::class,
             OrderitemSeeder::class,
             OrderpaymentSeeder::class,
             ProductVariantSeeder::class

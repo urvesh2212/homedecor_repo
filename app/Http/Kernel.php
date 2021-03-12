@@ -17,6 +17,7 @@ class Kernel extends HttpKernel
     ];
 
     protected $routeMiddleware = [
+        'AuthCustomer'             => \App\Http\Middleware\Checkloguser::class,
         'auth'             => \App\Http\Middleware\Authenticate::class,
         'auth.basic'       => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'cache.headers'    => \Illuminate\Http\Middleware\SetCacheHeaders::class,

@@ -9,16 +9,17 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use \DateTimeInterface;
-use App\Models\Product;
 
-class ProductCategory extends Model implements HasMedia
+
+
+class BannerSlider extends Model implements HasMedia
 {
     use SoftDeletes, InteractsWithMedia, HasFactory;
 
-    public $table = 'product_categories';
+    public $table = 'banner_sliders';
 
     protected $appends = [
-        'category_img',
+        'bannerslider_img',
     ];
 
     protected $dates = [
@@ -27,15 +28,13 @@ class ProductCategory extends Model implements HasMedia
         'deleted_at',
     ];
 
-    const CATEGORY_STATUS_SELECT = [
+    const BANNER_STATUS_SELECT = [
         '1' => 'Active',
         '2' => 'Deactive',
     ];
 
     protected $fillable = [
-        'category_code',
-        'category_name',
-        'category_status',
+        'bannerslider_status',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -52,9 +51,9 @@ class ProductCategory extends Model implements HasMedia
         $this->addMediaConversion('preview')->fit('crop', 120, 120);
     }
 
-    public function getCategoryImgAttribute()
+    public function getbannersliderImgAttribute()
     {
-        $files = $this->getMedia('category_img');
+        $files = $this->getMedia('bannerslider_img');
         $files->each(function ($item) {
             $item->url       = $item->getUrl();
             $item->thumbnail = $item->getUrl('thumb');
@@ -62,10 +61,5 @@ class ProductCategory extends Model implements HasMedia
         });
 
         return $files;
-    }
-
-    public  function GetProduct(){
-
-        return $this->hasMany(Product::class,'catid_id','id');
     }
 }

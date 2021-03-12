@@ -45,6 +45,21 @@
                             @endif
                             <span class="help-block">{{ trans('cruds.product.fields.subcatid_helper') }}</span>
                         </div>
+
+                        <div class="form-group {{ $errors->has('brandid') ? 'has-error' : '' }}">
+                            <label class="required" for="brand_id">{{ trans('cruds.product.fields.brandid') }}</label>
+                            <select class="form-control select2" name="brand_id" id="brand_id" required>
+                                @foreach($brandids as $id => $brandid)
+                                    <option value="{{ $id }}" {{ (old('brand_id') ? old('brand_id') : $product->brandid->id ?? '') == $id ? 'selected' : '' }}>{{ $brandid }}</option>
+                                @endforeach
+                            </select>
+                            @if($errors->has('brandid'))
+                                <span class="help-block" role="alert">{{ $errors->first('brandid') }}</span>
+                            @endif
+                            <span class="help-block">{{ trans('cruds.product.fields.brandid_helper') }}</span>
+                        </div>
+
+
                         <div class="form-group {{ $errors->has('product_name') ? 'has-error' : '' }}">
                             <label class="required" for="product_name">{{ trans('cruds.product.fields.product_name') }}</label>
                             <input class="form-control" type="text" name="product_name" id="product_name" value="{{ old('product_name', $product->product_name) }}" required>

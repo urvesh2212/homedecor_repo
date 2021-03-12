@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use App\Models\Front\Customer;
@@ -19,7 +20,9 @@ class ManageCustomerController extends Controller
 
     public function massDestroy(Request $req)
     {
+        Customer::whereIn('id', request('ids'))->delete();
 
+        return response(null, Response::HTTP_NO_CONTENT);
     }
 
     public function show($customer)
