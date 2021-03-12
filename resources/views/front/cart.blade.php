@@ -32,7 +32,7 @@
             <li class="active">My Cart</li>
         </ul>
     </div>
-    <div class="page-content-area" style="margin-top: 250px">
+    <div class="page-content-area" style="margin-top: 25px">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -58,11 +58,11 @@
                                             <tr>
                                                 <td class="pro-thumbnail"><a href="single-product.html"><img src="assets/img/products/big1-1.jpg" class="img-fluid" alt="Product"></a></td>
                                                 <td class="pro-title"><a href="single-product.html">Cillum dolore tortor nisl fermentum</a></td>
-                                                <td class="pro-price"><span>$29.00</span></td>
+                                                <td class="pro-price"><span>&#8377;29.00</span></td>
                                                 <td class="pro-quantity">
                                                     <div class="quantity-selection"><input type="number" value="1" min="1"></div>
                                                 </td>
-                                                <td class="pro-subtotal"><span>$29.00</span></td>
+                                                <td class="pro-subtotal"><span>&#8377;29.00</span></td>
                                                 <td class="pro-remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
                                             </tr>
                                         </tbody>
@@ -224,9 +224,9 @@
                                     <div class="cart-summary">
                                         <div class="cart-summary-wrap">
                                             <h4>Cart Summary</h4>
-                                            <p>Sub Total <span>$1250.00</span></p>
-                                            <p>Shipping Cost <span>$00.00</span></p>
-                                            <h2>Grand Total <span>$1250.00</span></h2>
+                                            <p>Sub Total <span>&#8377;1250.00</span></p>
+                                            <p>Shipping Cost <span>&#8377;00.00</span></p>
+                                            <h2>Grand Total <span>&#8377;1250.00</span></h2>
                                         </div>
                                         <div class="cart-summary-button">
                                             <button class="checkout-btn">Checkout</button>

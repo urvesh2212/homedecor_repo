@@ -104,29 +104,29 @@
                                                     </div>
                                                 </div>
                                                 <div class="sidebar-sub-widget">
-                                                    <h4 class="sidebar-sub-widget__title sidebar-sub-widget__title--abs-icon">Manufacturer</h4>
+                                                    <h4 class="sidebar-sub-widget__title sidebar-sub-widget__title--abs-icon">Brands</h4>
                                                     <ul class="single-sidebar-widget__category-list single-sidebar-widget__category-list--abs-icon">
                                                         <li><a href="#">Lorem ipsum (7)</a></li>
                                                         <li><a href="#">Dolor (8) </a></li>
                                                     </ul>
                                                 </div>
-                                                <div class="sidebar-sub-widget">
+                                                {{-- <div class="sidebar-sub-widget">
                                                     <h4 class="sidebar-sub-widget__title sidebar-sub-widget__title--abs-icon">Select By Color</h4>
                                                     <ul class="single-sidebar-widget__category-list single-sidebar-widget__category-list--abs-icon">
                                                         <li><a href="#">Black (7)</a></li>
                                                     </ul>
-                                                </div>
+                                                </div> --}}
                                             </div>
                                         </div>
                                         <!--=======  End of single sidebar widget  =======-->
                                         <!--=======  single sidebar widget  =======-->
-                                        <div class="single-sidebar-widget">
+                                        {{-- <div class="single-sidebar-widget">
                                             <h4 class="single-sidebar-widget__title">Popular Tags</h4>
                                             <ul class="single-sidebar-widget__tag-list">
                                                 <li><a href="#">Car Seats</a></li>
                                                 <li><a href="#">Chair</a></li>
                                             </ul>
-                                        </div>
+                                        </div> --}}
                                         <!--=======  End of single sidebar widget  =======-->
                                     </div>
                                     <!--=======  End of page sidebar wrapper  =======-->
@@ -159,11 +159,11 @@
                                                     <div class="single-grid-product__content">
                                                         <div class="single-grid-product__category-rating">
                                                             <span class="category"><a href="shop-left-sidebar.html">Decor</a></span>
-                                                          
+
                                                         </div>
 
                                                         <h3 class="single-grid-product__title"> <a href="single-product.html">Cillum dolore lorem ipsum decoration item</a></h3>
-                                                        <p class="single-grid-product__price"><span class="discounted-price">$100.00</span> <span class="main-price discounted">$120.00</span></p>
+                                                        <p class="single-grid-product__price"><span class="discounted-price">&#8377;100.00</span> <span class="main-price discounted">&#8377; 120.00</span></p>
                                                     </div>
                                                 </div>
                                                 <!--=======  End of product grid view  =======-->
@@ -181,36 +181,36 @@
 
                                                         <div class="category"><a href="shop-left-sidebar.html">Decor</a></div>
                                                         <h3 class="single-grid-product__title single-grid-product--list-view__title"> <a href="single-product.html">Cillum dolore lorem ipsum decoration item</a></h3>
-                                        
+
                                                         <p class="single-grid-product__price single-grid-product--list-view__price"><span class="discounted-price">$100.00</span> <span class="main-price discounted">$120.00</span></p>
                                                         <p class="single-grid-product--list-view__product-short-desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate cupiditate provident praesentium, esse omnis quis!</p>
                                                     </div>
                                                 </div>
                                                 <!--=======  End of list view product  =======-->
                                             </div>
-                                            
+
                                             <div class="col-12 col-lg-4 col-md-4 col-sm-6">
                                                 <!--=======  product grid view  =======-->
                                                 <div class="single-grid-product grid-view-product">
                                                     <div class="single-grid-product__image">
                                                         <div class="single-grid-product__label">
-                                                            
+
                                                         </div>
                                                         <a href="single-product.html">
                                                             <img src="assets/img/products/5-600x800.jpg" class="img-fluid" alt="">
                                                             <img src="assets/img/products/5_1-600x800.jpg" class="img-fluid" alt="">
                                                         </a>
 
-                                                       
+
                                                     </div>
                                                     <div class="single-grid-product__content">
                                                         <div class="single-grid-product__category-rating">
                                                             <span class="category"><a href="shop-left-sidebar.html">Decor</a></span>
-                                            
+
                                                         </div>
 
                                                         <h3 class="single-grid-product__title"> <a href="single-product.html">Cillum dolore lorem ipsum decoration item</a></h3>
-                                                        <p class="single-grid-product__price"><span class="discounted-price">$80.00</span> <span class="main-price discounted">$100.00</span></p>
+                                                        <p class="single-grid-product__price"><span class="discounted-price">&#8377; 80.00</span> <span class="main-price discounted">&#8377;100.00</span></p>
                                                     </div>
                                                 </div>
                                                 <!--=======  End of product grid view  =======-->
@@ -218,20 +218,20 @@
                                                 <div class="single-grid-product single-grid-product--list-view list-view-product">
                                                     <div class="single-grid-product__image single-grid-product--list-view__image">
                                                         <div class="single-grid-product__label">
-                                                          
+
                                                         </div>
                                                         <a href="single-product.html">
                                                             <img src="assets/img/products/5-600x800.jpg" class="img-fluid" alt="">
                                                             <img src="assets/img/products/5_1-600x800.jpg" class="img-fluid" alt="">
                                                         </a>
 
-                                                        
+
                                                     </div>
                                                     <div class="single-grid-product__content single-grid-product--list-view__content">
 
                                                         <div class="category"><a href="shop-left-sidebar.html">Decor</a></div>
                                                         <h3 class="single-grid-product__title single-grid-product--list-view__title"> <a href="single-product.html">Cillum dolore lorem ipsum decoration item</a></h3>
-                                                       
+
                                                         <p class="single-grid-product__price single-grid-product--list-view__price"><span class="discounted-price">$80.00</span> <span class="main-price discounted">$100.00</span></p>
                                                         <p class="single-grid-product--list-view__product-short-desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate cupiditate provident praesentium, esse omnis quis!</p>
                                                     </div>

@@ -134,7 +134,7 @@
                                                 {{-- <span class="review-count"> <a href="#">(2 reviews)</a> | <a href="#">Write A Review</a> </span> --}}
                                             </div>
 
-                                            <p class="single-grid-product__price"><span class="discounted-price">$100.00</span> <span class="main-price discounted">$120.00</span></p>
+                                            <p class="single-grid-product__price"><span class="discounted-price">&#8377;100.00</span> <span class="main-price discounted">&#8377;120.00</span></p>
 
                                             <p class="single-info">Product Code: <span class="value">CODE123</span> </p>
                                             <p class="single-info">Reward Points: <span class="value">200</span> </p>
@@ -369,7 +369,7 @@
                                                             </div>
 
                                                             <h3 class="single-grid-product__title"> <a href="single-product.html">Cillum dolore lorem ipsum decoration item</a></h3>
-                                                            <p class="single-grid-product__price"><span class="discounted-price">$100.00</span> <span class="main-price discounted">$120.00</span></p>
+                                                            <p class="single-grid-product__price"><span class="discounted-price">&#8377;100.00</span> <span class="main-price discounted">&#8377;120.00</span></p>
                                                             {{-- <div class="product-countdown" data-countdown="2020/06/01"></div> --}}
                                                         </div>
                                                     </div>
