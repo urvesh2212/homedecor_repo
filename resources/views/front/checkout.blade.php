@@ -48,16 +48,16 @@
                                                     <h4>Product <span>Total</span></h4>
 
                                                     <ul>
-                                                        <li>Cillum dolore tortor nisl X 01 <span>$25.00</span></li>
-                                                        <li>Auctor gravida pellentesque X 02 <span>$50.00</span></li>
-                                                        <li>Condimentum posuere consectetur X 01 <span>$29.00</span></li>
-                                                        <li>Habitasse dictumst elementum X 01 <span>$10.00</span></li>
+                                                        <li>Cillum dolore tortor nisl X 01 <span>&#8377;25.00</span></li>
+                                                        <li>Auctor gravida pellentesque X 02 <span>&#8377;50.00</span></li>
+                                                        <li>Condimentum posuere consectetur X 01 <span>&#8377;29.00</span></li>
+                                                        <li>Habitasse dictumst elementum X 01 <span>&#8377;10.00</span></li>
                                                     </ul>
 
-                                                    <p>Sub Total <span>$104.00</span></p>
-                                                    <p>Shipping Fee <span>$00.00</span></p>
+                                                    <p>Sub Total <span>&#8377;104.00</span></p>
+                                                    <p>Shipping Fee <span>&#8377;00.00</span></p>
 
-                                                    <h4>Grand Total <span>$104.00</span></h4>
+                                                    <h4>Grand Total <span>&#8377;104.00</span></h4>
 
                                                 </div>
 

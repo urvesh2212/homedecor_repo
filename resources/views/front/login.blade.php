@@ -15,8 +15,8 @@
          <div class="modal-dialog login animated">
              <div class="modal-content">
                  <div class="modal-header">
-                     <h4 class="modal-title">Login with</h4>
-                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                     <h4 class="modal-title" style="color:#FFFFFF;">Login with</h4>
+                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color: #FFFFFF;">&times;</button>
                  </div>
                  <div class="modal-body">
                      <div class="box">
