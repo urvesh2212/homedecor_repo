@@ -13,6 +13,8 @@ class AddRelationshipFieldsToProductsTable extends Migration
             $table->foreign('catid_id', 'catid_fk_2878853')->references('id')->on('product_categories');
             $table->unsignedBigInteger('subcatid_id')->nullable();
             $table->foreign('subcatid_id', 'subcatid_fk_2878854')->references('id')->on('sub_categories');
+            $table->unsignedBigInteger('brand_id')->nullable();
+            $table->foreign('brand_id', 'brandid_fk_2878854')->references('id')->on('brand');
         });
     }
 }

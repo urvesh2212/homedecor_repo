@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Hashing\HashManager;
 
 Route::get('/', [\App\Http\Controllers\Front\LandingController::class,'index'])->name('homepage');
 //individual pages
@@ -16,11 +15,11 @@ Route::view('/dashboard','front.user_dashboard',['title' => 'User Dashboard'])->
 
 //Front Routes
 
-Route::post('/register',[\App\Http\Controllers\Front\CustomerController::class,'CustomerRegister']);
-Route::post('/login',[\App\Http\Controllers\Front\CustomerController::class,'CustomerLogin']);
-Route::post('/GoogleAuth',[\App\Http\Controllers\Front\CustomerController::class,'GoogleSignup']);
-Route::get('/logout',[\App\Http\Controllers\Front\CustomerController::class,'Logout'])->name('user_logout');
-
+Route::post('/phoneregister',[\App\Http\Controllers\Auth\Front\CustomerLoginController::class,'PhoneRegister']);
+Route::post('/phonelogin',[\App\Http\Controllers\Auth\Front\CustomerLoginController::class,'Phonelogin']);
+Route::post('/GoogleAuth',[\App\Http\Controllers\Auth\Front\CustomerLoginController::class,'Googlelogin']);
+Route::get('/logout',[\App\Http\Controllers\Auth\Front\CustomerLoginController::class,'Logout'])->name('user_logout');
+Route::post('/phoneverify',[\App\Http\Controllers\Auth\Front\CustomerLoginController::class,'VerifyNumber']);
 
 
 //Admin Routes
@@ -116,6 +115,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Manage Orders
     Route::delete('manage-orders/destroy', 'ManageOrdersController@massDestroy')->name('manage-orders.massDestroy');
     Route::resource('manage-orders', 'ManageOrdersController');
+
+    // Manage Banner
+    Route::delete('manage-banner/destroy', 'BannerSliderController@massDestroy')->name('manage-banner.massDestroy');
+    Route::resource('manage-banner', 'BannerSliderController');
+    Route::post('manage-banner/media', 'BannerSliderController@storeMedia')->name('manage-banner.storeMedia');
+    Route::post('manage-banner/ckmedia', 'BannerSliderController@storeCKEditorImages')->name('manage-banner.storeCKEditorImages');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
 // Change password

@@ -20,8 +20,8 @@
         <form method="POST" action="{{ route('login') }}">
             @csrf
 
-            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                <input id="email" type="email" name="email" class="form-control" required autocomplete="email" autofocus placeholder="{{ trans('global.login_email') }}" value="{{ old('email', null) }}">
+            <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
+                <input id="email" type="text" name="username" class="form-control" required autocomplete="username" autofocus placeholder="{{ trans('global.login_username') }}" value="{{ old('username', null) }}">
 
                 @if($errors->has('email'))
                     <p class="help-block">

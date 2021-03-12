@@ -5,12 +5,12 @@ namespace App\Models\Front;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
 class Customer extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-
         'uid',
         'customer_name',
         'customer_number',
@@ -27,8 +27,12 @@ class Customer extends Model
         'deleted_at',
     ];
 
+
     public function customerorder(){
 
         return $this->hasMany(\App\Models\Order::class,'customer_id');
     }
+
+
+
 }

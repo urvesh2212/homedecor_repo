@@ -9,6 +9,15 @@
                     {{ trans('global.dashboard') }}
                 </a>
             </li>
+                <li class="{{ request()->is("admin/manage-banner") || request()->is("admin/manage-banner/*") ? "active" : "" }}">
+                    <a href="{{ route("admin.manage-banner.index") }}">
+                        <i class="fa-fw fas fa-luggage-cart">
+
+                        </i>
+                        <span>{{ trans('cruds.bannerslider.title') }}</span>
+
+                    </a>
+                </li>
             @can('product_management_access')
                 <li class="treeview">
                     <a href="#">
@@ -30,7 +39,7 @@
                                 </a>
                             </li>
                         @endcan
-                        
+
                         @can('sub_category_access')
                             <li class="{{ request()->is("admin/sub-categories") || request()->is("admin/sub-categories/*") ? "active" : "" }}">
                                 <a href="{{ route("admin.sub-categories.index") }}">
@@ -42,7 +51,7 @@
                                 </a>
                             </li>
                         @endcan
-                    
+
                             <li class="{{ request()->is("admin/brand") || request()->is("admin/brand/*") ? "active" : "" }}">
                                 <a href="{{ route("admin.brand.index") }}">
                                     <i class="fa-fw fas fa-box-open">
@@ -52,7 +61,7 @@
 
                                 </a>
                             </li>
-                     
+
                         @can('product_access')
                             <li class="{{ request()->is("admin/products") || request()->is("admin/products/*") ? "active" : "" }}">
                                 <a href="{{ route("admin.products.index") }}">
@@ -84,7 +93,7 @@
 
                                 </a>
                             </li>
-                        
+
                         @can('featured_product_access')
                             <li class="{{ request()->is("admin/featured-products") || request()->is("admin/featured-products/*") ? "active" : "" }}">
                                 <a href="{{ route("admin.featured-products.index") }}">

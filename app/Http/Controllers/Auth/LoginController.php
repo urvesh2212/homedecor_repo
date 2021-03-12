@@ -43,4 +43,9 @@ class LoginController extends Controller
     {
         return redirect('/admin');
     }
+
+    protected function username(): string
+    {
+        return 'username';
+    }
 }

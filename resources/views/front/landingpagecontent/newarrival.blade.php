@@ -39,11 +39,10 @@
                                 <div class="single-grid-product__image">
                                     <div class="single-grid-product__label">
                                         {{-- <span class="sale">-20%</span> --}}
-                                    
+
                                     </div>
                                     <a href="single-product.html">
                                         <img src="assets/img/products/1-600x800.jpg" class="img-fluid" alt="">
-                                        <img src="assets/img/products/1_1-600x800.jpg" class="img-fluid" alt="">
                                     </a>
 
                                     {{-- <div class="hover-icons">
@@ -62,7 +61,7 @@
                                 </div>
                             </div>
                             <!--=======  End of single grid product  =======-->
-                        </div>   
+                        </div>
                     </div>
                 </div>
                 <!--=======  End of single row slider wrapper  =======-->

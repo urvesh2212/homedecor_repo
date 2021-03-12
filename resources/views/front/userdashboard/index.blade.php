@@ -1,3 +1,6 @@
+@php
+@endphp
+
     <!--====================  breadcrumb area ====================-->
     <div class="breadcrumb-area section-space--half">
         <div class="container wide">
@@ -100,7 +103,7 @@
                                                                                 <th>Total</th>
                                                                                 <th>Action</th>
                                                                             </tr>
-                                                                          </thead>                                                                
+                                                                          </thead>
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -109,7 +112,7 @@
                                         </div>
                                         <!-- Single Tab Content End -->
 
-                                       
+
                                         <!-- Single Tab Content Start -->
                                         <div class="tab-pane fade" id="address-edit" role="tabpanel">
                                             <div class="myaccount-content">
@@ -118,7 +121,7 @@
 
                                                 <a href="#myaddress" class="btn d-inline-block address-btn" data-toggle="modal">Add New Address</a><br><br/>
 
-                                               
+
                                                 <div class="col-lg-12 col-md-12">
                                                     <div class="pdpt-bg">
                                                         <div class="address-body">
@@ -128,12 +131,12 @@
                                                                         <a href="#" class="btn d-inline-block address-btn" data-toggle="modal" data-target="#edit_address_model" ><i class="fa fa-edit"></i>Edit Address</a>
                                                                         <a href="#" class="btn d-inline-block address-btn"><i class="fa fa-trash"></i>Delete Address</a>
                                                                     </ul>
-                                                                
+
                                                                         <h4 style="margin-left:200px"><input type="radio"  name="defaultaddress" value="">&nbsp;Make Default</h4>
-                                                            
+
                                                                 </div>
                                                             </div>
-        
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -150,7 +153,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        
+
         <div class="modal-body">
           <div class="form-group">
             <div class="col-12">
@@ -171,7 +174,7 @@
             @endif
             </div>
           </div>
-          
+
           <div class="form-group">
             <div class="col-md-6 col-12">
                 <label>State <span class="text-danger"> * </span></label>
@@ -212,7 +215,7 @@
                         <option value="Tripura">Tripura</option>
                         <option value="Uttar Pradesh">Uttar Pradesh</option>
                         <option value="Uttarakhand">Uttarakhand</option>
-                        <option value="West Bengal">West Bengal</option> 
+                        <option value="West Bengal">West Bengal</option>
                     </select>
             </div>
           </div>
@@ -230,7 +233,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <div class="form-group">             
+          <div class="form-group">
                     <button type="close" class="save-change-btn" data-dismiss="modal">Close</button>
                     <button type="submit" class="save-change-btn">Save changes</button>
              </div>

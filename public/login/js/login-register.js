@@ -4,7 +4,7 @@
  * Autor: Creative Tim
  * Web-autor: creative.tim
  * Web script: http://creative-tim.com
- * 
+ *
  */
 $.ajaxSetup({
     headers: {
@@ -83,6 +83,26 @@ $('#loginnumber,#registernumber').focus(function () {
 
 
 //REGISTRATION CODE
+ //check number wheather number exists
+
+var result;
+function CheckNumber(number)
+{
+    $.ajax({
+    type: "post",
+    url: "/phoneverify",
+    data: { 'customer_number': number},
+    dataType: "json",
+    success: function (response) {
+        if (response.msg === 500) {
+            shakeModal(value = null, data = "Phone Number Already Registered");
+            return result = true;
+        } else {
+            return result = false;
+        }
+            }
+});
+}
 
 function RegisterAjax() {
 
@@ -95,46 +115,48 @@ function RegisterAjax() {
     if (registernumber.length > 1) {
 
         if (pattern.test(registernumber)) {
-            if (fname == null || fname == undefined || fname.length == 0) {
-                shakeModal(value = null, data = "Enter First/Last Name");
-            }
-            else if (lname == null || lname == undefined || lname.length == 0) {
-                shakeModal(value = null, data = "Enter First/Last Name");
+            CheckNumber(registernumber);
+            if (result === false) {
+                if (fname == null || fname.length === 0 || lname == null || lname.length === 0) {
+                    shakeModal(value = null, data = "Enter First/Last Name");
+                } else {
 
-            }
-            else {
-
-                //Send Otp to user 
-                const phoneNumber = registernumber;
-                const appVerifier = window.recaptchaVerifier;
-                firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
-                    .then((confirmationResult) => {
-                        // SMS sent. Prompt user to type the code from the message, then sign the
-                        // user in with confirmationResult.confirm(code).
-                        window.confirmationResult = confirmationResult;
-                        shakeModal(value = null, data = "Otp Code Sent Successfully");
-                    }).catch((error) => {
+                    //Send Otp to user
+                    const phoneNumber = registernumber;
+                    const appVerifier = window.recaptchaVerifier;
+                    firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
+                        .then((confirmationResult) => {
+                            // SMS sent. Prompt user to type the code from the message, then sign the
+                            // user in with confirmationResult.confirm(code).
+                            window.confirmationResult = confirmationResult;
+                            shakeModal(value = null, data = "Otp Code Sent Successfully");
+                        }).catch((error) => {
                         alert(error);
                         // ...
                     });
 
-                $("#fname,#lname,#createbtn").hide();
-                $("#verifytxt,#otpbtn").show();
-                $("#registernumber").prop('disabled', true);
+                    $("#fname,#lname,#createbtn").hide();
+                    $("#verifytxt,#otpbtn").show();
+                    $("#registernumber").prop('disabled', true);
+                }
+            } else {
+                return false;
             }
-        } else {
+        }
+            else {
             shakeModal(value = null, data = 'Please enter correct Phone Number');
         }
     } else {
         shakeModal(value = null, data = 'Please enter details');
     }
+
 }
 
 function VerifyOtp() {
 
     $('.error').removeClass('alert alert-danger').empty();
     var otp = $("#verifytxt").val();
-    if (otp.length == 6) {
+    if (otp.length === 6) {
         const code = otp;
         confirmationResult.confirm(code).then((result) => {
             // User signed in successfully.
@@ -165,7 +187,7 @@ function CreateUser() {
     } else {
         $.ajax({
             type: "post",
-            url: "/register",
+            url: "/phoneregister",
             data: { 'fname': fname, 'lname': lname, 'customer_number': registernumber, 'customer_password': password },
             dataType: "json",
             success: function (response) {
@@ -249,11 +271,18 @@ function loginAjax() {
 
             $.ajax({
                 type: "post",
-                url: "/login",
+                url: "/phonelogin",
                 data: {'customer_number': loginnumber, 'customer_password': loginpassword },
                 dataType: "json",
                 success: function (response) {
-
+                    if (response.msg === 200) {
+                        $('#loginModal').modal('hide');
+                        location.reload();
+                    }else if(response.msg === 201){
+                        shakeModal(value='login',data = 'Invalid Password');
+                    }else{
+                        shakeModal(value = 'login',data = 'Invalid PhoneNumber/Password Combination');
+                    }
                 }
             });
         } else {
