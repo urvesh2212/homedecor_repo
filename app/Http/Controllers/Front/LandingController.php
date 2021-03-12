@@ -3,15 +3,21 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Traits\MediaUploadingTrait;
 use Illuminate\Http\Request;
 
 class LandingController extends Controller {
+
+    use MediaUploadingTrait;
 
     public $title = 'Home Page';
 
     protected function index(){
 
-         return view('front.landing',['title' => $this->title]);
+        $bannerimages = \App\Models\BannerSlider::where('bannerslider_status','=','1')->get();
+        $categories = \App\Models\ProductCategory::where('category_status','=','1')->get();
+
+         return view('front.landing',['title' => $this->title],compact('bannerimages','categories'));
     }
 }
 ?>

@@ -1,7 +1,12 @@
-@php 
+@php
 
-$categories = \App\Models\ProductCategory::orderby('category_name')->get()->pluck('category_name','id');
+$categories = \App\Models\ProductCategory::where('category_status','=','1')->orderby('category_name')->get()->pluck('category_name','id');
+$brands = \App\Models\Brand::where('brand_status','=','1')->get();
+$subcategories = \App\Models\SubCategory::where('subcategory_status','=','1')->orderby('subcategory_name')->get();
+$singleproducts = \App\Models\Product::where('product_status','=','1')->get();
 @endphp
+
+
 <!--====================  header area ====================-->
     <div class="header-area header-sticky">
         <div class="container">
@@ -9,16 +14,16 @@ $categories = \App\Models\ProductCategory::orderby('category_name')->get()->pluc
                 <div class="col-lg-12">
                     <ul>
                         <li style="margin-top:20px; margin-left:25%;">
-                                
+
                             <select id ="catdropdown">
-                            <option value="" style="color: #342a2a;">&nbsp;All&nbsp;</option>    
-                            @foreach($categories as $catid => $cat)                                    
+                            <option value="" style="color: #342a2a;">&nbsp;All&nbsp;</option>
+                            @foreach($categories as $catid => $cat)
                                    <option value="{{$catid}}" style="padding-left: 20px;">{{$cat}}</option>
                                     @endforeach
-                                   </select>                       
+                                   </select>
                              <input type="text" class="search" placeholder="Search For Products">
                         </li>
-                    </ul> 
+                    </ul>
                     <!--=======  header wrapper  =======-->
                     <div class="header-wrapper d-none d-lg-flex" style="margin-top: 10px;">
                         <!-- logo -->
@@ -61,58 +66,52 @@ $categories = \App\Models\ProductCategory::orderby('category_name')->get()->pluc
                                         <ul class="mega-menu four-column">
                                             <li><a href="#">Shop By Brands</a>
                                                 <ul>
-                                                    <li><a>xyz</a></li>
-                                                    <li><a>abc</a></li>
-                                                    <li><a>pqr</a></li>
-                                                    <li><a>stu</a></li>
-                                                    <li><a>asp</a></li>
+                                                    @foreach($brands as $brand)
+                                                    <li><a href="{{$brand->id }}">{{$brand->brand_name}}</a></li>
+                                                    @endforeach
                                                 </ul>
                                             </li>
                                             <li><a href="shop-list-left-sidebar.html">Shop By Sub Categories</a>
                                                 <ul>
-                                                    <li><a>xyz</a></li>
-                                                    <li><a>abc</a></li>
-                                                    <li><a>pqr</a></li>
-                                                    <li><a>stu</a></li>
-                                                    <li><a>asp</a></li>
+                                                    @foreach($subcategories as $subcategory)
+                                                    <li><a href="{{$subcategory->id}}">{{$subcategory->subcategory_name}}</a></li>
+                                                    @endforeach
                                                 </ul>
                                             </li>
                                             <li><a href="single-product.html">Single Product</a>
                                                 <ul>
-                                                    <li><a>xyz</a></li>
-                                                    <li><a>abc</a></li>
-                                                    <li><a>pqr</a></li>
-                                                    <li><a>stu</a></li>
-                                                    <li><a>asp</a></li>
+                                                    @foreach($singleproducts as $singleproduct)
+                                                    <li><a href="{{$singleproduct->id}}">{{$singleproduct->product_name}}</a></li>
+                                                    @endforeach
                                                 </ul>
                                             </li>
                                             <li><a href="single-product.html">Single Product</a>
-                                                
+
                                             </li>
                                             <li class="megamenu-banner d-none d-lg-block mt-30 w-100">
                                                 <a href="shop-left-sidebar.html" class="mb-0">
-                                                    
+
                                                 </a>
                                             </li>
                                         </ul>
                                     </li>
 
                                     <li class="menu-item-has-children"><a href="blog-left-sidebar.html">GALLERY</a>
-                                        
+
                                     </li>
 
                                     <li><a href="#">ABOUT US</a></li>
 
                                     <li><a href="{{route("contact")}}">CONTACT US</a></li>
-                                
-                                    
+
+
                             </ul>
                             </nav>
                         </div>
                         <!-- header icon -->
                         <div class="header-icon-wrapper">
-                        <ul class="icon-list">          
- 
+                        <ul class="icon-list">
+
                                 <li>
                                     <div class="header-cart-icon">
                                         <a href="{{route('cart')}}">
@@ -123,20 +122,18 @@ $categories = \App\Models\ProductCategory::orderby('category_name')->get()->pluc
                                 </li>
                                 <li>
                                     <div class=" dropdown header-settings-icon">
-                                       
-                                        @if(session()->has('login_status'))
+                                                               @if(session()->has('login_status'))
                                             <button class="btn dropdown-toggle" id="menu1" type="button" data-toggle="dropdown" style="background-color: #342a2a; color:white;">
-                                               
                                                 {{session()->get('displaydata')}}
                                             </button>
                                             <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
                                               <li role="presentation"><a href="#"><h5><span>My Orders</span></h5></a></li>
                                               <li role="presentation"><a href="#"><h5><span>My Wishlist</span></h5></a></li>
-                                              <li role="presentation"><a href="#"><h5><span>My Account</span></h5></a></li>
+                                              <li role="presentation"><a href="{{route('userdashboard')}}"><h5><span>My Account</span></h5></a></li>
                                               <li role="presentation" class="divider"></li>
                                               <li role="presentation"><a href="{{route('user_logout')}}"><h5><span>Logout</span></h5></a></li>
                                             </ul>
-                                    
+
                                         @else
                                         <a href="javascript: openLoginModal()">
                                             <!-- <div class="setting-button">
@@ -148,7 +145,7 @@ $categories = \App\Models\ProductCategory::orderby('category_name')->get()->pluc
                                         </a>
                                         @endif
                                     </div>
-                                   
+
                                 </li>
                             </ul>
                         </div>
@@ -194,6 +191,6 @@ $categories = \App\Models\ProductCategory::orderby('category_name')->get()->pluc
             </div>
         </div>
     </div>
-    
+
     <!--====================  End of header area  ====================-->
 

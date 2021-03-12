@@ -1,6 +1,25 @@
 <?php
 
 return [
+    'bannerslider'            => [
+        'title'          => 'Banner Slider',
+        'title_singular' => 'Banner Slider',
+        'fields' => [
+            'id'                     => 'ID',
+            'id_helper'              => ' ',
+            'created_at'             => 'Created at',
+            'created_at_helper'      => ' ',
+            'updated_at'             => 'Updated At',
+            'updated_at_helper'      => ' ',
+            'deleted_at'             => 'Deleted At',
+            'deleted_at_helper'      => ' ',
+            'banner_img'           => 'Banner Img',
+            'banner_img_helper'      => '',
+            'banner_helper'    => ' ',
+            'banner_status'        => 'Banner Status',
+            'banner_status_helper' => ' ',
+        ]
+    ],
     'userManagement'    => [
         'title'          => 'User management',
         'title_singular' => 'User management',
@@ -47,6 +66,8 @@ return [
             'id_helper'                => ' ',
             'name'                     => 'Name',
             'name_helper'              => ' ',
+            'username'                     => 'Username',
+            'username_helper'              => ' ',
             'email'                    => 'Email',
             'email_helper'             => ' ',
             'email_verified_at'        => 'Email verified at',
@@ -129,6 +150,8 @@ return [
             'catid_helper'          => ' ',
             'subcatid'              => 'Subcategory',
             'subcatid_helper'       => ' ',
+            'brandid'               => 'Brand',
+            'brandid_helper'        => '',
             'product_name'          => 'Product Name',
             'product_name_helper'   => ' ',
             'gst'                   => 'Gst',
@@ -289,10 +312,12 @@ return [
             'total_orders'  => 'Customer Orders',
             'created_at'          => 'Created at',
             'created_at_helper'   => ' ',
+            'uid'                 => 'Customer Unique Id',
+            'uid_helper'          => '',
             'updated_at'          => 'Updated at',
             'updated_at_helper'   => ' ',
 
-        ],      
+        ],
     ],
     'report'            => [
         'title'          => 'Reports',
@@ -316,7 +341,7 @@ return [
             'updated_at'          => 'Updated at',
             'updated_at_helper'   => ' ',
             'status' =>   'Order Status',
-        
+
         ],
     ],
 

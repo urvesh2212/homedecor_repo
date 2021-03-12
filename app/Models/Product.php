@@ -34,6 +34,7 @@ class Product extends Model implements HasMedia
     protected $fillable = [
         'catid_id',
         'subcatid_id',
+        'brand_id',
         'product_name',
         'stock',
         'description',
@@ -89,6 +90,11 @@ class Product extends Model implements HasMedia
     public function subcatid()
     {
         return $this->belongsTo(SubCategory::class, 'subcatid_id');
+    }
+
+    public function brandid()
+    {
+        return $this->belongsTo(Brand::class,'brand_id');
     }
 
  /**

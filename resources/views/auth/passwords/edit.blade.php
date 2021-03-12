@@ -21,6 +21,15 @@
                             @endif
                         </div>
                         <div class="form-group">
+                            <label class="required" for="username">{{ trans('cruds.user.fields.username') }}</label>
+                            <input class="form-control {{ $errors->has('username') ? 'is-invalid' : '' }}" type="text" name="username" id="username" value="{{ old('username', auth()->user()->username) }}" required>
+                            @if($errors->has('username'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('username') }}
+                                </div>
+                            @endif
+                        </div>
+                        <div class="form-group">
                             <label class="required" for="title">{{ trans('cruds.user.fields.email') }}</label>
                             <input class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" type="text" name="email" id="email" value="{{ old('email', auth()->user()->email) }}" required>
                             @if($errors->has('email'))

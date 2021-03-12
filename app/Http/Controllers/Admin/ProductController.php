@@ -7,6 +7,7 @@ use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\MassDestroyProductRequest;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use App\Models\Brand;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\SubCategory;
@@ -24,7 +25,7 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         abort_if(Gate::denies('product_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-        
+
         if ($request->ajax()) {
             $query = Product::with(['catid', 'subcatid'])->select(sprintf('%s.*', (new Product)->table));
             $table = Datatables::of($query);
@@ -104,8 +105,11 @@ class ProductController extends Controller
 
         $subcatids = SubCategory::all()->pluck('subcategory_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
+        $brandids = Brand:: all()->pluck('brand_name','id')->prepend(trans('global.pleaseSelect'), '');
+
          $title ='Create Product';
-        return view('admin.products.create',['title' => $title], compact('catids', 'subcatids'));
+
+        return view('admin.products.create',['title' => $title], compact('catids', 'subcatids', 'brandids'));
     }
 
     public function store(StoreProductRequest $request)
@@ -130,6 +134,8 @@ class ProductController extends Controller
         $catids = ProductCategory::all()->pluck('category_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $subcatids = SubCategory::all()->pluck('subcategory_name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $brandids = Brand:: all()->pluck('brand_name','id')->prepend(trans('global.pleaseSelect'), '');
 
         $product->load('catid', 'subcatid');
 

@@ -34,9 +34,6 @@
                                     <th width="10%">
                                         {{ trans('cruds.managecustomer.fields.created_at') }}
                                     </th>
-                                    <th width="10%">
-                                        {{ trans('cruds.managecustomer.fields.updated_at') }}
-                                    </th>
                                     <th width="25%">
                                         Action
                                     </th>
@@ -65,9 +62,6 @@
                                             {{ $customer->created_at ?? '' }}
                                         </td>
                                         <td>
-                                            {{ $customer->updated_at ?? '' }}
-                                        </td>
-                                        <td>
 
                                                 <a class="btn btn-xs btn-primary" href="{{ route('admin.manage-customers.show', $customer->id) }}">
                                                     {{ trans('global.view') }}
@@ -82,7 +76,7 @@
                                         </td>
 
                                     </tr>
-                                @endforeach 
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -140,7 +134,7 @@
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
   });
-  
+
 })
 
 </script>
