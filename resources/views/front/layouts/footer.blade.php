@@ -1,4 +1,60 @@
 <div class="footer-area">
+    <div class="footer-copyright">
+        <div class="container wide">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="footer-copyright-wrapper footer-copyright-wrapper--default-footer">
+                        <div class="container">
+                            <div class="row align-items no-gutters">
+            
+                                <div class="col-lg-3 col-md-6 col-sm-6">
+                                    <div class="second-row-item">
+                                        <h4>Address</h4>
+                                        <p>Homedecor</p>
+                                        <p></p>
+                                        <p></p>
+                                        <p>Banglore</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6 col-sm-6">
+                                    <div class="second-row-item">
+                                        <h4>Useful Links</h4>
+                                        <ul>
+                                            <li><a href="route{{("aboutus")}}">About Us</a></li>
+                                            <li><a href="route{{("privacy_policy")}}">Privacy Policy</a></li>
+                                            <li><a href="route{{("tc_policy")}}">Term & Conditions</a></li>
+                                            <li><a href="route{{("return_policy")}}">Refund & Return Policy</a></li>
+                                            <li><a href="route{{("faq")}}">Frequently Asked Questions</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6 col-sm-6">
+                                    <div class="second-row-item">
+                                            <h4>Business Hours</h4>
+                                            <p>Monday 9:00 AM - 9:00 PM</p>
+                                            <p>Tuesday 9:00 AM - 9:00 PM</p>
+                                            <p>Wednesday 9:00 AM - 9:00 PM</p>
+                                            <p>Thursday 9:00 AM - 9:00 PM</p>
+                                            <p>Friday 9:00 AM - 9:00 PM</p>
+                                            <p>Saturday 9:00 AM - 9:00 PM</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6 col-sm-6">
+                                    <div class="second-row-item">
+                                        <h4>Google map location</h4>
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </div>
+</div>
+
+<div class="footer-area">
         <div class="footer-copyright">
             <div class="container wide">
                 <div class="row">

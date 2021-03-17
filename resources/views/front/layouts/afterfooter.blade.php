@@ -17,17 +17,11 @@
                     <li class="menu-item-has-children"><a href="#">Home</a>
                         <ul class="sub-menu">
                             <li><a href="index.html">Home 01</a></li>
-                            <li><a href="index-2.html">Home 02</a></li>
-                            <li><a href="index-3.html">Home 03</a></li>
-                            <li><a href="index-4.html">Home 04</a></li>
-                            <li><a href="index-5.html">Home 05</a></li>
-                            <li><a href="index-6.html">Home 06</a></li>
-                            <li><a href="index-7.html">Home 07</a></li>
-                            <li><a href="index-8.html">Home 08</a></li>
+                            
                         </ul>
                     </li>
                     <li class="menu-item-has-children"><a href="#">Pages</a>
-                        <ul class="sub-menu">
+                        {{-- <ul class="sub-menu">
                             <li class="menu-item-has-children"><a href="#">Page List One</a>
                                 <ul class="sub-menu">
                                     <li><a href="cart.html">Cart</a></li>
@@ -50,10 +44,10 @@
                                 </ul>
                             </li>
 
-                        </ul>
+                        </ul> --}}
                     </li>
                     <li class="menu-item-has-children"><a href="#">Shop</a>
-                        <ul class="sub-menu">
+                        {{-- <ul class="sub-menu">
                             <li class="menu-item-has-children"><a href="#">Shop Grid</a>
                                 <ul class="sub-menu">
                                     <li><a href="shop-3-column.html">shop 3 column</a></li>
@@ -100,7 +94,7 @@
                             <li><a href="blog-post-image-gallery.html">Blog Post Image Gallery</a></li>
                             <li><a href="blog-post-audio-format.html">Blog Post Audio Format</a></li>
                             <li><a href="blog-post-video-format.html">Blog Post Video Format</a></li>
-                        </ul>
+                        </ul>--}}
                     </li>
 
                 </ul>
