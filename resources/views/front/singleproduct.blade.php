@@ -142,11 +142,11 @@
 
                                             <div class="product-buttons">  
                                                 <p class="single-info">Product Variant:</p>   
-                                                <span class="wishlist-compare-btn">
-                                                    <a>M</a>
-                                                    <a>S</a>
-                                                    <a>L</a>
-                                                    <a>XL</a>
+                                                <span class="product-variant-btn">
+                                                    <a href="#">M</a>
+                                                    <a href="#">S</a>
+                                                    <a href="#">L</a>
+                                                    <a href="#">XL</a>
                                                 </span>
                                             </div>
 
@@ -355,12 +355,10 @@
                                                     <div class="single-grid-product">
                                                         <div class="single-grid-product__image">
                                                             <div class="single-grid-product__label">
-                                                                {{-- <span class="sale">-20%</span>
-                                                                <span class="new">New</span> --}}
+                                                                <span>2</span>% off
                                                             </div>
                                                             <a href="single-product.html">
                                                                 <img src="assets/img/products/1-600x800.jpg" class="img-fluid" alt="">
-                                                                <img src="assets/img/products/1_1-600x800.jpg" class="img-fluid" alt="">
                                                             </a>
                                                         </div>
                                                         <div class="single-grid-product__content">
