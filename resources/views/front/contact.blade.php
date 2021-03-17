@@ -1,27 +1,13 @@
   @extends('front.root')
   @section('content')
   <!--====================  breadcrumb area ====================-->
-    <div class="breadcrumb-area section-space--half">
-        <div class="container wide">
-            <div class="row">
-                <div class="col-lg-12">
-                    <!--=======  breadcrumb wrpapper  =======-->
-                    <div class="breadcrumb-wrapper breadcrumb-bg">
-                        <!--=======  breadcrumb content  =======-->
-                        <div class="breadcrumb-content">
-                            <h2 class="breadcrumb-content__title">Contact Us</h2>
-                            <ul class="breadcrumb-content__page-map">
-                                <li><a href="{{route('homepage')}}">Home</a></li>
-                                <li class="active">Contact Us</li>
-                            </ul>
-                        </div>
-                        <!--=======  End of breadcrumb content  =======-->
-                    </div>
-                    <!--=======  End of breadcrumb wrpapper  =======-->
-                </div>
-            </div>
-        </div>
-    </div>
+  <div class="breadcrumb-content">
+    <h2 class="breadcrumb-content__title">Contact Us</h2>
+    <ul class="breadcrumb-content__page-map">
+        <li><a href="index.html">Home</a></li>
+        <li class="active">Contact Us</li>
+    </ul>
+</div>
     <!--====================  End of breadcrumb area  ====================-->
     <!--====================  page content area ====================-->
     <div class="page-content-area">

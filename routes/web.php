@@ -9,8 +9,10 @@ Route::view('/checkout','front.checkout',['title' => 'Checkout'])->name('checkou
 Route::view('/cart','front.cart',['title' => 'Cart'])->name('cart');
 Route::view('/shop-sidebar','front.shop-sidebar',['title' => 'shop-sidebar'])->name('shop-sidebar');
 Route::view('/faq','front.faq',['title' => 'faq'])->name('faq');
-Route::view('/singleproduct','front.singleproduct',['title' => 'singleproduct'])->name('singleproduct');
+Route::view('/product','front.singleproduct',['title' => 'product'])->name('product');
 Route::view('/dashboard','front.user_dashboard',['title' => 'User Dashboard'])->name('userdashboard');
+Route::view('/about','front.about',['title' => 'About Us'])->name('about');
+
 //end
 
 //Front Routes
