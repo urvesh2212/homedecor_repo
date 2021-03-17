@@ -36,14 +36,13 @@
                                 <!-- My Account Tab Menu Start -->
                                 <div class="col-lg-3 col-12">
                                     <div class="myaccount-tab-menu nav" role="tablist">
-                                        <a href="#dashboad" class="active" data-toggle="tab"><i class="fa fa-dashboard"></i>
-                                            Dashboard</a>
+                                        <a href="#account-info" class="active" data-toggle="tab"><i class="fa fa-user"></i>
+                                            Account Details</a>
 
                                         <a href="#orders" data-toggle="tab"><i class="fa fa-cart-arrow-down"></i> Orders</a>
 
                                         <a href="#address-edit" data-toggle="tab"><i class="fa fa-map-marker"></i> address</a>
 
-                                        <a href="#account-info" data-toggle="tab"><i class="fa fa-user"></i> Account Details</a>
                                     </div>
                                 </div>
                                 <!-- My Account Tab Menu End -->
@@ -51,22 +50,6 @@
                                 <!-- My Account Tab Content Start -->
                                 <div class="col-lg-9 col-12">
                                     <div class="tab-content" id="myaccountContent">
-                                        <!-- Single Tab Content Start -->
-                                        <div class="tab-pane fade show active" id="dashboad" role="tabpanel">
-                                            <div class="myaccount-content">
-                                                <h3>Dashboard</h3>
-
-                                                <div class="welcome mb-20">
-                                                    <p>Hello, <strong>Alex Tuntuni</strong> (If Not <strong>Tuntuni !</strong><a href="login-register.html" class="logout"> Logout</a>)</p>
-                                                </div>
-
-                                                <p class="mb-0">From your account dashboard. you can easily check &amp; view your
-                                                    recent orders, manage your shipping and billing addresses and edit your
-                                                    password and account details.</p>
-                                            </div>
-                                        </div>
-                                        <!-- Single Tab Content End -->
-
                                         <!-- Single Tab Content Start -->
                                         <div class="tab-pane fade" id="orders" role="tabpanel">
                                             <div class="myaccount-content">
@@ -114,31 +97,29 @@
 
 
                                         <!-- Single Tab Content Start -->
-                                        <div class="tab-pane fade" id="address-edit" role="tabpanel">
+                                        <div class="tab-pane fade show active " id="address-edit" role="tabpanel">
                                             <div class="myaccount-content">
                                                 <h3>Billing Address</h3>
 
 
                                                 <a href="#myaddress" class="btn d-inline-block address-btn" data-toggle="modal">Add New Address</a><br><br/>
+                                                @php $i = 1; @endphp
+                                                @foreach($userdata[0]->customeraddress as $data)
+                                                    <h3>Address - {{$i}}</h3>
+                                                <h4>{{$data->flatno.','.$data->landmark.','.$data->city.','.$data->state.','.$data->country}}
+                                                    {{$data->zipcode}}</h4>
 
-
-                                                <div class="col-lg-12 col-md-12">
-                                                    <div class="pdpt-bg">
-                                                        <div class="address-body">
-                                                            <div class="address-item">
                                                                 <div class="address-dt-all">
                                                                     <ul class="action-btns">
                                                                         <a href="#" class="btn d-inline-block address-btn" data-toggle="modal" data-target="#edit_address_model" ><i class="fa fa-edit"></i>Edit Address</a>
                                                                         <a href="#" class="btn d-inline-block address-btn"><i class="fa fa-trash"></i>Delete Address</a>
+                                                                        <span><input type="radio"  name="defaultaddress"  value="{{$data->id}}" style="margin-left: 20px" onclick="MakeDefault(this.value)">&nbsp Make Default</span>
                                                                     </ul>
 
-                                                                        <h4 style="margin-left:200px"><input type="radio"  name="defaultaddress" value="">&nbsp;Make Default</h4>
-
                                                                 </div>
-                                                            </div>
 
-                                                        </div>
-                                                    </div>
+                                                    @php $i++; @endphp
+                                                    @endforeach
                                                 </div>
                                             </div>
                                         </div>
@@ -155,13 +136,13 @@
         </div>
 
         <div class="modal-body">
+            <form method="post" >
+                @method('PUT')
+                @csrf
           <div class="form-group">
             <div class="col-12">
                 <label>Flat No<span class="text-danger"> * </span></label>
-                <input type="text" id="address" class="form-control" placeholder="Address" required>
-                @if ($errors->has('address'))
-                <span class="text-danger">{{ $errors->first('address') }}</span>
-            @endif
+                <input type="text" id="flatno" class="form-control" placeholder="Flat no" required>
             </div>
           </div>
 
@@ -169,9 +150,6 @@
             <div class="col-12">
                 <label>LandMark<span class="text-danger"> * </span></label>
                 <input type="text" id="landmark" class="form-control" placeholder="LandMark" required>
-                @if ($errors->has('landmark'))
-                <span class="text-danger">{{ $errors->first('landmark') }}</span>
-            @endif
             </div>
           </div>
 
@@ -222,29 +200,30 @@
           <div class="form-group">
             <div class="col-md-6 col-12">
                 <label>City <span class="text-danger"> * </span></label>
-                <input type="text" placeholder="City" class="form-control" required>
+                <input type="text" placeholder="City" id="city" class="form-control" required>
             </div>
           </div>
           <div class="form-group">
             <div class="col-md-6 col-12">
                 <br/><label>Zip Code <span class="text-danger"> * </span></label>
-                <input type="number" placeholder="Zip Code" class="form-control"  pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" min="0" maxlength="6" required>
+                <input type="number" placeholder="Zip Code" id="zipcode" class="form-control"  pattern="[0-9]{6}" maxlength="6" required>
             </div>
           </div>
         </div>
         <div class="modal-footer">
           <div class="form-group">
                     <button type="close" class="save-change-btn" data-dismiss="modal">Close</button>
-                    <button type="submit" class="save-change-btn">Save changes</button>
+                    <button type="button" id="addnewaddress" class="save-change-btn" onclick="NewAddress()">Save changes</button>
              </div>
            </div>
+          </form>
       </div>
     </div>
   </div>
                                         <!-- Single Tab Content End -->
 
                                         <!-- Single Tab Content Start -->
-                                        <div class="tab-pane fade" id="account-info" role="tabpanel">
+                                        <div class="tab-pane fade " id="account-info" role="tabpanel">
                                             <div class="myaccount-content">
                                                 <h3>Account Details</h3>
 
@@ -252,20 +231,17 @@
                                                     <form action="#">
                                                         <div class="row">
                                                             <div class="col-lg-6 col-12">
-                                                                <input id="first-name" placeholder="First Name" type="text">
-                                                            </div>
-
-                                                            <div class="col-lg-6 col-12">
-                                                                <input id="last-name" placeholder="Last Name" type="text">
+                                                                <input id="first-name" placeholder="First Name" value="{{$userdata[0]->customer_name}}" type="text">
                                                             </div>
 
                                                             <div class="col-12">
-                                                                <input id="display-name" placeholder="Display Name" type="text">
+                                                                <input id="email" placeholder="Email Address" value="{{$userdata[0]->customer_email}}" type="email">
                                                             </div>
 
                                                             <div class="col-12">
-                                                                <input id="email" placeholder="Email Address" type="email">
+                                                                <input id="number" placeholder="Phone Number" value="{{$userdata[0]->customer_number}}" type="text">
                                                             </div>
+
 
                                                             <div class="col-12 mb-2">
                                                                 <h4>Password change</h4>
@@ -306,10 +282,10 @@
         </div>
     </div>
     <!--====================  End of page content area  ====================-->
-    <script>
-    $(document).ready(function() {
-        var table = $('#menu-trigger').DataTable({
-            responsive: true
-        });
-    } );
-    </script>
+{{--    <script>--}}
+{{--    $(document).ready(function() {--}}
+{{--        var table = $('#menu-trigger').DataTable({--}}
+{{--            responsive: true--}}
+{{--        });--}}
+{{--    } );--}}
+{{--    </script>--}}
