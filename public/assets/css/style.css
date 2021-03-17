@@ -2102,28 +2102,21 @@ select {
 	transition: .6s;
 }
 
-.single-grid-product__label span {
-	line-height: 50px;
+.single-grid-product__label{
 	position: absolute;
 	z-index: 9;
 	top: 20px;
-	left: 20px;
+	left: 0px;
 	display: inline-block;
-	width: 50px;
-	height: 50px;
+	width: 75px;
+	height: 20px;
 	text-align: center;
-	color: #fff;
-	border-radius: 100%;
-}
-
-.single-grid-product__label span.new {
-	background-color: #e33;
-}
-
-.single-grid-product__label span.sale {
-	right: 20px;
-	left: auto;
+	color: #e33;
 	background-color: #292929;
+	line-height: 18px;
+	font-size: 14px;
+	background-position: 50%;
+    background-size: 100%;
 }
 
 .single-grid-product__image {
@@ -3144,12 +3137,16 @@ select {
 	display: none;
 }
 
+.breadcrumb-content__page-map li a{
+	color:  #707070;
+}
+
 .breadcrumb-content__page-map li a:hover {
-	color: #e33;
+	color:  #707070;
 }
 
 .breadcrumb-content__page-map li.active {
-	color: #e33;
+	color: #707070;
 }
 
 .breadcrumb-wrapper {
@@ -4048,13 +4045,13 @@ select {
 	border-color: #292929;
 }
 
-.wishlist-compare-btn {
+.product-variant-btn {
 	display: inline-block;
 	margin-left: 15px;
 	border: 2px solid #ebebeb;
 }
 
-.wishlist-compare-btn a {
+.product-variant-btn a {
 	line-height: 50px;
 	position: relative;
 	width: 60px;
@@ -4063,11 +4060,11 @@ select {
 	text-align: center;
 }
 
-.wishlist-compare-btn a:last-child:after {
+.product-variant-btn a:last-child:after {
 	display: none;
 }
 
-.wishlist-compare-btn a:after {
+.product-variant-btn a:after {
 	position: absolute;
 	top: 50%;
 	right: 0;
@@ -4080,11 +4077,11 @@ select {
 	background: #ebebeb;
 }
 
-.wishlist-compare-btn a:hover i {
+.product-variant-btn a:hover i {
 	color: #e33;
 }
 
-.wishlist-compare-btn a i {
+.product-variant-btn a i {
 	font-size: 20px;
 	color: #323232;
 }
@@ -7209,7 +7206,7 @@ h3.comment-counter {
 	padding: 0 20px;
 }
 
-.product-actions--quick-view .product-buttons .wishlist-compare-btn a {
+.product-buttons .product-variant-btn a {
 	width: 40px;
 }
 
@@ -8236,7 +8233,7 @@ h3.contact-page-title {
 	margin-bottom: 20px;
 }
 
-.product-actions--quick-view .product-buttons .wishlist-compare-btn {
+.product-buttons .product-variant-btn {
 	margin-left: 0;
 }
 
@@ -8248,11 +8245,11 @@ h3.contact-page-title {
 	padding: 0 30px;
 }
 
-.wishlist-compare-btn a {
+.product-variant-btn a {
 	width: 40px;
 }
 
-.wishlist-compare-btn a i {
+.product-variant-btn a i {
 	font-size: 15px;
 }
 
