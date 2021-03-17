@@ -9,13 +9,15 @@ Route::view('/checkout','front.checkout',['title' => 'Checkout'])->name('checkou
 Route::view('/cart','front.cart',['title' => 'Cart'])->name('cart');
 Route::view('/shop-sidebar','front.shop-sidebar',['title' => 'shop-sidebar'])->name('shop-sidebar');
 Route::view('/faq','front.faq',['title' => 'faq'])->name('faq');
-Route::view('/product','front.singleproduct',['title' => 'product'])->name('product');
-Route::view('/dashboard','front.user_dashboard',['title' => 'User Dashboard'])->name('userdashboard');
-Route::view('/about','front.about',['title' => 'About Us'])->name('about');
+Route::view('/product','front.singleproduct',['title' => 'Product}'])->name('product');
+Route::get('/dashboard',[\App\Http\Controllers\Front\CustomerController::class,'dashboard'])->middleware('AuthCustomer')->name('userdashboard');
+Route::post('/add_address',[\App\Http\Controllers\Front\CustomerController::class,'newaddress']);
+Route:post('/default_address',[\App\Http\Controllers\Front\CustomerController::class,'makedeaultaddress']);
 
+Route::view('/about','front.about',['title' => 'About Us'])->name('about');
 //end
 
-//Front Routes
+//Front Auth Routes
 
 Route::post('/phoneregister',[\App\Http\Controllers\Auth\Front\CustomerLoginController::class,'PhoneRegister']);
 Route::post('/phonelogin',[\App\Http\Controllers\Auth\Front\CustomerLoginController::class,'Phonelogin']);

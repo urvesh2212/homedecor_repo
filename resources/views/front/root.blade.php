@@ -47,7 +47,7 @@
 
     <!--=====  End of JS files ======-->
 <script src="{{URL::asset('js/main.js')}}"></script>
-
+<script src="{{URL::asset('js/front.js')}}"></script>
 <script src="{{URL::asset('login/js/jquery-1.10.2.js')}}" type="text/javascript"></script>
 	<script src="{{URL::asset('login/js/bootstrap.js')}}" type="text/javascript"></script>
 	<script src="{{URL::asset('login/js/login-register.js')}}" type="text/javascript"></script>

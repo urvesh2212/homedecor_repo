@@ -32,7 +32,7 @@
                     {"breakpoint":575, "settings": {"slidesToShow": 2, "arrows": false} },
                     {"breakpoint":479, "settings": {"slidesToShow": 1, "arrows": false} }
                 ]'>
-
+                        @foreach($newproduct as $id => $data)
                         <div class="col">
                             <!--=======  single grid product  =======-->
                             <div class="single-grid-product">
@@ -42,26 +42,20 @@
 
                                     </div>
                                     <a href="single-product.html">
-                                        <img src="assets/img/products/1-600x800.jpg" class="img-fluid" alt="">
+                                        <img src="{{$data->getFirstMediaUrl('product_img','preview')}}" class="img-fluid" alt="">
                                     </a>
-
-                                    {{-- <div class="hover-icons">
-                                        <a href="javascript:void(0)"><i class="ion-bag"></i></a>
-                                        <a href="javascript:void(0)"><i class="ion-heart"></i></a>
-                                        <a href="javascript:void(0)"><i class="ion-android-options"></i></a>
-                                        <a href="javascript:void(0)" data-toggle="modal" data-target="#quick-view-modal-container"><i class="ion-android-open"></i></a>
-                                    </div> --}}
                                 </div>
                                 <div class="single-grid-product__content">
                                     <div class="single-grid-product__category-rating">
-                                        <span class="category"><a href="shop-left-sidebar.html">Decor</a></span>
+                                        <span class="category"><a href="shop-left-sidebar.html">{{$data->product_name}}</a></span>
                                     </div>
 
-                                    <h3 class="single-grid-product__title"> <a href="single-product.html">Cillum dolore lorem ipsum decoration item</a></h3>
+                                    <h3 class="single-grid-product__title"> <a href="single-product.html">{{$data->description}}</a></h3>
                                 </div>
                             </div>
                             <!--=======  End of single grid product  =======-->
                         </div>
+                        @endforeach
                     </div>
                 </div>
                 <!--=======  End of single row slider wrapper  =======-->
