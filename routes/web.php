@@ -15,7 +15,6 @@ Route::post('/add_address',[\App\Http\Controllers\Front\CustomerController::clas
 Route:post('/default_address',[\App\Http\Controllers\Front\CustomerController::class,'makedeaultaddress']);
 
 Route::view('/about','front.about',['title' => 'About Us'])->name('about');
-Route::view('/','front.contact',['title' => 'Contact Us'])->name('contact');
 //end
 
 //Front Auth Routes
