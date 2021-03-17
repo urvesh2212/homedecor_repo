@@ -20,7 +20,8 @@ class CustomerAddress extends Model
         'landmark',
         'state',
         'city',
-        'zipcode'
+        'zipcode',
+        'default_address'
     ];
 
     protected $dates = [
@@ -34,10 +35,9 @@ class CustomerAddress extends Model
         return $date->format('Y-m-d H:i:s');
     }
 
-    protected function customercount(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function customercount(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-
-        return $this->belongsTo(Customer::class,'customerid','id');
+        return $this->belongsTo(Customer::class,'customerid','uid');
     }
 
 }

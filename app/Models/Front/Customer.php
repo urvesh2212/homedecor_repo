@@ -33,6 +33,11 @@ class Customer extends Model
         return $this->hasMany(\App\Models\Order::class,'customer_id');
     }
 
+    public  function customeraddress()
+    {
+        return $this->hasMany(CustomerAddress::class,'customerid','uid');
+    }
+
 
 
 }
