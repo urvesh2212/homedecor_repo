@@ -3,7 +3,7 @@
         <div class="container wide">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="footer-copyright-wrapper footer-copyright-wrapper--default-footer">
+                    <div class="footer-copyright-wrapper">
                         <div class="container">
                             <div class="row align-items no-gutters">
             
@@ -21,9 +21,9 @@
                                         <h4>Useful Links</h4>
                                         <ul>
                                             <li><a href="route{{("aboutus")}}">About Us</a></li>
-                                            <li><a href="route{{("privacy_policy")}}">Privacy Policy</a></li>
+                                            {{-- <li><a href="route{{("privacy_policy")}}">Privacy Policy</a></li>
                                             <li><a href="route{{("tc_policy")}}">Term & Conditions</a></li>
-                                            <li><a href="route{{("return_policy")}}">Refund & Return Policy</a></li>
+                                            <li><a href="route{{("return_policy")}}">Refund & Return Policy</a></li> --}}
                                             <li><a href="route{{("faq")}}">Frequently Asked Questions</a></li>
                                         </ul>
                                     </div>

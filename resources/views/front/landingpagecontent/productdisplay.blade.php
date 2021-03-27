@@ -57,10 +57,10 @@
 
                                         <div class="col">
                                             <!--=======  single grid product  =======-->
-                                            @foreach($categories as $productdata)
+                                            
                                             <div class="single-grid-product">
                                                 <div class="single-grid-product__image">
-
+                                                                                                        
                                                     <a href="single-product.html">
                                                         <img src="" class="img-fluid" alt="">
                                                     </a>
@@ -81,7 +81,7 @@
                                                     {{-- <p class="single-grid-product__price"><span class="main-price">$120.00</span></p> --}}
                                                 </div>
                                             </div>
-                                        @endforeach
+                                        
                                             <!--=======  End of single grid product  =======-->
                                         </div>
                                     </div>

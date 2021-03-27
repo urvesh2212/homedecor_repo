@@ -716,7 +716,7 @@ select {
 .header-icon-wrapper {
 	-webkit-flex-basis: 20%;
 	-ms-flex-preferred-size: 20%;
-	flex-basis: 60%;
+	flex-basis: 50%;
 }
 
 .header-icon-wrapper > ul {
@@ -6609,7 +6609,7 @@ h3.comment-counter {
 
 .search{
  margin-left: -4px;
- width: 50%;
+ width: 70%;
  border-radius: 10px;
  height: 30px;
  border: 1px solid;
@@ -6644,9 +6644,14 @@ h3.comment-counter {
 	background-color: #e33;
 }
 
+/* ---- footer useful link ----*/
+.second-row-item ul li a{
+	color: #292929;
+	margin-bottom: 10px;
+}
+
 
 /*=====  End of Blog  ======*/
-
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
 
