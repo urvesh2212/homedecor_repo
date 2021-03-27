@@ -12,9 +12,10 @@ Route::view('/faq','front.faq',['title' => 'faq'])->name('faq');
 Route::view('/product','front.singleproduct',['title' => 'Product}'])->name('product');
 Route::get('/dashboard',[\App\Http\Controllers\Front\CustomerController::class,'dashboard'])->middleware('AuthCustomer')->name('userdashboard');
 Route::post('/add_address',[\App\Http\Controllers\Front\CustomerController::class,'newaddress']);
-Route:post('/default_address',[\App\Http\Controllers\Front\CustomerController::class,'makedeaultaddress']);
+Route::post('/default_address',[\App\Http\Controllers\Front\CustomerController::class,'makedeaultaddress']);
 
 Route::view('/about','front.about',['title' => 'About Us'])->name('about');
+Route::view('/mobilelogin','front.mobilelogin',['title' => 'Login'])->name('login');
 //end
 
 //Front Auth Routes

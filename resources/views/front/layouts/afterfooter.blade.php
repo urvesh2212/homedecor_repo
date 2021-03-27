@@ -1,3 +1,12 @@
+@php
+
+$categories = \App\Models\ProductCategory::where('category_status','=','1')->orderby('category_name')->get()->pluck('category_name','id');
+$brands = \App\Models\Brand::where('brand_status','=','1')->get();
+$subcategories = \App\Models\SubCategory::where('subcategory_status','=','1')->orderby('subcategory_name')->get();
+$singleproducts = \App\Models\Product::where('product_status','=','1')->get();
+@endphp
+
+
 <div class="offcanvas-mobile-menu" id="offcanvas-mobile-menu">
     <a href="javascript:void(0)" class="offcanvas-menu-close" id="offcanvas-menu-close-trigger">
         <i class="ion-android-close"></i>
@@ -12,6 +21,32 @@
                     <button type="submit"><i class="fa fa-search"></i></button>
                 </form>
             </div> --}}
+
+               <div class=" dropdown header-settings-icon offcanvas-settings">
+                                                               @if(session()->has('login_status'))
+                                            <button class="btn dropdown-toggle" id="menu1" type="button" data-toggle="dropdown" style="background-color: #342a2a; color:white;">
+                                                {{session()->get('displaydata')}}
+                                            </button>
+                                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                              <li role="presentation"><a href="#"><h5><span>My Orders</span></h5></a></li>
+                                              <li role="presentation"><a href="#"><h5><span>My Wishlist</span></h5></a></li>
+                                              <li role="presentation"><a href="{{route('userdashboard')}}"><h5><span>My Account</span></h5></a></li>
+                                              <li role="presentation" class="divider"></li>
+                                              <li role="presentation"><a href="{{route('user_logout')}}"><h5><span>Logout</span></h5></a></li>
+                                            </ul>
+
+                                        @else
+                                        <a href="">
+                                            <!-- <div class="setting-button">
+                                                <span></span>
+                                                <span></span>
+                                                <span></span>
+                                            </div> -->
+                                           <h4 class="title">Login/Signup</h4>
+                                        </a>
+                                        @endif
+                                    </div>
+
             <nav class="offcanvas-navigation">
                 <ul>
                     <li class="menu-item-has-children"><a href="#">Home</a>
@@ -20,8 +55,8 @@
                             
                         </ul>
                     </li>
-                    <li class="menu-item-has-children"><a href="#">Pages</a>
-                        {{-- <ul class="sub-menu">
+                    {{-- <li class="menu-item-has-children"><a href="#">Pages</a>
+                        <ul class="sub-menu">
                             <li class="menu-item-has-children"><a href="#">Page List One</a>
                                 <ul class="sub-menu">
                                     <li><a href="cart.html">Cart</a></li>
@@ -44,23 +79,22 @@
                                 </ul>
                             </li>
 
-                        </ul> --}}
-                    </li>
+                        </ul> 
+                    </li> --}}
                     <li class="menu-item-has-children"><a href="#">Shop</a>
-                        {{-- <ul class="sub-menu">
-                            <li class="menu-item-has-children"><a href="#">Shop Grid</a>
+                        <ul class="sub-menu">
+                            <li class="menu-item-has-children"><a href="#">Shop By Brands</a>
                                 <ul class="sub-menu">
-                                    <li><a href="shop-3-column.html">shop 3 column</a></li>
-                                    <li><a href="shop-4-column.html">shop 4 column</a></li>
-                                    <li><a href="shop-left-sidebar.html">shop left sidebar</a></li>
-                                    <li><a href="shop-right-sidebar.html">shop right sidebar</a></li>
+                                        @foreach($brands as $brand)
+                                             <li><a href="{{$brand->id }}">{{$brand->brand_name}}</a></li>
+                                        @endforeach
                                 </ul>
                             </li>
-                            <li class="menu-item-has-children"><a href="#">Shop List</a>
+                            <li class="menu-item-has-children"><a href="#">Shop By Sub Categories</a>
                                 <ul class="sub-menu">
-                                    <li><a href="shop-list.html">shop List</a></li>
-                                    <li><a href="shop-list-left-sidebar.html">shop List Left Sidebar</a></li>
-                                    <li><a href="shop-list-right-sidebar.html">shop List Right Sidebar</a></li>
+                                    @foreach($subcategories as $subcategory)
+                                          <li><a href="{{$subcategory->id}}">{{$subcategory->subcategory_name}}</a></li>
+                                    @endforeach
                                 </ul>
                             </li>
                             <li class="menu-item-has-children"><a href="#">Single Product One</a>
@@ -94,15 +128,11 @@
                             <li><a href="blog-post-image-gallery.html">Blog Post Image Gallery</a></li>
                             <li><a href="blog-post-audio-format.html">Blog Post Audio Format</a></li>
                             <li><a href="blog-post-video-format.html">Blog Post Video Format</a></li>
-                        </ul>--}}
+                        </ul>
                     </li>
 
                 </ul>
             </nav>
-
-            <div class="offcanvas-settings">
-                   <a href="javascript:openLoginModal()"><h4 class="title">Login/Signup</h4></a>
-                </div>
 
             <div class="offcanvas-widget-area">
                 <div class="off-canvas-contact-widget">
@@ -131,10 +161,10 @@
 <!--=======  End of offcanvas mobile menu  =======-->
 <!--====================  search overlay ====================-->
 
-<div class="search-overlay" id="search-overlay">
+{{-- <div class="search-overlay" id="search-overlay">
     <a href="javascript:void(0)" class="close-search-overlay" id="close-search-overlay">
         <i class="ion-ios-close-empty"></i>
-    </a>
+    </a> --}}
 
     <!--=======  search form  =======-->
 
