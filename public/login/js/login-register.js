@@ -26,7 +26,7 @@ function showRegisterForm() {
 }
 
 function showLoginForm() {
-    $('#loginModal .registerBox').fadeOut('fast', function () {
+    $('.registerBox').fadeOut('fast', function () {
 
         $(".offercanvas-mobile-menu").removeClass('active');
 
