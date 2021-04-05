@@ -30,13 +30,13 @@
                                           <div class="about-content col-lg-6">
                                               <div class="row">
                                                   <div class="col-12">
-                                                      <h1>WELCOME TO <span>Eposi.</span></h1>
-                                                      <p class="mb-3">Eposi provide how all this mistaken idea of denouncing pleasure and sing pain was born an will give you a complete account of the system, and expound the actual teachings of the eat explorer of the truth, the mer of human.</p>
+                                                      <h1>WELCOME TO <span>Ekikai !.</span></h1>
+                                                      <p class="mb-3">Ekikai is founded with a strong belief that India’s rich craft culture needs a recognition that it deserves. Hence we have taken a small step towards supporting this unique art and culture and making it reach out to Indians and the entire world to showcase the indigenous tradition and craftsmanship. We are a young team of art lover who are passionate to bring the diversify Indian craftwork on a single platform and benefit indian and global consumer with genuine and state of art products.</p>
                                                   </div>
 
                                                   <div class="col-12">
                                                       <h4>WIN BEST ONLINE SHOP AT 2019</h4>
-                                                      <p>Eposi provide how all this mistaken idea of denouncing pleasure and sing pain was born an will give you a complete account of the system, and expound the actual teachings of the eat explorer of the truth, the mer of human.</p>
+                                                      <p>Ekikai is committed to ensure the best in class product for its consumers and helping craftsmen to reach out to the global market. We reach out to the craftspeople, artists, talent across India so that we can offer products with a background of all the possible form of art, culture, tradition and make it unique for you every time at most affordable and reasonable price.</p>
                                                   </div>
 
                                               </div>
