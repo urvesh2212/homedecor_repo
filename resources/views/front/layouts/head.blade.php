@@ -12,30 +12,74 @@ $singleproducts = \App\Models\Product::where('product_status','=','1')->get();
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                   
-                    <!--=======  header wrapper  =======-->
-                    <div class="header-wrapper d-none d-lg-flex" style=" margin: 10px 10px;">
-                        <!-- logo -->
+                    <div class="header-wrapper d-none d-lg-flex">
+                     <div class="col-lg-2 col-md-2" style="height: 100%; padding: 0 0; border-right: 1px solid #eee;">
                         <div class="logo">
                             <a href="{{route('homepage')}}">
-                                <img src="assets/img/logo.png" class="img-fluid" alt="">
+                                <img src="assets/img/homedecor.jpg" class="img-fluid" alt="">
                             </a>
                         </div>
-                        <!-- menu wrapper -->
-                        <div class="header-title-wrapper" style="margin: 0 200px; font-size:30px;">
-                            <h3 style="margin-top: 0px;"></h3>
+                     </div>
+                
+                
+                     <div class="col-lg-10 col-md-10">
+                      <!--=======  header wrapper  =======-->
+                        <div class="header-wrapper d-none d-lg-flex" style=" margin: 0px 10px; border-bottom: 1px solid #eee;">
+                            <!-- logo -->
+                    
+                            <!-- menu wrapper -->
+
+
+                            <!-- header icon -->
+                            <div class="header-icon-wrapper" style="margin: 10px 10px 0 0"> 
+                            <ul class="icon-list">
+                                    <li>
+                                        <a href="#" style="font-size: 18px;"><i class="fa fa-envelope"></i>&nbsp;<span>homedecor@gmail.com</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="tel:+910123456789" style="font-size: 18px;;"><i class="fa fa-phone"></i>&nbsp;<span>+910123456789</span></a>  
+                                    </li> 
+                                    <li>
+                                    <a href="https://api.whatsapp.com/send?phone=+910123456789" target="_blank" style="font-size: 18px;"><img src="assets/img/whatsapp.png" alt=""><span>Whatsapp us your orders!</span></a>
+                                    </li>
+                                    
+                            
+                                </ul>
+                            </div>
                         </div>
 
-                        <!-- header icon -->
-                        <div class="header-icon-wrapper">
-                        <ul class="icon-list">
-                            
-                                <li>
-                                <a href="https://api.whatsapp.com/send?phone=+910123456789" target="_blank" style="font-size: 18px;"><img src="assets/img/whatsapp.png" alt=""><span>Whatsapp us your orders!</span></a>
+                        <div class="header-wrapper d-none d-lg-flex" style="padding: 5px 0; margin:0 10px; border-bottom: 1px solid #eee;">
+                            <div class="header-icon-wrapper"> 
+                                <ul class="icon-list" style="margin-bottom: 0px; justify-content: center">
+                                <li style="width:66%; height: 40px;">
+
+                                    {{-- <select id ="catdropdown">
+                                    <option value="" style="color: #342a2a;">&nbsp;All Category&nbsp;</option>
+                                    @foreach($categories as $catid => $cat)
+                                        <option value="{{$catid}}" style="padding-left: 20px;">{{$cat}}</option>
+                                            @endforeach
+                                        </select>
+                                    <form>
+                                    <input type="text" class="search" placeholder="Search For Products">
+                                    <button class="btnn"><i class="fa fa-search"></i></button>
+                                    </form> --}}
+
+                                    <div class="search-bar">
+                                         <select id ="catdropdown">
+                                    <option value="" style="color: #342a2a;">&nbsp;All Category&nbsp;</option>
+                                    @foreach($categories as $catid => $cat)
+                                        <option value="{{$catid}}" style="padding-left: 20px;">{{$cat}}</option>
+                                            @endforeach
+                                        </select>
+                                        <form>
+                                            <input name="search" class="search" placeholder="Search Products Here....." type="search">
+                                            <button class="btnn"><i class="fa fa-search"></i></button>
+                                        </form>
+                                    </div>
                                 </li>
-                                
-                                <li>
-                                    <div class="header-cart-icon">
+                            
+                                <li style="height: 40px;">
+                                    <div class="header-cart-icon" style="padding-top: 5px;">
                                         <a href="{{route('cart')}}">
                                             <i class="ion-bag" style="font-size:25px;"></i>
                                             <span class="counter"></span>
@@ -44,16 +88,16 @@ $singleproducts = \App\Models\Product::where('product_status','=','1')->get();
                                 </li>
                                 <li>
                                     <div class=" dropdown header-settings-icon">
-                                                               @if(session()->has('login_status'))
+                                                            @if(session()->has('login_status'))
                                             <button class="btn dropdown-toggle" id="menu1" type="button" data-toggle="dropdown" style="background-color: #342a2a; color:white;">
                                                 {{session()->get('displaydata')}}
                                             </button>
                                             <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                                              <li role="presentation"><a href="#"><h5><span>My Orders</span></h5></a></li>
-                                              <li role="presentation"><a href="#"><h5><span>My Wishlist</span></h5></a></li>
-                                              <li role="presentation"><a href="{{route('userdashboard')}}"><h5><span>My Account</span></h5></a></li>
-                                              <li role="presentation" class="divider"></li>
-                                              <li role="presentation"><a href="{{route('user_logout')}}"><h5><span>Logout</span></h5></a></li>
+                                            <li role="presentation"><a href="#"><h5><span>My Orders</span></h5></a></li>
+                                            <li role="presentation"><a href="#"><h5><span>My Wishlist</span></h5></a></li>
+                                            <li role="presentation"><a href="{{route('userdashboard')}}"><h5><span>My Account</span></h5></a></li>
+                                            <li role="presentation" class="divider"></li>
+                                            <li role="presentation"><a href="{{route('user_logout')}}"><h5><span>Logout</span></h5></a></li>
                                             </ul>
 
                                         @else
@@ -63,7 +107,7 @@ $singleproducts = \App\Models\Product::where('product_status','=','1')->get();
                                                 <span></span>
                                                 <span></span>
                                             </div> -->
-                                           <h4 class="title">Login/Signup</h4>
+                                        <h4 class="title">Login/Signup</h4>
                                         </a>
                                         @endif
                                     </div>
@@ -71,75 +115,59 @@ $singleproducts = \App\Models\Product::where('product_status','=','1')->get();
                                 </li>
                             </ul>
                         </div>
+                        </div>
+                    
+                        <div class="header-wrapper d-none d-lg-flex navigation-menu-wrapper" style="margin-left:25%;">
+                            <nav>
+                            <ul style="margin-bottom: 0px;">
+                                    <li class="menu-item-has-children"><a href="shop-left-sidebar.html">SHOP</a>
+                                        <ul class="mega-menu four-column">
+                                            <li><a href="#">Shop By Brands</a>
+                                                <ul>
+                                                    @foreach($brands as $brand)
+                                                    <li><a href="{{$brand->id }}">{{$brand->brand_name}}</a></li>
+                                                    @endforeach
+                                                </ul>
+                                            </li>
+                                            <li><a href="shop-list-left-sidebar.html">Shop By Sub Categories</a>
+                                                <ul>
+                                                    @foreach($subcategories as $subcategory)
+                                                    <li><a href="{{$subcategory->id}}">{{$subcategory->subcategory_name}}</a></li>
+                                                    @endforeach
+                                                </ul>
+                                            </li>
+                                            <li><a href="single-product.html">Shop By Products</a>
+                                                <ul>
+                                                    @foreach($singleproducts as $singleproduct)
+                                                    <li><a href="{{$singleproduct->id}}">{{$singleproduct->product_name}}</a></li>
+                                                    @endforeach
+                                                </ul>
+                                            </li>
+                                            <li><a href="single-product.html">Single Product</a>
+
+                                            </li>
+                                            <li class="megamenu-banner d-none d-lg-block mt-30 w-100">
+                                                <a href="shop-left-sidebar.html" class="mb-0">
+
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                    <li class="menu-item-has-children"><a href="blog-left-sidebar.html">GALLERY</a>
+
+                                    </li>
+
+                                    <li><a href="#">ABOUT US</a></li>
+
+                                    <li><a href="{{route("contact")}}">CONTACT US</a></li>
+
+
+                            </ul>
+                            </nav>
+                        </div> 
+                     </div>
                     </div>
-
-                    <ul class="header-wrapper d-none d-lg-flex search-bar">
-                        <li style="margin-top:20px; margin-left:10%; width:60%;">
-
-                            <select id ="catdropdown">
-                            <option value="" style="color: #342a2a;">&nbsp;All&nbsp;</option>
-                            @foreach($categories as $catid => $cat)
-                                   <option value="{{$catid}}" style="padding-left: 20px;">{{$cat}}</option>
-                                    @endforeach
-                                   </select>
-                             <input type="text" class="search" placeholder="Search For Products">
-                        </li>
-                        <li><a href="#" style="font-size: 18px; margin:20px 30px 0 0; height:30px; color:black;">homedecor@gmail.com</a></li>
-                        <li>
-                            <a href="tel:+910123456789" style="font-size: 18px; height:30px; margin-top:20px; color:black; "><i class="fa fa-phone"></i><span>+910123456789</span></a>  
-                        </li> 
-                    </ul>
-                   
-                    <div class="header-wrapper d-none d-lg-flex navigation-menu-wrapper" style="margin-left:30%;">
-                        <nav>
-                        <ul>
-                                <li class="menu-item-has-children"><a href="shop-left-sidebar.html">SHOP</a>
-                                    <ul class="mega-menu four-column">
-                                        <li><a href="#">Shop By Brands</a>
-                                            <ul>
-                                                @foreach($brands as $brand)
-                                                <li><a href="{{$brand->id }}">{{$brand->brand_name}}</a></li>
-                                                @endforeach
-                                            </ul>
-                                        </li>
-                                        <li><a href="shop-list-left-sidebar.html">Shop By Sub Categories</a>
-                                            <ul>
-                                                @foreach($subcategories as $subcategory)
-                                                <li><a href="{{$subcategory->id}}">{{$subcategory->subcategory_name}}</a></li>
-                                                @endforeach
-                                            </ul>
-                                        </li>
-                                        <li><a href="single-product.html">Shop By Products</a>
-                                            <ul>
-                                                @foreach($singleproducts as $singleproduct)
-                                                <li><a href="{{$singleproduct->id}}">{{$singleproduct->product_name}}</a></li>
-                                                @endforeach
-                                            </ul>
-                                        </li>
-                                        <li><a href="single-product.html">Single Product</a>
-
-                                        </li>
-                                        <li class="megamenu-banner d-none d-lg-block mt-30 w-100">
-                                            <a href="shop-left-sidebar.html" class="mb-0">
-
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-
-                                <li class="menu-item-has-children"><a href="blog-left-sidebar.html">GALLERY</a>
-
-                                </li>
-
-                                <li><a href="#">ABOUT US</a></li>
-
-                                <li><a href="{{route("contact")}}">CONTACT US</a></li>
-
-
-                        </ul>
-                        </nav>
-                    </div> 
-
 
                     <!--=======  End of header wrapper  =======-->
 
@@ -148,7 +176,7 @@ $singleproducts = \App\Models\Product::where('product_status','=','1')->get();
                     <div class="header-mobile-navigation d-block d-lg-none">
 
                         <div class="row align-items-center">
-                            <div class="col6 col-md-6">
+                            <div class="col4 col-md-4">
                                 <div class="header-logo">
                                     <a href="index.html">
                                         <img src="assets/img/logo.png" class="img-fluid" alt="">
@@ -156,7 +184,7 @@ $singleproducts = \App\Models\Product::where('product_status','=','1')->get();
                                 </div>
                             </div>
                              
-                            <div class="col6 col-md-6">
+                            <div class="col4 col-md-4">
                                 <div class="mobile-navigation text-right">
                                     <div class="header-icon-wrapper">
                                         
