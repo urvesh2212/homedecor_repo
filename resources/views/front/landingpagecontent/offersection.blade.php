@@ -9,13 +9,13 @@
                                 <!--=======  single hover banner  =======-->
                                 <div class="single-hover-banner">
                                     <div class="single-hover-banner__image">
-                                        <a href="shop-left-sidebar.html">
+                                        <a href="{{URL('shop-catalog/offerproducts')}}">
                                             <img src="assets/img/banners/img1-middle-eposi1.jpg" class="img-fluid" alt="">
                                         </a>
                                         <div class="single-hover-banner__content">
                                             <h4 class="small-text">Black Friday</h4>
                                             <h3 class="big-text">Save Up To 50% Off</h3>
-                                            <a class="banner-link" href="shop-left-sidebar.html">SHOP NOW</a>
+                                            <a class="banner-link" href="">SHOP NOW</a>
                                         </div>
                                     </div>
                                 </div>

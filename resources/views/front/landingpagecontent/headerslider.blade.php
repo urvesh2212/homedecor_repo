@@ -83,7 +83,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <!--=======  category wrapper  =======-->
+                    <div class="section-title-wrapper text-center section-space--half">
+                        <h2 class="section-title">Top Categories</h2>
+                    </div>
+                        <!--=======  category wrapper  =======-->
                     <div class="category-wrapper">
                         <div class="row row-10 masonry-category-layout">
                             @foreach($categories as $category)
@@ -91,7 +94,7 @@
                                 <!--=======  single category item  =======-->
                                 <div class="single-category-item">
                                     <div class="single-category-item__image">
-                                        <a href="shop-left-sidebar.html">
+                                        <a href="{{URL('shop-catalog/category/'.$category->category_code.'/'.$category->category_name)}}">
                                             <img src="{{$category->getFirstMediaUrl('category_img')}}" class="img-fluid" alt="">
                                         </a>
                                     </div>

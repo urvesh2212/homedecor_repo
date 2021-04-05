@@ -10,6 +10,7 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use \DateTimeInterface;
 use App\Models\Product;
+use App\Models\Brand;
 
 class ProductCategory extends Model implements HasMedia
 {
@@ -68,4 +69,10 @@ class ProductCategory extends Model implements HasMedia
 
         return $this->hasMany(Product::class,'catid_id','id');
     }
+
+    public function GetSubCat()
+    {
+        return $this->hasOne(SubCategory::class,'cat_id','id');
+    }
+
 }

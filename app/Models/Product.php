@@ -10,6 +10,7 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use \DateTimeInterface;
 
+
 class Product extends Model implements HasMedia
 {
     use SoftDeletes, InteractsWithMedia, HasFactory;
@@ -98,13 +99,8 @@ class Product extends Model implements HasMedia
         return $this->belongsTo(Brand::class,'brand_id');
     }
 
- /**
-  * Get all of the SubTypeProduct for the Product
-  *
-  * @return \Illuminate\Database\Eloquent\Relations\HasMany
-  */
- public function SubTypeProduct(): HasMany
- {
-     return $this->hasMany(SubTypeProduct::class, 'product_id', 'id');
- }
+     public function SubTypeProductid()
+    {
+        return $this->hasMany(ProductSubType::class, 'product_id', 'id');
+    }
 }

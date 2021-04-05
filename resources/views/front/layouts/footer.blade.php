@@ -6,7 +6,7 @@
                     <div class="footer-copyright-wrapper">
                         <div class="container">
                             <div class="row align-items no-gutters">
-            
+
                                 <div class="col-lg-3 col-md-6 col-sm-6">
                                     <div class="second-row-item">
                                         <h4>Address</h4>
@@ -42,14 +42,19 @@
                                 <div class="col-lg-3 col-md-6 col-sm-6">
                                     <div class="second-row-item">
                                         <h4>Google map location</h4>
-                                       
+                                        {{-- <iframe
+                                            width="450"
+                                            height="250"
+                                            frameborder="0" style="border:0"
+                                            src="https://www.google.com/maps/embed/v1/MAP_MODE?key=" allowfullscreen>
+                                        </iframe> --}}
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div> 
+            </div>
         </div>
     </div>
 </div>
