@@ -8,6 +8,7 @@ use App\Http\Requests\StoreProductSubTypeRequest;
 use App\Http\Requests\UpdateProductSubTypeRequest;
 use App\Models\Product;
 use App\Models\ProductSubType;
+use App\Models\ProductSubTypeLog;
 use App\Models\ProductVariant;
 use Gate;
 use Illuminate\Http\Request;
@@ -16,7 +17,7 @@ use Yajra\DataTables\Facades\DataTables;
 
 class ProductSubTypeController extends Controller
 {
-    
+
     private $title ='Manage ProductSubType';
 
 
@@ -49,11 +50,11 @@ class ProductSubTypeController extends Controller
             $table->editColumn('id', function ($row) {
                 return $row->id ? $row->id : "";
             });
-            
+
             $table->editColumn('hsn_code', function ($row) {
                 return $row->hsn_code ? $row->hsn_code : "";
             });
-          
+
             $table->editColumn('product_name', function ($row) {
                 return $row->productid->product_name ? $row->productid->product_name : "";
             });
@@ -61,7 +62,7 @@ class ProductSubTypeController extends Controller
             $table->editColumn('product_variant_name', function ($row) {
                 return $row->productvariantid->product_variant_name ? $row->productvariantid->product_variant_name : "";
             });
-            
+
             $table->editColumn('stock', function ($row) {
                 return $row->stock ? $row->stock : "";
             });
@@ -110,8 +111,8 @@ class ProductSubTypeController extends Controller
     }
 
     public function update(UpdateProductSubTypeRequest $request, ProductSubType $productsubtype)
-    {   
-     
+    {
+
        $productsubtype->update($request->all());
 
        return redirect()->route('admin.productsubtype.index');

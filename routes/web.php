@@ -7,13 +7,13 @@ Route::get('/', [\App\Http\Controllers\Front\LandingController::class,'index'])-
 Route::view('/contact','front.contact',['title' => 'Contact Us'])->name('contact');
 Route::view('/checkout','front.checkout',['title' => 'Checkout'])->name('checkout');
 Route::view('/cart','front.cart',['title' => 'Cart'])->name('cart');
-Route::view('/shop-sidebar','front.shop-sidebar',['title' => 'shop-sidebar'])->name('shop-sidebar');
 Route::view('/faq','front.faq',['title' => 'faq'])->name('faq');
-Route::view('/product','front.singleproduct',['title' => 'Product}'])->name('product');
+Route::get('/shop-catalog/category/{categorycode}/{categoryname}',[\App\Http\Controllers\Front\ProductController::class,'ShowProdcutByCategory']);
+Route::get('product/{productid}/{productname}',[\App\Http\Controllers\Front\ProductController::class,'singleproduct'])->name('singleproductroute');
 Route::get('/dashboard',[\App\Http\Controllers\Front\CustomerController::class,'dashboard'])->middleware('AuthCustomer')->name('userdashboard');
 Route::post('/add_address',[\App\Http\Controllers\Front\CustomerController::class,'newaddress']);
 Route::post('/default_address',[\App\Http\Controllers\Front\CustomerController::class,'makedeaultaddress']);
-
+Route::post('/add_cart',[\App\Http\Controllers\Front\ProductController::class,'Add_To_Cart'])->name('addcart');
 Route::view('/about','front.about',['title' => 'About Us'])->name('about');
 Route::view('/mobilelogin','front.mobilelogin',['title' => 'Login'])->name('login');
 //end

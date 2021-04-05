@@ -18,10 +18,10 @@
                     "slidesToShow": 4,
                     "slidesToScroll": 1,
                     "arrows": true,
-                    "autoplay": false,
+                    "autoplay": true,
                     "autoplaySpeed": 5000,
                     "speed": 1000,
-                    "infinite": false,
+                    "infinite": true,
                     "prevArrow": {"buttonClass": "slick-prev", "iconClass": "ion-chevron-left" },
                     "nextArrow": {"buttonClass": "slick-next", "iconClass": "ion-chevron-right" }
                 }' data-slick-responsive='[
@@ -41,8 +41,8 @@
                                         {{-- <span class="sale">-20%</span> --}}
 
                                     </div>
-                                    <a href="single-product.html">
-                                        <img src="{{$data->getFirstMediaUrl('product_img','preview')}}" class="img-fluid" alt="">
+                                    <a href="{{route('singleproductroute',['productid' => $data->id,'productname' => str_replace(' ','-',$data->product_name)])}}">
+                                        <img src="{{$data->getFirstMediaUrl('product_img','preview')}}" class="img-fluid" alt="" loading="lazy">
                                     </a>
                                 </div>
                                 <div class="single-grid-product__content">
@@ -50,7 +50,7 @@
                                         <span class="category"><a href="shop-left-sidebar.html">{{$data->product_name}}</a></span>
                                     </div>
 
-                                    <h3 class="single-grid-product__title"> <a href="single-product.html">{{$data->description}}</a></h3>
+                                    <h3 class="single-grid-product__title">{{$data->description}}</h3>
                                 </div>
                             </div>
                             <!--=======  End of single grid product  =======-->

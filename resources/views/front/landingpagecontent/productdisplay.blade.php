@@ -32,9 +32,12 @@
 
                         <!--=======  tab product content  =======-->
                         <div class="tab-content">
-                            <div class="tab-pane fade show active" id="product-series-1" role="tabpanel" aria-labelledby="product-tab-1">
+                            @php $ii = 1; @endphp
+                            @foreach ($categories as $item)
+                            <div class="tab-pane fade show {{$ii === 1 ? 'active': ''}}" id="product-series-{{$ii}}" role="tabpanel" aria-labelledby="product-tab-{{$ii}}">
+                                <a style="margin-left: 1050px;margin-bottom:20px;background-color:#292929;color:#FFFFFF">View All</a>
                                 <!--=======  single row slider wrapper  =======-->
-                                <div class="single-row-slider-wrapper">
+                                <div class="single-row-slider-wrapper"> 
                                     <div class="ht-slick-slider" data-slick-setting='{
                                     "slidesToShow": 4,
                                     "slidesToScroll": 1,
@@ -53,42 +56,44 @@
                                     {"breakpoint":575, "settings": {"slidesToShow": 2, "arrows": false} },
                                     {"breakpoint":479, "settings": {"slidesToShow": 1, "arrows": false} }
                                 ]'>
-
-
+                                @foreach ($item->GetProduct as $item2) 
                                         <div class="col">
                                             <!--=======  single grid product  =======-->
-                                            
+                                               
+                                           
                                             <div class="single-grid-product">
+
                                                 <div class="single-grid-product__image">
-                                                                                                        
-                                                    <a href="single-product.html">
-                                                        <img src="" class="img-fluid" alt="">
+                                                    <a href="{{route('singleproductroute',['productid' => $item2->id,'productname' => str_replace(' ','-',$item2->product_name)])}}">
+                                                        <img src="{{$item2->getFirstMediaUrl('product_img','preview')}}" class="img-fluid" alt="" loading="lazy">
                                                     </a>
-{{--
-                                                    <div class="hover-icons">
-                                                        <a href="javascript:void(0)"><i class="ion-bag"></i></a>
-                                                        <a href="javascript:void(0)"><i class="ion-heart"></i></a>
-                                                        <a href="javascript:void(0)"><i class="ion-android-options"></i></a>
-                                                        <a href="javascript:void(0)" data-toggle="modal" data-target="#quick-view-modal-container"><i class="ion-android-open"></i></a>
-                                                    </div> --}}
+                                                    
+                                                        
                                                 </div>
+                                                        
                                                 <div class="single-grid-product__content">
                                                     <div class="single-grid-product__category-rating">
-                                                        <span class="category"><a href="shop-left-sidebar.html"></a></span>
+                                                        <span class="category"><a href="shop-left-sidebar.html">{{$item2->product_name}}</a></span>
                                                     </div>
 
-                                                    <h3 class="single-grid-product__title"> <a href="single-product.html"></a></h3>
+                                                    <h3 class="single-grid-product__title">{{$item2->description}}</h3>
                                                     {{-- <p class="single-grid-product__price"><span class="main-price">$120.00</span></p> --}}
                                                 </div>
                                             </div>
-                                        
+
                                             <!--=======  End of single grid product  =======-->
                                         </div>
+                                        @endforeach     
                                     </div>
                                 </div>
                                 <!--=======  End of single row slider wrapper  =======-->
+                                                        
                             </div>
 
+                            @php
+                             $ii++;   
+                            @endphp
+                            @endforeach
                         </div>
                         <!--=======  End of tab product content  =======-->
                     </div>
