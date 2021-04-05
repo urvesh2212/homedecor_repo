@@ -1,3 +1,6 @@
+@php 
+$variants = App\Models\ProductVariant::where('product_variant_status','=','1')->get();
+@endphp
 @extends('front.root')
   @section('content')
 <!--====================  breadcrumb area ====================-->
@@ -62,21 +65,13 @@
                     {"breakpoint":575, "settings": {"slidesToShow": 1, "arrows": false, "slidesToScroll": 1} },
                     {"breakpoint":479, "settings": {"slidesToShow": 1, "arrows": false, "slidesToScroll": 1} }
                 ]'>
-                                                            <div class="single-image">
-                                                                <img src="assets/img/products/big1-1.jpg" class="img-fluid" alt="">
-                                                            </div>
-                                                            <div class="single-image">
-                                                                <img src="assets/img/products/big1-2.jpg" class="img-fluid" alt="">
-                                                            </div>
-                                                            <div class="single-image">
-                                                                <img src="assets/img/products/big1-3.jpg" class="img-fluid" alt="">
-                                                            </div>
-                                                            <div class="single-image">
-                                                                <img src="assets/img/products/big1-4.jpg" class="img-fluid" alt="">
-                                                            </div>
-                                                            <div class="single-image">
-                                                                <img src="assets/img/products/big1-5.jpg" class="img-fluid" alt="">
-                                                            </div>
+                
+
+                @foreach ($productdata[0]->product_img as $img)
+                <div class="single-image">
+                    <img src="{{$img->url}}" class="img-fluid" alt="">
+                </div>
+                @endforeach
                                                         </div>
                                                     </div>
                                                 </div>
@@ -102,22 +97,12 @@
                 {"breakpoint":767, "settings": {"slidesToShow": 3, "arrows": false, "slidesToScroll": 1, "vertical": false} },
                 {"breakpoint":575, "settings": {"slidesToShow": 3, "arrows": false, "slidesToScroll": 1, "vertical": false} },
                 {"breakpoint":479, "settings": {"slidesToShow": 2, "arrows": false, "slidesToScroll": 1, "vertical": false} }
-            ]'>
+            ]'> 
+                                                        @foreach ($productdata[0]->product_img as $img)
                                                         <div class="single-image">
-                                                            <img src="assets/img/products/big1-1.jpg" class="img-fluid" alt="">
+                                                            <img src="{{$img->url}}" class="img-fluid" alt="">
                                                         </div>
-                                                        <div class="single-image">
-                                                            <img src="assets/img/products/big1-2.jpg" class="img-fluid" alt="">
-                                                        </div>
-                                                        <div class="single-image">
-                                                            <img src="assets/img/products/big1-3.jpg" class="img-fluid" alt="">
-                                                        </div>
-                                                        <div class="single-image">
-                                                            <img src="assets/img/products/big1-4.jpg" class="img-fluid" alt="">
-                                                        </div>
-                                                        <div class="single-image">
-                                                            <img src="assets/img/products/big1-5.jpg" class="img-fluid" alt="">
-                                                        </div>
+                                                        @endforeach
                                                     </div>
                                                 </div>
                                             </div>
@@ -128,44 +113,60 @@
                                     <div class="col-lg-6">
                                         <!--=======  single product content description  =======-->
                                         <div class="single-product-content-description">
-                                            <p class="single-info">Brands <a href="shop-left-sidebar.html">Dolor</a> </p>
-                                            <h4 class="product-title">Lorem ipsum dolor set amet decor</h4>
+                                            <p class="single-info">Brands {{$productdata[0]->brandid->brand_name}}</p>
+                                            <h4 class="product-title">{{$productdata[0]->product_name}}</h4>
                                             <div class="product-rating">
                                                 {{-- <span class="review-count"> <a href="#">(2 reviews)</a> | <a href="#">Write A Review</a> </span> --}}
                                             </div>
+                                            @foreach ($productdata[0]->SubTypeProductid as $item)
+                                            <div>
+                                            <p class="single-grid-product__price"><span class="discounted-price">&#8377;{{$item->final_price}}</span></p>
+                                                {{-- <span class="main-price discounted">&#8377;120.00</span> --}}
 
-                                            <p class="single-grid-product__price"><span class="discounted-price">&#8377;100.00</span> <span class="main-price discounted">&#8377;120.00</span></p>
-
-                                            <p class="single-info">Product Code: <span class="value">CODE123</span> </p>
-                                            <p class="single-info">Reward Points: <span class="value">200</span> </p>
-                                            <p class="single-info">Availability: <span class="value">In Stock</span> </p>
+                                            <p class="single-info">Product Code: <span class="value">{{$item->hsn_code}}</span> </p>
+                                            {{-- <p class="single-info">Reward Points: <span class="value">200</span> </p> --}}
+                                            <p class="single-info">Availability: <span class="value">{{($item->product_subtype_status == 1) ? 'In Stock' : 'Out Of Stock'}}</span> </p>
+                                            </div>
+                                            @endforeach
 
                                             <div class="product-buttons">  
                                                 <p class="single-info">Product Variant:</p>   
                                                 <span class="product-variant-btn">
-                                                    <a href="#">M</a>
-                                                    <a href="#">S</a>
-                                                    <a href="#">L</a>
-                                                    <a href="#">XL</a>
+                                                    @foreach ($productdata[0]->SubTypeProductid as $item)
+                                                    @foreach ($variants as $item2)
+                                                    @if ($item2->id === $item->product_variant_id)
+                                                    @if($item->product_subtype_status != 1)
+                                                    <button type="button" value="{{$item2->product_variant_name}}" disabled>{{$item2->product_variant_name}}</button>             
+                                                    @else 
+                                                    <button type="button" value="{{$item2->product_variant_name}}">{{$item2->product_variant_name}}</button>                                        
+                                                    @endif      
+                                                    @endif                                                        
+                                                    @endforeach
+
+                                                    @endforeach
+                                            
                                                 </span>
                                             </div>
 
 
-                                            <p class="product-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. At, delectus. Voluptates omnis distinctio vitae quo quia veniam minima dolorem hic necessitatibus pariatur, quae fuga similique optio laboriosam assumenda voluptatum aperiam.</p>
+                                            <p class="product-description">{{$productdata[0]->description}}</p>
 
                                             <div class="product-actions">
                                                 <div class="quantity-selection">
                                                     <label>Qty</label>
                                                     <input type="number" value="1" min="1">
                                                 </div>
-
+                                                
+                                                @foreach ($productdata[0]->SubTypeProductid as $anchorid)
+                                                @if($anchorid->product_subtype_status == 1)
                                                 <div class="product-buttons">
-                                                    <a class="cart-btn" href="#" style="margin-top: 0px;"> <i class="ion-bag"></i> ADD TO CART</a>
-                                                </div>
-
+                                                    <a class="cart-btn" href="javascript:void(0)" data-value="{{$anchorid->hsn_code}}" style="margin-top: 0px;"> <i class="ion-bag"></i> ADD TO CART</a>
+                                                </div>                                                    
+                                                @endif
+                                                @endforeach
                                             </div>
                                             <br/>
-                                            <p class="single-info mb-0">Tags: <a href="shop-left-sidebar.html">Dolor</a> , <a href="shop-left-sidebar.html">Ipsum</a>, <a href="shop-left-sidebar.html">Lorem</a> </p>
+                                            {{-- <p class="single-info mb-0">Tags: <a href="shop-left-sidebar.html">Dolor</a> , <a href="shop-left-sidebar.html">Ipsum</a>, <a href="shop-left-sidebar.html">Lorem</a> </p> --}}
 
 
                                         </div>
@@ -193,7 +194,9 @@
                                                     <!--=======  product description  =======-->
 
                                                     <div class="product-description">
-                                                    
+                                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla.</p>
+
+                                                        <p>Pellentesque aliquet, sem eget laoreet ultrices, ipsum metus feugiat sem, quis fermentum turpis eros eget velit. Donec ac tempus ante. Fusce ultricies massa massa. Fusce aliquam, purus eget sagittis vulputate, sapien libero hendrerit est, sed commodo augue nisi non neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempor, lorem et placerat vestibulum, metus nisi posuere nisl, in accumsan elit odio quis mi. Cras neque metus, consequat et blandit et, luctus a nunc. Etiam gravida vehicula tellus, in imperdiet ligula euismod eget.</p>
                                                     </div>
 
                                                     <!--=======  End of product description  =======-->
@@ -268,6 +271,45 @@
                                                                     quisquam est, qui dolorem ipsum quia dolor sit
                                                                     amet, consectetur, adipisci veli</p>
                                                             </div>
+
+                                                            <div class="sin-ratings">
+                                                                <div class="rating-author">
+                                                                    <h3>Rashed Mahmud</h3>
+                                                                    <div class="rating-star">
+                                                                        <i class="fa fa-star"></i>
+                                                                        <i class="fa fa-star"></i>
+                                                                        <i class="fa fa-star"></i>
+                                                                        <i class="fa fa-star"></i>
+                                                                        <i class="fa fa-star"></i>
+                                                                        <span>(5)</span>
+                                                                    </div>
+                                                                </div>
+                                                                <p>enim ipsam voluptatem quia voluptas sit
+                                                                    aspernatur aut odit aut fugit, sed quia res eos
+                                                                    qui ratione voluptatem sequi Neque porro
+                                                                    quisquam est, qui dolorem ipsum quia dolor sit
+                                                                    amet, consectetur, adipisci veli</p>
+                                                            </div>
+
+                                                            <div class="sin-ratings">
+                                                                <div class="rating-author">
+                                                                    <h3>Hasan Mubarak</h3>
+                                                                    <div class="rating-star">
+                                                                        <i class="fa fa-star"></i>
+                                                                        <i class="fa fa-star"></i>
+                                                                        <i class="fa fa-star"></i>
+                                                                        <i class="fa fa-star"></i>
+                                                                        <i class="fa fa-star"></i>
+                                                                        <span>(5)</span>
+                                                                    </div>
+                                                                </div>
+                                                                <p>enim ipsam voluptatem quia voluptas sit
+                                                                    aspernatur aut odit aut fugit, sed quia res eos
+                                                                    qui ratione voluptatem sequi Neque porro
+                                                                    quisquam est, qui dolorem ipsum quia dolor sit
+                                                                    amet, consectetur, adipisci veli</p>
+                                                            </div>
+
                                                         </div>
                                                         <div class="rating-form-wrapper fix">
                                                             <h3>Add your Comments</h3>
@@ -313,8 +355,7 @@
                                 </div>
                             </div>
 
-                            <!--=======  End of product description review   =======-->
-                            <!--====================  single row slider ====================-->
+                            <!--=======  End of product description review   =======-->                            <!--====================  single row slider ====================-->
                             <div class="single-row-slider-area section-space--inner-top">
 
                                 <div class="row">
@@ -350,30 +391,35 @@
                         {"breakpoint":479, "settings": {"slidesToShow": 1, "arrows": false} }
                     ]'>
 
+                    @foreach ($relatedproducts as $relateditem => $relatedkey)
+                    @if ($relatedkey->id != $productdata[0]->id)
+
                                                 <div class="col">
                                                     <!--=======  single grid product  =======-->
+                                                        
                                                     <div class="single-grid-product">
                                                         <div class="single-grid-product__image">
                                                             <div class="single-grid-product__label">
                                                                 <span>2</span>% off
                                                             </div>
                                                             <a href="single-product.html">
-                                                                <img src="assets/img/products/1-600x800.jpg" class="img-fluid" alt="">
+                                                                <img src="{{$relatedkey->getFirstMediaUrl('product_img')}}" class="img-fluid" alt="">
                                                             </a>
                                                         </div>
                                                         <div class="single-grid-product__content">
                                                             <div class="single-grid-product__category-rating">
-                                                                <span class="category"><a href="shop-left-sidebar.html">Decor</a></span>
+                                                                <span class="category"><a href="shop-left-sidebar.html"></a></span>
                                                             </div>
 
-                                                            <h3 class="single-grid-product__title"> <a href="single-product.html">Cillum dolore lorem ipsum decoration item</a></h3>
-                                                            <p class="single-grid-product__price"><span class="discounted-price">&#8377;100.00</span> <span class="main-price discounted">&#8377;120.00</span></p>
+                                                            <h3 class="single-grid-product__title"> <a href="single-product.html">{{$relatedkey->product_name}}</a></h3>
                                                             {{-- <div class="product-countdown" data-countdown="2020/06/01"></div> --}}
                                                         </div>
                                                     </div>
+
                                                     <!--=======  End of single grid product  =======-->
                                                 </div>
-
+                                                @endif
+                                                @endforeach
                                         
 
 

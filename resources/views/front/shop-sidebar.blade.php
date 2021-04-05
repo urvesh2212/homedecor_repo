@@ -25,6 +25,20 @@
     <!--====================  End of breadcrumb area  ====================-->
 
     <!--====================  shop page content area ====================-->
+    <div id='ajax_loader' style="background: #ffffff;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    z-index: 5000;
+    top: 0;
+    left: 0;
+    float: left;
+    text-align: center;
+    padding-top: 25%;
+    opacity: .80";
+    >
+        <img src="{{URL::asset('assets/img/spin.gif')}}">
+    </div>
     <div class="page-content-area">
         <div class="container">
             <div class="row">
@@ -81,15 +95,14 @@
 
                                             <h4 class="single-sidebar-widget__title">Categories</h4>
                                             <ul class="single-sidebar-widget__category-list">
-                                                <li class="has-children"><a href="#" class="active">Accessories <span class="counter">15</span></a>
+                                                @foreach ($productdetails as $item)
+
+                                                <li class="has-children"><a href="#" class="active">{{$item->category_name}}<span class="counter">{{count($item->GetProduct)}}</span></a>
                                                     <ul>
-                                                        <li><a href="#">Brushes <span class="counter">3</span></a></li>
-                                                        <li><a href="#">Mascara <span class="counter">5</span></a></li>
-                                                        <li><a href="#">Eye Shadow <span class="counter">1</span></a></li>
-                                                        <li><a href="#">Eye Brushes <span class="counter">7</span></a></li>
+                                                        <li><a href="#">{{$item->GetSubCat->subcategory_name}}<span class="counter"></span></a></li>
                                                     </ul>
                                                 </li>
-                                                <li><a href="#">Car Seats <span class="counter">7</span></a></li>
+                                                @endforeach
                                             </ul>
                                         </div>
                                         <!--=======  End of single sidebar widget  =======-->
@@ -97,36 +110,26 @@
                                         <div class="single-sidebar-widget">
                                             <div class="sidebar-sub-widget-wrapper">
                                                 <div class="sidebar-sub-widget">
-                                                    <h4 class="sidebar-sub-widget__title sidebar-sub-widget__title--price-title">Fillter By Price</h4>
-                                                    <div class="sidebar-price">
-                                                        <div id="price-range" class="mb-10"></div>
-                                                        <input type="text" id="price-amount" class="price-amount" readonly>
-                                                    </div>
-                                                </div>
-                                                <div class="sidebar-sub-widget">
                                                     <h4 class="sidebar-sub-widget__title sidebar-sub-widget__title--abs-icon">Brands</h4>
-                                                    <ul class="single-sidebar-widget__category-list single-sidebar-widget__category-list--abs-icon">
-                                                        <li><a href="#">Lorem ipsum (7)</a></li>
-                                                        <li><a href="#">Dolor (8) </a></li>
+
+
+                                                   @foreach ($brand as $item)
+                                                   @foreach ($uniquebrand as $item2) 
+                                                       @if ($item->id === $item2->brand_id)                                   
+                                                    
+                                                    <ul>
+                                                        <li><input type="checkbox" id="{{$item->id}}">{{$item->brand_name}}</li>
                                                     </ul>
+                                                     @endif
+                                                     @endforeach 
+                                                  
+                                                     @endforeach
                                                 </div>
-                                                {{-- <div class="sidebar-sub-widget">
-                                                    <h4 class="sidebar-sub-widget__title sidebar-sub-widget__title--abs-icon">Select By Color</h4>
-                                                    <ul class="single-sidebar-widget__category-list single-sidebar-widget__category-list--abs-icon">
-                                                        <li><a href="#">Black (7)</a></li>
-                                                    </ul>
-                                                </div> --}}
                                             </div>
                                         </div>
                                         <!--=======  End of single sidebar widget  =======-->
                                         <!--=======  single sidebar widget  =======-->
-                                        {{-- <div class="single-sidebar-widget">
-                                            <h4 class="single-sidebar-widget__title">Popular Tags</h4>
-                                            <ul class="single-sidebar-widget__tag-list">
-                                                <li><a href="#">Car Seats</a></li>
-                                                <li><a href="#">Chair</a></li>
-                                            </ul>
-                                        </div> --}}
+                                        
                                         <!--=======  End of single sidebar widget  =======-->
                                     </div>
                                     <!--=======  End of page sidebar wrapper  =======-->
@@ -136,59 +139,10 @@
                                     <div class="shop-page-content">
 
                                         <div class="row shop-product-wrap grid three-column">
-                                            <div class="col-12 col-lg-4 col-md-4 col-sm-6">
-                                                <!--=======  product grid view  =======-->
-                                                <div class="single-grid-product grid-view-product">
-                                                    <div class="single-grid-product__image">
-                                                        <div class="single-grid-product__label">
-                                                            {{-- <span class="sale">-20%</span>
-                                                            <span class="new">New</span> --}}
-                                                        </div>
-                                                        <a href="single-product.html">
-                                                            <img src="assets/img/products/1-600x800.jpg" class="img-fluid" alt="">
-                                                            <img src="assets/img/products/1_1-600x800.jpg" class="img-fluid" alt="">
-                                                        </a>
-
-                                                        {{-- <div class="hover-icons">
-                                                            <a href="javascript:void(0)"><i class="ion-bag"></i></a>
-                                                            <a href="javascript:void(0)"><i class="ion-heart"></i></a>
-                                                            <a href="javascript:void(0)"><i class="ion-android-options"></i></a>
-                                                            <a href="javascript:void(0)" data-toggle="modal" data-target="#quick-view-modal-container"><i class="ion-android-open"></i></a>
-                                                        </div> --}}
-                                                    </div>
-                                                    <div class="single-grid-product__content">
-                                                        <div class="single-grid-product__category-rating">
-                                                            <span class="category"><a href="shop-left-sidebar.html">Decor</a></span>
-
-                                                        </div>
-
-                                                        <h3 class="single-grid-product__title"> <a href="single-product.html">Cillum dolore lorem ipsum decoration item</a></h3>
-                                                        <p class="single-grid-product__price"><span class="discounted-price">&#8377;100.00</span> <span class="main-price discounted">&#8377; 120.00</span></p>
-                                                    </div>
-                                                </div>
-                                                <!--=======  End of product grid view  =======-->
-                                                <!--=======  list view product  =======-->
-                                                <div class="single-grid-product single-grid-product--list-view list-view-product">
-                                                    <div class="single-grid-product__image single-grid-product--list-view__image">
-                                                        <div class="single-grid-product__label">
-                                                        </div>
-                                                        <a href="single-product.html">
-                                                            <img src="assets/img/products/1-600x800.jpg" class="img-fluid" alt="">
-                                                            <img src="assets/img/products/1_1-600x800.jpg" class="img-fluid" alt="">
-                                                        </a>
-                                                    </div>
-                                                    <div class="single-grid-product__content single-grid-product--list-view__content">
-
-                                                        <div class="category"><a href="shop-left-sidebar.html">Decor</a></div>
-                                                        <h3 class="single-grid-product__title single-grid-product--list-view__title"> <a href="single-product.html">Cillum dolore lorem ipsum decoration item</a></h3>
-
-                                                        <p class="single-grid-product__price single-grid-product--list-view__price"><span class="discounted-price">$100.00</span> <span class="main-price discounted">$120.00</span></p>
-                                                        <p class="single-grid-product--list-view__product-short-desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate cupiditate provident praesentium, esse omnis quis!</p>
-                                                    </div>
-                                                </div>
-                                                <!--=======  End of list view product  =======-->
-                                            </div>
-
+                                            @foreach ($productdetails as $pdata)
+                                                @if($pdata->category_name === $categorydata)
+                                                @foreach ($pdata->GetProduct as $pdata2)
+                                                    
                                             <div class="col-12 col-lg-4 col-md-4 col-sm-6">
                                                 <!--=======  product grid view  =======-->
                                                 <div class="single-grid-product grid-view-product">
@@ -197,20 +151,19 @@
 
                                                         </div>
                                                         <a href="single-product.html">
-                                                            <img src="assets/img/products/5-600x800.jpg" class="img-fluid" alt="">
-                                                            <img src="assets/img/products/5_1-600x800.jpg" class="img-fluid" alt="">
+                                                            <img src="{{$pdata2->getFirstMediaUrl('product_img','preview')}}" class="img-fluid" alt="">
                                                         </a>
 
 
                                                     </div>
                                                     <div class="single-grid-product__content">
                                                         <div class="single-grid-product__category-rating">
-                                                            <span class="category"><a href="shop-left-sidebar.html">Decor</a></span>
+                                                            <span class="category"><a href="">{{$pdata->category_name}}</a></span>
 
                                                         </div>
 
-                                                        <h3 class="single-grid-product__title"> <a href="single-product.html">Cillum dolore lorem ipsum decoration item</a></h3>
-                                                        <p class="single-grid-product__price"><span class="discounted-price">&#8377; 80.00</span> <span class="main-price discounted">&#8377;100.00</span></p>
+                                                        <h3 class="single-grid-product__title"> <a href="single-product.html">{{$pdata2->product_name}}</a></h3>
+                                                        {{-- <p class="single-grid-product__price"><span class="discounted-price">&#8377; 80.00</span> <span class="main-price discounted">&#8377;100.00</span></p> --}}
                                                     </div>
                                                 </div>
                                                 <!--=======  End of product grid view  =======-->
@@ -238,6 +191,9 @@
                                                 </div>
                                                 <!--=======  End of list view product  =======-->
                                             </div>
+                                            @endforeach
+                                            @endif
+                                            @endforeach
                                         </div>
 
                                     </div>

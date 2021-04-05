@@ -1,3 +1,10 @@
+
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
 function NewAddress()
 {
     let flatno = $("#flatno").val();
@@ -37,3 +44,26 @@ function MakeDefault(id)
     }
     return false;
 }
+
+$('.cart-btn').on('click',function(){
+var hsn = $(this).data('value');
+$.ajax({
+    type: "POST",
+    url: "/add_cart",
+    data: {"productid" : hsn},
+    dataType: "json",
+    success: function (response) {
+        if(response.status == 200)
+        {
+            alert(response.msg);
+        }else{
+            alert(response.msg);
+        }
+
+    }
+});
+});
+
+$(document).ready(function(){
+    $("#ajax_loader").hide();
+});

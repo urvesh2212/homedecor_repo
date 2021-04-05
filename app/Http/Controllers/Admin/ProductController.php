@@ -140,7 +140,7 @@ class ProductController extends Controller
         $product->load('catid', 'subcatid');
 
         $title ='Edit Products';
-        return view('admin.products.edit', ['title' => $title],compact('catids', 'subcatids', 'product'));
+        return view('admin.products.edit', ['title' => $title],compact('catids', 'subcatids', 'product','brandids'));
     }
 
     public function update(UpdateProductRequest $request, Product $product)
