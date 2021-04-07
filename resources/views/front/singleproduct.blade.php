@@ -1,5 +1,7 @@
 @php 
 $variants = App\Models\ProductVariant::where('product_variant_status','=','1')->get();
+
+var_dump(session('cart_item'));
 @endphp
 @extends('front.root')
   @section('content')
@@ -118,14 +120,15 @@ $variants = App\Models\ProductVariant::where('product_variant_status','=','1')->
                                             <div class="product-rating">
                                                 {{-- <span class="review-count"> <a href="#">(2 reviews)</a> | <a href="#">Write A Review</a> </span> --}}
                                             </div>
+                                            @php $counter = 1 ;@endphp
                                             @foreach ($productdata[0]->SubTypeProductid as $item)
                                             <div>
-                                            <p class="single-grid-product__price"><span class="discounted-price">&#8377;{{$item->final_price}}</span></p>
+                                            <p class="single-grid-product__price"><span class="discounted-price tab-pane-fade {{($counter == 1 ? 'active':'')}}">&#8377;{{$item->final_price}}</span></p>
                                                 {{-- <span class="main-price discounted">&#8377;120.00</span> --}}
 
-                                            <p class="single-info">Product Code: <span class="value">{{$item->hsn_code}}</span> </p>
+                                            <p class="single-info">Product Code: <span class="value tab-pane-fade {{($counter == 1 ? 'active':'')}}">{{$item->hsn_code}}</span> </p>
                                             {{-- <p class="single-info">Reward Points: <span class="value">200</span> </p> --}}
-                                            <p class="single-info">Availability: <span class="value">{{($item->product_subtype_status == 1) ? 'In Stock' : 'Out Of Stock'}}</span> </p>
+                                            <p class="single-info">Availability: <span class="value tab-pane-fade {{($counter == 1 ? 'active':'')}}">{{($item->product_subtype_status == 1) ? 'In Stock' : 'Out Of Stock'}}</span> </p>
                                             </div>
                                             @endforeach
 
@@ -152,10 +155,10 @@ $variants = App\Models\ProductVariant::where('product_variant_status','=','1')->
                                             <p class="product-description">{{$productdata[0]->description}}</p>
 
                                             <div class="product-actions">
-                                                <div class="quantity-selection">
+                                                {{-- <div class="quantity-selection">
                                                     <label>Qty</label>
                                                     <input type="number" value="1" min="1">
-                                                </div>
+                                                </div> --}}
                                                 
                                                 @foreach ($productdata[0]->SubTypeProductid as $anchorid)
                                                 @if($anchorid->product_subtype_status == 1)
@@ -163,6 +166,9 @@ $variants = App\Models\ProductVariant::where('product_variant_status','=','1')->
                                                     <a class="cart-btn" href="javascript:void(0)" data-value="{{$anchorid->hsn_code}}" style="margin-top: 0px;"> <i class="ion-bag"></i> ADD TO CART</a>
                                                 </div>                                                    
                                                 @endif
+                                                @php
+                                                $counter++    
+                                                @endphp
                                                 @endforeach
                                             </div>
                                             <br/>
@@ -439,33 +445,4 @@ $variants = App\Models\ProductVariant::where('product_variant_status','=','1')->
         </div>
     </div>
     <!--====================  End of page content area  ====================-->
-    <!--====================  newsletter area ====================-->
-    <div class="newsletter-area section-space--inner">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 offset-lg-2">
-                    <div class="newsletter-wrapper">
-                        <p class="small-text">Special Ofers For Subscribers</p>
-                        <h3 class="title">Ten Percent Member Discount</h3>
-                        <p class="short-desc">Subscribe to our newsletters now and stay up to date with new collections, the latest lookbooks and exclusive offers.</p>
-
-                        <div class="newsletter-form">
-                            <form id="mc-form" class="mc-form">
-                                <input type="email" placeholder="Enter Your Email Address Here..." required>
-                                <button type="submit" value="submit">SUBSCRIBE</button>
-                            </form>
-
-                        </div>
-                        <!-- mailchimp-alerts Start -->
-                        <div class="mailchimp-alerts">
-                            <div class="mailchimp-submitting"></div><!-- mailchimp-submitting end -->
-                            <div class="mailchimp-success"></div><!-- mailchimp-success end -->
-                            <div class="mailchimp-error"></div><!-- mailchimp-error end -->
-                        </div>
-                        <!-- mailchimp-alerts end -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     @endsection

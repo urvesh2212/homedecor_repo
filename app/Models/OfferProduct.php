@@ -39,6 +39,6 @@ class OfferProduct extends Model
 
     public function offer_product()
     {
-        return $this->belongsTo(Product::class, 'offer_product_id');
+        return $this->belongsTo(Product::class, 'offer_product_id','id');
     }
 }

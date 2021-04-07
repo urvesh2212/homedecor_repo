@@ -6,14 +6,16 @@ Route::get('/', [\App\Http\Controllers\Front\LandingController::class,'index'])-
 
 Route::view('/contact','front.contact',['title' => 'Contact Us'])->name('contact');
 Route::view('/checkout','front.checkout',['title' => 'Checkout'])->name('checkout');
-Route::view('/cart','front.cart',['title' => 'Cart'])->name('cart');
+Route::get('/cart',[\App\Http\Controllers\Front\ProductController::class,'show_cart'])->middleware('AuthCustomer')->name('cart');
 Route::view('/faq','front.faq',['title' => 'faq'])->name('faq');
 Route::get('/shop-catalog/category/{categorycode}/{categoryname}',[\App\Http\Controllers\Front\ProductController::class,'ShowProdcutByCategory']);
 Route::get('product/{productid}/{productname}',[\App\Http\Controllers\Front\ProductController::class,'singleproduct'])->name('singleproductroute');
+Route::get('shop-catalog/offerproducts',[\App\Http\Controllers\Front\ProductController::class,'offerproducts']);
 Route::get('/dashboard',[\App\Http\Controllers\Front\CustomerController::class,'dashboard'])->middleware('AuthCustomer')->name('userdashboard');
 Route::post('/add_address',[\App\Http\Controllers\Front\CustomerController::class,'newaddress']);
 Route::post('/default_address',[\App\Http\Controllers\Front\CustomerController::class,'makedeaultaddress']);
 Route::post('/add_cart',[\App\Http\Controllers\Front\ProductController::class,'Add_To_Cart'])->name('addcart');
+Route::post('/remove_from_cart',[\App\Http\Controllers\Front\ProductController::class,'remove_cart']);
 Route::view('/about','front.about',['title' => 'About Us'])->name('about');
 Route::view('/mobilelogin','front.mobilelogin',['title' => 'Login'])->name('mobilelogin');
 Route::view('/termsconditions','front.terms_condition',['title' => 'TermsCondition'])->name('termsconditions');
