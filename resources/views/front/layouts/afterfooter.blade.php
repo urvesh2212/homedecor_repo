@@ -36,14 +36,14 @@ $singleproducts = \App\Models\Product::where('product_status','=','1')->get();
                                             </ul>
 
                                         @else
-                                        <a href="/mobilelogin">
+                                        <div style="width: 150px; background-color: #342a2a; text-align:center; border-radius: 5px;"><a href="{{route('mobilelogin')}}" style="color:white;">
                                             <!-- <div class="setting-button">
                                                 <span></span>
                                                 <span></span>
                                                 <span></span>
                                             </div> -->
                                            <h4 class="title">Login/Signup</h4>
-                                        </a>
+                                        </a></div>
                                         @endif
                                     </div>
 

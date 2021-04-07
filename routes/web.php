@@ -17,7 +17,10 @@ Route::post('/default_address',[\App\Http\Controllers\Front\CustomerController::
 Route::post('/add_cart',[\App\Http\Controllers\Front\ProductController::class,'Add_To_Cart'])->name('addcart');
 Route::post('/remove_from_cart',[\App\Http\Controllers\Front\ProductController::class,'remove_cart']);
 Route::view('/about','front.about',['title' => 'About Us'])->name('about');
-Route::view('/mobilelogin','front.mobilelogin',['title' => 'Login'])->name('login');
+Route::view('/mobilelogin','front.mobilelogin',['title' => 'Login'])->name('mobilelogin');
+Route::view('/termsconditions','front.terms_condition',['title' => 'TermsCondition'])->name('termsconditions');
+Route::view('/privacypolicy','front.privacypolicy',['title' => 'PrivacyPolicy'])->name('privacypolicy');
+Route::view('/aftercheckout','front.aftercheckout',['title' => 'AfterCheckout'])->name('aftercheckout');
 //end
 
 //Front Auth Routes

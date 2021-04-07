@@ -16,7 +16,7 @@
 
 	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
         <!-- Favicon -->
-        <link rel="icon" href="{{URL::asset('assets/img/favicon.ico')}}">
+        <link rel="icon" href="{{URL::asset('assets/img/favicon.png')}}">
 
         <link href="{{URL::asset('login/css/bootstrap.css')}}" rel="stylesheet" />
 

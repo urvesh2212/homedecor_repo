@@ -1,6 +1,6 @@
 <div class="footer-area">
     <div class="footer-copyright">
-        <div class="container wide">
+        <div class="container-fluid wide">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="footer-copyright-wrapper">
@@ -10,21 +10,22 @@
                                 <div class="col-lg-3 col-md-6 col-sm-6">
                                     <div class="second-row-item">
                                         <h4>Address</h4>
-                                        <p>Homedecor</p>
-                                        <p></p>
-                                        <p></p>
-                                        <p>Banglore</p>
+                                        <p>Ekikai</p>
+                                        <p>Ward no 8, Nagaliya Road</p>
+                                        <p>Thakurdwara, Moradabad</p>
+                                        <p>Uttar pradesh - 244001</p>
+                                    
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-md-6 col-sm-6">
                                     <div class="second-row-item">
                                         <h4>Useful Links</h4>
                                         <ul>
-                                            <li><a href="route{{("aboutus")}}">About Us</a></li>
-                                            {{-- <li><a href="route{{("privacy_policy")}}">Privacy Policy</a></li>
-                                            <li><a href="route{{("tc_policy")}}">Term & Conditions</a></li>
-                                            <li><a href="route{{("return_policy")}}">Refund & Return Policy</a></li> --}}
-                                            <li><a href="route{{("faq")}}">Frequently Asked Questions</a></li>
+                                            <li><a href="{{route('about')}}">About Us</a></li>
+                                            <li><a href="{{route('privacypolicy')}}">Privacy Policy</a></li>
+                                            <li><a href="{{route('termsconditions')}}">Terms & Conditions</a></li>
+                                            <li><a href="#">Refund & Return Policy</a></li>
+                                            <li><a href="{{route('faq')}}">Frequently Asked Questions</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -42,12 +43,12 @@
                                 <div class="col-lg-3 col-md-6 col-sm-6">
                                     <div class="second-row-item">
                                         <h4>Google map location</h4>
-                                        {{-- <iframe
-                                            width="450"
-                                            height="250"
+                                        <iframe
+                                            width="300"
+                                            height="200"
                                             frameborder="0" style="border:0"
                                             src="https://www.google.com/maps/embed/v1/MAP_MODE?key=" allowfullscreen>
-                                        </iframe> --}}
+                                        </iframe> 
                                     </div>
                                 </div>
                             </div>
@@ -60,18 +61,18 @@
 </div>
 
 <div class="footer-area">
-        <div class="footer-copyright">
-            <div class="container wide">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="footer-copyright-wrapper footer-copyright-wrapper--default-footer">
-                            <div class="container">
-                                <div class="row align-items-center no-gutters">
-                                    <div class="col-lg-2 col-md-2">
-                                        <div class="footer-logo">
-                                            <a href="#"><img src="assets/img/logo.png" class="img-fluid" alt=""></a>
-                                        </div>
-                                    </div>
+    <div class="footer-copyright">
+        <div class="container-fluid  wide">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="footer-copyright-wrapper footer-copyright-wrapper--default-footer">
+                        <div class="container">
+                            <div class="row align-items-center no-gutters">
+                                <div class="col-lg-2 col-md-2">
+                                    <div class="footer-logo">
+                                       <a href="{{route('homepage')}}"><img src="assets/img/logo-footer.png" class="img-fluid" alt=""></a>
+                                   </div>
+                                </div>
 
                                     <div class="col-lg-7 col-md-5">
 
@@ -91,10 +92,10 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
