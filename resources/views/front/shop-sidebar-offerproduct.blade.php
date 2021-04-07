@@ -95,9 +95,8 @@
 
                                             <h4 class="single-sidebar-widget__title">Categories</h4>
                                             <ul class="single-sidebar-widget__category-list">
-                                                @foreach ($productdetails as $item)
-
-                                                <li class="has-children"><a href="#" class="active">{{$item->category_name}}<span class="counter">{{count($item->GetProduct)}}</span></a>
+                                                @foreach ($categorydata as $item)
+                                                <li class="has-children"><a href="#" class="active">{{$item->category_name}}<span class="counter"></span></a>
                                                     <ul>
                                                         <li><a href="#">{{$item->GetSubCat->subcategory_name}}<span class="counter"></span></a></li>
                                                     </ul>
@@ -113,7 +112,7 @@
                                                     <h4 class="sidebar-sub-widget__title sidebar-sub-widget__title--abs-icon">Brands</h4>
 
 
-                                                   @foreach ($brands as $item)                              
+                                                   @foreach ($branddata as $item)                              
                                                     <ul>
                                                         <li><input type="checkbox" id="{{$item->id}}">{{$item->brand_name}}</li>
                                                     </ul>
@@ -133,7 +132,7 @@
                                     <div class="shop-page-content">
 
                                         <div class="row shop-product-wrap grid three-column">
-                                            @foreach ($productdetails[0]->GetProduct as $pdata)
+                                            @foreach ($offerproducts as $pdata)
                                                     
                                             <div class="col-12 col-lg-4 col-md-4 col-sm-6">
                                                 <!--=======  product grid view  =======-->
@@ -143,18 +142,18 @@
 
                                                         </div>
                                                         <a href="single-product.html">
-                                                            <img src="{{$pdata->getFirstMediaUrl('product_img','preview')}}" class="img-fluid" alt="">
+                                                            <img src="{{$pdata->offer_product->getFirstMediaUrl('product_img','preview')}}" class="img-fluid" alt="">
                                                         </a>
 
 
                                                     </div>
                                                     <div class="single-grid-product__content">
                                                         <div class="single-grid-product__category-rating">
-                                                            <span class="category"><a href="">{{$productdetails[0]->category_name}}</a></span>
+                                                            <span class="category"><a href="">{{$pdata->offer_product->catid->category_name}}</a></span>
 
                                                         </div>
 
-                                                        <h3 class="single-grid-product__title"> <a href="single-product.html">{{$pdata->product_name}}</a></h3>
+                                                        <h3 class="single-grid-product__title"> <a href="single-product.html">{{$pdata->offer_product->product_name}}</a></h3>
                                                         {{-- <p class="single-grid-product__price"><span class="discounted-price">&#8377; 80.00</span> <span class="main-price discounted">&#8377;100.00</span></p> --}}
                                                     </div>
                                                 </div>
@@ -191,14 +190,11 @@
                                     <!--=======  pagination area =======-->
                                     <div class="pagination-area">
                                         <div class="pagination-area__left">
-                                            Showing 1 to 9 of 11 (2 Pages)
+                                            Showing {{$offerproducts->firstitem()}} to {{$offerproducts->lastitem()}} of {{$offerproducts->total()}} ({{$offerproducts->lastPage()}} Pages)
                                         </div>
                                         <div class="pagination-area__right">
                                             <ul class="pagination-section">
-                                                <li><a class="active" href="#">1</a></li>
-                                                <li><a href="#">2</a></li>
-                                                <li><a href="#">></a></li>
-                                                <li><a href="#">>|</a></li>
+                                                    {{$offerproducts->links() }}
                                             </ul>
                                         </div>
                                     </div>

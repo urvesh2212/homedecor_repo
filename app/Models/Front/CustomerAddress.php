@@ -35,7 +35,7 @@ class CustomerAddress extends Model
         return $date->format('Y-m-d H:i:s');
     }
 
-    public function customercount(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function customeraccount(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Customer::class,'customerid','uid');
     }

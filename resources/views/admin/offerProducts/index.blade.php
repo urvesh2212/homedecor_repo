@@ -31,9 +31,6 @@
                                         {{ trans('cruds.offerProduct.fields.offer_product') }}
                                     </th>
                                     <th>
-                                        {{ trans('cruds.product.fields.hsn_code') }}
-                                    </th>
-                                    <th>
                                         {{ trans('cruds.offerProduct.fields.offer_product_status') }}
                                     </th>
                                     <th>
@@ -52,9 +49,6 @@
                                         </td>
                                         <td>
                                             {{ $offerProduct->offer_product->product_name ?? '' }}
-                                        </td>
-                                        <td>
-                                            {{ $offerProduct->offer_product->hsn_code ?? '' }}
                                         </td>
                                         <td>
                                             {{ App\Models\OfferProduct::OFFER_PRODUCT_STATUS_SELECT[$offerProduct->offer_product_status] ?? '' }}

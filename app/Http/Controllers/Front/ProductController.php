@@ -11,6 +11,8 @@ use App\Models\ProductSubType;
 use App\Models\Product;
 use App\Models\SubCategory;
 use App\Models\Brand;
+use App\Models\OfferProduct;
+use App\Models\Front\CustomerAddress;
 
 
 class ProductController extends Controller
@@ -26,22 +28,21 @@ class ProductController extends Controller
 
     public function ShowProdcutByCategory()
     {
-        $brand = $this->brand;      
 
-        $productdetails = ProductCategory::with('GetSubCat','GetProduct')->where('category_status','=','1')->get();
-    
         $categorydata = request()->segment(4);
+
+        $categorycode = request()->segment(3);
+
+        $productdetails = ProductCategory::with('GetSubCat','GetProduct','GetBrand')
+        ->where('category_status','=','1')
+        ->where('category_code','=',$categorycode)
+        ->get();
         
-        foreach ($productdetails as $key) {
-            if($categorydata === $key->category_name)
-            {
-                $brandcollection = collect($key->GetProduct);
-                $uniquebrand = $brandcollection->unique('brand_id');
-               return view('front.shop-sidebar',['title' => 'Shop Catalog'],compact('productdetails','categorydata','brand','uniquebrand'));
-            }else{
-            }
+        $brandcollection = collect($productdetails[0]->GetBrand);
+        $brands = $brandcollection->unique('id');
+    
+        return view('front.shop-sidebar',['title' => 'Shop Catalog'],compact('productdetails','brands'));
         }
-    }
 
     public function singleproduct()
     {
@@ -60,6 +61,24 @@ class ProductController extends Controller
         return view('front.singleproduct',['title' => str_ireplace('-',' ',$productname)],compact('productdata','relatedproducts'));
     }
 
+    public function offerproducts()
+    {
+        $offerslug = request()->segment(2);
+        $offerproducts = OfferProduct::with('offer_product','offer_product.catid','offer_product.catid.GetSubCat','offer_product.brandid')
+        ->where('offer_product_status','=','1')
+        ->paginate(2);
+        
+        foreach ($offerproducts as $key) {
+            $cat[] = $key->offer_product->catid;
+            $brand[] = $key->offer_product->brandid;
+        }
+
+        $categorydata = collect($cat)->unique('id');
+        $branddata = collect($brand)->unique('id');
+        
+        return view('front.shop-sidebar-offerproduct',['title' => $offerslug],compact('offerproducts','categorydata','branddata'));
+    }
+
     public function Add_To_Cart(AddToCartRequest $req)
     {
         if($req->ajax())
@@ -72,13 +91,89 @@ class ProductController extends Controller
 
             if(!is_null($checkdata))
             {
-                session(['productdata' => $product_hsn]);
+                 $cart = $req->session()->get('cart_item');
+                
+                if(!$cart){
+                    $cart = [
+                        $product_hsn => [
+                            'qty' => 1,
+                        ],
+                    ];
+
+                 $req->session()->put('cart_item',$cart);
                 return json_encode(['msg' => 'Product Added Successfully','status' => 200]);
+
+                }elseif(isset($cart[$product_hsn])){
+
+                    $cart[$product_hsn]['qty']++;
+                    $req->session()->put('cart_item', $cart);
+                    return json_encode(['msg' => 'Product Added Successfully','status' => 200]);
+                }else{
+                    $cart[$product_hsn] = [
+                        'qty' => 1,
+                    ];
+
+                    $req->session()->put('cart_item',$cart);
+                    return json_encode(['msg' => 'Product Added Successfully','status' => 200]);
+                }
+
             }else{
                 return json_encode(['msg' => 'Error While Adding data','status' => 500]);
             }
         }
         return json_encode(['msg' => 'Error.Try Again','status' => 500]);
     }
+
+    public function remove_cart(Request $req)
+    {
+        if($req->ajax()){
+            if($req->session()->has('cart_item'))
+            {
+                $removeproductdata = strip_tags($req->input('productid'));
+                $req->session()->forget('cart_item.'.$removeproductdata);
+                if(empty($req->session()->get('cart_item')))
+                {
+                    $req->session()->forget('cart_item');
+                }
+                return json_encode(['msg' => 'Product Successfully Removed','status'=> 200]);
+            }else{
+                return json_encode(['msg' => 'No Cart Found','status'=> 500]);
+            }
+        }
+        else{
+            return json_encode(['msg' => 'Invalid Request','status'=> 500]);
+        }
+    }
+
+    public function show_cart(Request $req)
+    {
+        if($req->session()->has('cart_item')){
+
+        $getproducts = $this->populate_cart();
+        $customeraddress = $this->get_address();
+
+        return view('front.cartpagecontent.cart',['title' => 'Cart'],compact('getproducts','customeraddress'));
+        }else{
+        
+            return redirect()->route('homepage');
+        }
+    }
+
+    protected function populate_cart()
+    {
+        $cartdata = session()->all();
+        $pcode = array_keys($cartdata['cart_item']);
+        
+        return ProductSubType::with('productid','productvariantid')
+        ->whereIn('hsn_code',$pcode)
+        ->get();
+    }
+
+    protected function get_address()
+    {
+        $customerid = session()->get('userid');
+        return CustomerAddress::with('customeraccount')->get();       
+    }
 }
+
 ?>
