@@ -21,6 +21,7 @@ function NewAddress()
         success: function (response) {
             if(response.web === 200){
                 alert('Successfully Added');
+                location.reload();
             }
         }
     });
@@ -64,6 +65,31 @@ $.ajax({
 });
 });
 
+$('.cart-item').on('click',function(){
+    var hsn = $(this).data('hsn');
+    $.ajax({
+        type: "POST",
+        url: "/remove_from_cart",
+        data: {"productid" : hsn},
+        dataType: "json",
+        success: function (response) {
+            if(response.status == 200)
+            {
+                alert(response.msg);
+                location.reload();
+            }else{
+                alert(response.msg);
+            }
+    
+        }
+    });
+    });
+
+$("#checkout-address").on('submit',function(e){
+    e.preventDefault();
+    NewAddress();
+})
+    
 $(document).ready(function(){
     $("#ajax_loader").hide();
 });

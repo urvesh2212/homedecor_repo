@@ -75,4 +75,9 @@ class ProductCategory extends Model implements HasMedia
         return $this->hasOne(SubCategory::class,'cat_id','id');
     }
 
+    public function GetBrand()
+    {
+        return $this->hasManyThrough(Brand::class,Product::class,'catid_id','id','id','brand_id');
+    }
+
 }

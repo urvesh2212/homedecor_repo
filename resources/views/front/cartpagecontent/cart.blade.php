@@ -1,28 +1,19 @@
 @extends('front.root')
   @section('content')
-  <!--====================  breadcrumb area ====================-->
-  {{-- <div class="breadcrumb-area section-space--half">
-        <div class="container wide">
-            <div class="row">
-                <div class="col-lg-12">
-                    <!--=======  breadcrumb wrpapper  =======-->
-                    <div class="breadcrumb-wrapper">
-                        <!--=======  breadcrumb content  =======-->
-                        {{-- <div class="breadcrumb-content">
-                            <h2 class="breadcrumb-content__title">Cart</h2>
-                            <ul class="breadcrumb-content__page-map">
-                                <li><a href="index.html">Home</a></li>
-                                <li class="active">Cart</li>
-                            </ul>
-                        </div> 
-                        <!--=======  End of breadcrumb content  =======-->
-                    </div>
-                    <!--=======  End of breadcrumb wrpapper  =======-->
-                </div>
-            </div>
-        </div>
-    </div> --}}
-    <!--====================  End of breadcrumb area  ====================-->
+  <div id='ajax_loader' style="background: #ffffff;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: 5000;
+  top: 0;
+  left: 0;
+  float: left;
+  text-align: center;
+  padding-top: 25%;
+  opacity: .80";
+  >
+      <img src="{{URL::asset('assets/img/spin.gif')}}">
+  </div>
     <!--====================  page content area ====================-->
     {{-- <h1 style="margin-left: 50%;">Cart</h1> --}}
     <div class="breadcrumb-content">
@@ -55,17 +46,20 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach ($getproducts as $item)
                                             <tr>
-                                                <td class="pro-thumbnail"><a href="single-product.html"><img src="assets/img/products/big1-1.jpg" class="img-fluid" alt="Product"></a></td>
-                                                <td class="pro-title"><a href="single-product.html">Cillum dolore tortor nisl fermentum</a></td>
-                                                <td class="pro-price"><span>&#8377;29.00</span></td>
+                                                 <td class="pro-thumbnail"><img src="{{$item->productid->getFirstMediaUrl('product_img','preview')}}" class="img-fluid" alt="Product"></td>
+                                                <td class="pro-title">{{$item->productid->product_name.'--'.$item->productvariantid->product_variant_name}}</td>
+                                                <td class="pro-price"><span>&#8377;{{$item->final_price}}</span></td>
                                                 <td class="pro-quantity">
                                                     <div class="quantity-selection"><input type="number" value="1" min="1"></div>
                                                 </td>
-                                                <td class="pro-subtotal"><span>&#8377;29.00</span></td>
-                                                <td class="pro-remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
+                                                <td class="pro-subtotal"><span>&#8377;{{$item->final_price}}</span></td>
+                                                <td class="pro-remove"><a href="javascript:void(0)" class="cart-item" data-hsn="{{$item->hsn_code}}"><i class="fa fa-trash-o"></i></a></td> 
                                             </tr>
-                                        </tbody>
+                                            
+                                            @endforeach;
+                                                </tbody>
                                     </table>
                                 </div>
 
@@ -77,7 +71,18 @@
                             <div class="row">
 
                                 <div class="col-lg-7 col-12">
-
+                                    <!--Show Customer Address -->
+                                    <div style="display: flex;flex-wrap:wrap">
+                                    @foreach ($customeraddress as $item2)
+                                        <div style="float: left;padding:10%;border:black 1px solid">
+                                        <span>Flat No: {{$item2->flatno}}</span></br>
+                                        <span>Landmark: {{$item2->landmark}}</span></br>
+                                        <span>City: {{$item2->city}}</span></br>
+                                        <span>State: {{$item2->state.','.$item2->country}}</span></br>
+                                        <span>Zip Code: {{$item2->zipcode}}</span>
+                                    </div>
+                                    @endforeach
+                                </div>
                                     <div class="myaccount-content">
                                         <a href="#button" type="radio" class=" btn d-inline-block address-btn" value="addnew" id="bt" onclick="toggle(this)">Add New Address</a><br><br/>
                                     </div>
@@ -87,7 +92,7 @@
                             
                                 <!--The DIV element to toggle visibility. Its "display" property is set as "none". -->
                                 <div style="border:solid 1px #ddd; padding:10px; display:none;" id="cont">
-                                    <form action="#" class="checkout-form">
+                                    <form class="checkout-form" id="checkout-address">
                                         <div class="row row-40">
         
                                             <div class="col-lg-12">
@@ -96,43 +101,21 @@
                                                 <div id="billing-form">
                                                     <h4 class="checkout-title">Billing Address</h4>
                                                     <div class="form-group">
-                                                        <div class="row">
-        
-                                                            <div class="col-md-6 col-md-12">
-                                                                <label>First Name<span class="text-danger"> * </span></label>
-                                                                <input type="text" id="fname" name="lname" placeholder="First Name" required>
-                                                            </div>
-        
-                                                            <div class="col-md-6 col-12">
-                                                                <label>Last Name<span class="text-danger"> * </span></label>
-                                                                <input type="text" id="lname" name="lname"  placeholder="Last Name" required>
-                                                            </div>
-        
-                                                            <div class="col-md-6 col-12">
-                                                                <label>Email Address<span class="text-danger"> * </span></label>
-                                                                <input type="email" id="email" name="email" placeholder="Email Address" required>
-                                                            </div>
-        
-                                                        
-                                                            
-                                                            <div class="col-12">
-                                                                <label>Phone Number<span class="text-danger"> * </span></label>
-                                                                <input type="number" id="phone" name="phone" placeholder="Phone Number" required>
-                                                            </div>
+                                                        <div class="row">      
         
                                                             <div class="col-12">
                                                                 <label>Flat No<span class="text-danger"> * </span></label>
-                                                                <input type="text" id="flatno" name="flatno" placeholder="Flat No" required>
+                                                                <input type="text" id="flatno" name="flatno" value="{{old('flatno')}}" placeholder="Flat No" required>
                                                             </div>
         
                                                             <div class="col-12">
                                                                 <label>Landmark<span class="text-danger"> * </span></label>
-                                                                <input type="text" id="landmark" name="landmark" placeholder="Landmark" required>
+                                                                <input type="text" id="landmark" name="landmark" value="{{old('landmark')}}" placeholder="Landmark" required>
                                                             </div>
         
                                                             <div class="col-md-6 col-12">
                                                                 <label>State <span class="text-danger"> * </span></label>
-                                                                <select style="line-height: 23px; color: #707070; border: 1px solid #999; padding: 10px 20px; width: 100%;" name="state" id="state" name="state" required>
+                                                                <select style="line-height: 23px; color: #707070; border: 1px solid #999; padding: 10px 20px; width: 100%;" name="state" id="state" value="{{old('state')}}" required>
                                                                     <option value="">State...</option>
                                                                         <option value="Andhra Pradesh">Andhra Pradesh</option>
                                                                         <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
@@ -175,16 +158,16 @@
         
                                                             <div class="col-md-6 col-12">
                                                                 <label>City <span class="text-danger"> * </span></label>
-                                                                <input type="text" id="city" name="city" placeholder="City" required>
+                                                                <input type="text" id="city" name="city" value="{{old('city')}}" placeholder="City" required>
                                                             </div>
         
                                                             <div class="col-md-6 col-12">
                                                                 <label>Zip Code <span class="text-danger"> * </span></label>
-                                                                <input type="number" id="zipcode" name="zipcode" placeholder="Zip Code" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" min="0" maxlength="6" required>
+                                                                <input type="number" id="zipcode" name="zipcode" value="{{old('zipcode')}}" placeholder="Zip Code" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" min="0" maxlength="6" required>
                                                             </div>
                                                         
                                                             <div class="col-12">
-                                                                <button style="background-color: #292929;" type="submit" class="btn btn-primary">Save changes</button>
+                                                                <button style="background-color: #292929;" type="submit" class="btn btn-primary">Add</button>
                                                             </div>
         
                                                         </div>
