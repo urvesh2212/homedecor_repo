@@ -13,7 +13,7 @@
               <div class="col-lg-12">
                   <!--=======  page wrapper  =======-->
                   <div class="page-wrapper">
-                      <div class="page-content-wrapper">
+                      <div class="page-content-wrapper" style="padding-bottom: 20px;">
                           <div class="row">
 
                               <div class="col-lg-12">
@@ -74,18 +74,18 @@
                           <div class="about-mission-vission-goal row row-20">
 
                               <div class="col-lg-4 col-md-4 col-12">
-                                  <h3>OUR VISSION</h3>
-                                  <p>Eposi provide how all this mistaken idea of denouncing pleasure and sing pain was born an will give you a ete account of the system, and expound the actual teangs the eat explorer of the truth, the mer of human tas assumenda est, omnis dolor repellend</p>
+                                  <h3>Exclusive designs</h3>
+                                  <p>We source and curate 100% of the products we sell in-house. This allow us to give you exclusive designs at a great value.</p>
                               </div>
 
                               <div class="col-lg-4 col-md-4 col-12">
-                                  <h3>OUR MISSION</h3>
-                                  <p>Eposi provide how all this mistaken idea of denouncing pleasure and sing pain was born an will give you a ete account of the system, and expound the actual teangs the eat explorer of the truth, the mer of human tas assumenda est, omnis dolor repellend</p>
+                                  <h3>Experience</h3>
+                                  <p>We have travelled throughout India to bring you the most beautiful collections available and our master designers have been doing from last many years.</p>
                               </div>
 
                               <div class="col-lg-4 col-md-4 col-12">
-                                  <h3>OUR GOAL</h3>
-                                  <p>Eposi provide how all this mistaken idea of denouncing pleasure and sing pain was born an will give you a ete account of the system, and expound the actual teangs the eat explorer of the truth, the mer of human tas assumenda est, omnis dolor repellend</p>
+                                  <h3>Buyer Guarantee</h3>
+                                  <p>The Ekikai guarantee ensures that you have complete peace of mind while making purchases with us.</p>
                               </div>
 
                           </div>
@@ -95,7 +95,6 @@
                               <!-- About Section Title -->
                               <div class="about-section-title col-12">
                                   <h3>YOU CAN CHOOSE US BECAUSE <br>WE ALWAYS PROVIDE IMPORTANCE...</h3>
-                                      <p>Eposi provide how all this mistaken idea of denouncing pleasure and sing pain was born will give you a complete account of the system, and expound the actual</p>
                               </div>
 
                               <!-- About Feature -->
@@ -104,37 +103,32 @@
 
                                       <div class="col-md-6 col-12">
                                           <h4>FAST DELIVERY</h4>
-                                          <p>Eposi provide how all this mistaken dea of denouncing pleasure and sing </p>
+                                          <p>We will dispatch your products in 4 working days once we receive the order from our customers.  </p>
                                       </div>
 
                                       <div class="col-md-6 col-12">
                                           <h4>QUALITY PRODUCT</h4>
-                                          <p>Eposi provide how all this mistaken dea of denouncing pleasure and sing </p>
+                                          <p>All our products are 100% quality and guarantee. Light the home with our products.</p>
                                       </div>
 
                                       <div class="col-md-6 col-12">
                                           <h4>SECURE PAYMENT</h4>
-                                          <p>Eposi provide how all this mistaken dea of denouncing pleasure and sing </p>
-                                      </div>
-
-                                      <div class="col-md-6 col-12">
-                                          <h4>MONEY BACK GUARNTEE</h4>
-                                          <p>Eposi provide how all this mistaken dea of denouncing pleasure and sing </p>
+                                          <p>Using our secured Razorpay payment gateway , users can pay securely while purchasing. </p>
                                       </div>
 
                                       <div class="col-md-6 col-12">
                                           <h4>EASY ORDER TRACKING</h4>
-                                          <p>Eposi provide how all this mistaken dea of denouncing pleasure and sing </p>
+                                          <p>Users can track the orders easily by giving order id and get details in the user dashboard. </p>
                                       </div>
 
                                       <div class="col-md-6 col-12">
                                           <h4>FREE RETURN</h4>
-                                          <p>Eposi provide how all this mistaken dea of denouncing pleasure and sing </p>
+                                          <p>Return charges will not be there in case of any damage of the product. Free returnable. </p>
                                       </div>
 
                                       <div class="col-md-6 col-12">
                                           <h4>24/7 SUPPORT</h4>
-                                          <p class="mb-md-0">Eposi provide how all this mistaken dea of denouncing pleasure and sing </p>
+                                          <p class="mb-md-0">Our customer care will provide the support through mail and calls for 24/7. </p>
                                       </div>
 
                                   </div>
@@ -142,7 +136,8 @@
 
                               <!-- About Feature Banner -->
                               <div class="about-feature-banner col-md-5 col-12">
-                                  <div class="single-banner mb-0"><a href="#"><img src="assets/img/banners/slider-banner2.jpg" class="img-fluid" alt="Banner"></a></div>
+                                  <h3 style="font-size: 20px; font-weight: 600;">Our Founding Pillars</h3>
+                                  <div class="single-banner mb-0"><a href="#"><img src="assets/img/about us.png" class="img-fluid" alt="Banner"></a></div>
                               </div>
 
                           </div>
@@ -153,33 +148,4 @@
           </div>
       </div>
   </div>
-  <div class="newsletter-area section-space--inner">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 offset-lg-2">
-                <div class="newsletter-wrapper">
-                    <p class="small-text">Special Ofers For Subscribers</p>
-                    <h3 class="title">Ten Percent Member Discount</h3>
-                    <p class="short-desc">Subscribe to our newsletters now and stay up to date with new collections, the latest lookbooks and exclusive offers.</p>
-
-                    <div class="newsletter-form">
-                        <form id="mc-form" class="mc-form">
-                            <input type="email" placeholder="Enter Your Email Address Here..." required>
-                            <button type="submit" value="submit">SUBSCRIBE</button>
-                        </form>
-
-                    </div>
-                    <!-- mailchimp-alerts Start -->
-                    <div class="mailchimp-alerts">
-                        <div class="mailchimp-submitting"></div><!-- mailchimp-submitting end -->
-                        <div class="mailchimp-success"></div><!-- mailchimp-success end -->
-                        <div class="mailchimp-error"></div><!-- mailchimp-error end -->
-                    </div>
-                    <!-- mailchimp-alerts end -->
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-    @endsection
+@endsection
