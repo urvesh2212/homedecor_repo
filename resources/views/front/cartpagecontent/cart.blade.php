@@ -110,7 +110,7 @@
                                 <div class="row">
                                         <div class="col-lg-7 col-12">
                                             <div class="myaccount-content" style="margin-top: 20px;">
-                                                <a href="#button" type="radio" class=" btn d-inline-block address-btn" value="addnew" id="bt" onclick="toggle(this)">Add New Address</a><br><br/>
+                                                <a href="#button" type="button" class=" btn d-inline-block address-btn" value="addnew" id="bt" onclick="toggle(this)">Add New Address</a><br><br/>
                                             </div>
             
                                             
@@ -231,16 +231,16 @@
                                     <!--Show Customer Address -->
                                   <div style="display: flex;flex-wrap:wrap">
                                         @foreach ($customeraddress as $item2)
-                                   <label>
-                                    <input type="radio" name="test" value="">
-                                            <button class="btn btn-default" style="float: left;padding:10%; border:black 1px solid; margin:0 30 10 20; ">
+                                   <label class="btn btn-default" style="float: left;padding:10%; border:black 1px solid; margin:0 30 10 20;">
+                                    <input type="radio" name="test" class="addressbtn"  value="{{$item2->id}}">
+                                            {{-- <button class="btn btn-default" style="float: left;padding:10%; border:black 1px solid; margin:0 30 10 20; "> --}}
                                             <span>Flat No: {{$item2->flatno}}</span></br>
                                             <span>Landmark: {{$item2->landmark}}</span></br>
                                             <span>City: {{$item2->city}}</span></br>
                                             <span>State: {{$item2->state.','.$item2->country}}</span></br>
                                             <span>Zip Code: {{$item2->zipcode}}</span></br>
                                             <a href="{{route('userdashboard')}}"><i class="fa fa-edit"></i>&nbsp;Edit</a>
-                                            </button>
+                                            {{-- </button> --}}
                                    </label>
                                         @endforeach
                                   </div>
