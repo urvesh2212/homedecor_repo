@@ -4221,6 +4221,34 @@ select {
 	color: #707070;
 }
 
+/* customer review css */
+.star-rating {
+    direction: rtl;
+    display: inline-block;
+    padding: 20px;
+	display: inline-flex;
+}
+
+.star-rating input[type=radio] {
+    display: none
+}
+
+.star-rating label {
+    color: #bbb;
+    font-size: 18px;
+    padding: 0;
+    cursor: pointer;
+    -webkit-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out
+}
+
+.star-rating label:hover,
+.star-rating label:hover ~ label,
+.star-rating input[type=radio]:checked ~ label {
+    color: #f2b600
+}
+/*  */
+
 /*-- Single Product Rating --*/
 
 .product-rating-wrap {
@@ -6734,7 +6762,6 @@ h3.comment-counter {
 
 /* ---- cart page address show----*/
 
-
 /* HIDE RADIO */
 [type=radio] { 
 	position: absolute;
@@ -6753,7 +6780,6 @@ h3.comment-counter {
 	outline: 2px solid #f00;
   }
 
-  
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
 
