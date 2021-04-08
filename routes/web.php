@@ -1,6 +1,5 @@
 <?php
 
-
 Route::get('/', [\App\Http\Controllers\Front\LandingController::class,'index'])->name('homepage');
 //individual pages
 
@@ -16,6 +15,9 @@ Route::post('/add_address',[\App\Http\Controllers\Front\CustomerController::clas
 Route::post('/default_address',[\App\Http\Controllers\Front\CustomerController::class,'makedeaultaddress']);
 Route::post('/add_cart',[\App\Http\Controllers\Front\ProductController::class,'Add_To_Cart'])->name('addcart');
 Route::post('/remove_from_cart',[\App\Http\Controllers\Front\ProductController::class,'remove_cart']);
+
+Route::post('/add_feedbackreview',[\App\Http\Controllers\Front\ProductController::class,'add_feedback']);
+
 Route::view('/about','front.about',['title' => 'About Us'])->name('about');
 Route::view('/mobilelogin','front.mobilelogin',['title' => 'Login'])->name('login');
 //end

@@ -13,6 +13,7 @@ use App\Models\SubCategory;
 use App\Models\Brand;
 use App\Models\OfferProduct;
 use App\Models\Front\CustomerAddress;
+use App\Models\FeedbackView;
 
 
 class ProductController extends Controller
@@ -101,27 +102,35 @@ class ProductController extends Controller
                     ];
 
                  $req->session()->put('cart_item',$cart);
-                return json_encode(['msg' => 'Product Added Successfully','status' => 200]);
+
+                 $cartcount = count(session('cart_item'));
+
+                return json_encode(['msg' => 'Product Added Successfully','status' => 200,'cartcount' => $cartcount]);
 
                 }elseif(isset($cart[$product_hsn])){
 
                     $cart[$product_hsn]['qty']++;
                     $req->session()->put('cart_item', $cart);
-                    return json_encode(['msg' => 'Product Added Successfully','status' => 200]);
+                    $cartcount = count(session('cart_item'));
+
+                    return json_encode(['msg' => 'Product Added Successfully','status' => 200,'cartcount' => $cartcount]);
                 }else{
                     $cart[$product_hsn] = [
                         'qty' => 1,
                     ];
 
                     $req->session()->put('cart_item',$cart);
-                    return json_encode(['msg' => 'Product Added Successfully','status' => 200]);
+                    $cartcount = count(session('cart_item'));
+                    return json_encode(['msg' => 'Product Added Successfully','status' => 200,'cartcount' => $cartcount]);
                 }
 
             }else{
-                return json_encode(['msg' => 'Error While Adding data','status' => 500]);
+                $cartcount = count(session('cart_item'));
+                return json_encode(['msg' => 'Error While Adding data','status' => 500,'cartcount' => $cartcount]);
             }
         }
-        return json_encode(['msg' => 'Error.Try Again','status' => 500]);
+        $cartcount = count(session('cart_item'));
+        return json_encode(['msg' => 'Error.Try Again','status' => 500,'cartcount' => $cartcount]);
     }
 
     public function remove_cart(Request $req)
@@ -135,6 +144,7 @@ class ProductController extends Controller
                 {
                     $req->session()->forget('cart_item');
                 }
+
                 return json_encode(['msg' => 'Product Successfully Removed','status'=> 200]);
             }else{
                 return json_encode(['msg' => 'No Cart Found','status'=> 500]);
@@ -173,6 +183,27 @@ class ProductController extends Controller
     {
         $customerid = session()->get('userid');
         return CustomerAddress::with('customeraccount')->get();       
+    }
+
+    public function add_feedback(Request $req)
+    {
+        if($req->ajax() && $req->session()->has('login_status'))
+        {
+            $feedback = FeedbackView::create([
+                'customerfeedback_email' => $req->email,
+                'description' => $req->review,
+                'rating' => $req->rating,
+                'product_id' => $req->pid,
+                'customerid' => $req->session->get('userid'),
+            ]);
+
+            if($feedback){
+                return json_encode(['msg' => 'yo','status'=>200]);
+            }else{
+                return json_encode(['status'=>500]);
+            }
+        }
+        return false;
     }
 }
 

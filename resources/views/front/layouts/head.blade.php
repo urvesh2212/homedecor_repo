@@ -53,17 +53,6 @@ $singleproducts = \App\Models\Product::where('product_status','=','1')->get();
                                 <ul class="icon-list" style="margin-bottom: 0px; justify-content: center">
                                 <li style="width:66%; height: 40px;">
 
-                                    {{-- <select id ="catdropdown">
-                                    <option value="" style="color: #342a2a;">&nbsp;All Category&nbsp;</option>
-                                    @foreach($categories as $catid => $cat)
-                                        <option value="{{$catid}}" style="padding-left: 20px;">{{$cat}}</option>
-                                            @endforeach
-                                        </select>
-                                    <form>
-                                    <input type="text" class="search" placeholder="Search For Products">
-                                    <button class="btnn"><i class="fa fa-search"></i></button>
-                                    </form> --}}
-
                                     <div class="search-bar">
                                          <select id ="catdropdown">
                                     <option value="" style="color: #342a2a;">&nbsp;All Category&nbsp;</option>
@@ -82,7 +71,11 @@ $singleproducts = \App\Models\Product::where('product_status','=','1')->get();
                                     <div class="header-cart-icon" style="padding-top: 5px;">
                                         <a href="{{route('cart')}}">
                                             <i class="ion-bag" style="font-size:25px;"></i>
-                                            <span class="counter"></span>
+                                            <span class="cartcounter" style="font-size: 15px;float: right;">
+                                                @if(session()->has('cart_item'))
+                                                {{count(session('cart_item'))}}
+                                                @endif    
+                                            </span>
                                         </a>
                                     </div>
                                 </li>
