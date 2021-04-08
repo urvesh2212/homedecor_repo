@@ -112,7 +112,7 @@ var_dump(session('cart_item'));
 
                                         <!--=======  End of product details slider area  =======-->
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-6" id="tabs">
                                         <!--=======  single product content description  =======-->
                                         <div class="single-product-content-description">
                                             <p class="single-info">Brands {{$productdata[0]->brandid->brand_name}}</p>
@@ -122,14 +122,17 @@ var_dump(session('cart_item'));
                                             </div>
                                             @php $counter = 1 ;@endphp
                                             @foreach ($productdata[0]->SubTypeProductid as $item)
-                                            <div>
-                                            <p class="single-grid-product__price"><span class="discounted-price tab-pane-fade {{($counter == 1 ? 'active':'')}}">&#8377;{{$item->final_price}}</span></p>
+                                            <div class="dummyclass">
+                                            <div class="{{$item->hsn_code}}" style="display:{{($counter == 1) ? 'block' : 'none'}}">
+                                            <p class="single-grid-product__price"><span class="discounted-price">&#8377;{{$item->final_price}}</span></p>
                                                 {{-- <span class="main-price discounted">&#8377;120.00</span> --}}
 
-                                            <p class="single-info">Product Code: <span class="value tab-pane-fade {{($counter == 1 ? 'active':'')}}">{{$item->hsn_code}}</span> </p>
+                                            <p class="single-info">Product Code: <span class="value">{{$item->hsn_code}}</span> </p>
                                             {{-- <p class="single-info">Reward Points: <span class="value">200</span> </p> --}}
-                                            <p class="single-info">Availability: <span class="value tab-pane-fade {{($counter == 1 ? 'active':'')}}">{{($item->product_subtype_status == 1) ? 'In Stock' : 'Out Of Stock'}}</span> </p>
+                                            <p class="single-info">Availability: <span class="value">{{($item->product_subtype_status == 1) ? 'In Stock' : 'Out Of Stock'}}</span> </p>
                                             </div>
+                                            </div>
+                                            @php $counter++ ;@endphp
                                             @endforeach
 
                                             <div class="product-buttons">  
@@ -139,15 +142,14 @@ var_dump(session('cart_item'));
                                                     @foreach ($variants as $item2)
                                                     @if ($item2->id === $item->product_variant_id)
                                                     @if($item->product_subtype_status != 1)
-                                                    <button type="button" value="{{$item2->product_variant_name}}" disabled>{{$item2->product_variant_name}}</button>             
+                                                    <button value="{{$item->hsn_code}}" class="pvariantbtn" style="font-weight:600;line-height:50px;padding:0 35px;transition: .3s;vertical-align:middle;color:#e33;border:2px solid #e33;" type="radio">{{$item2->product_variant_name}}</button>
                                                     @else 
-                                                    <button type="button" value="{{$item2->product_variant_name}}">{{$item2->product_variant_name}}</button>                                        
+                                                    <a><button value="{{$item->hsn_code}}" class="pvariantbtn" type="radio">{{$item2->product_variant_name}}</button></a>      
                                                     @endif      
                                                     @endif                                                        
                                                     @endforeach
-
                                                     @endforeach
-                                            
+                                                
                                                 </span>
                                             </div>
 
@@ -159,16 +161,14 @@ var_dump(session('cart_item'));
                                                     <label>Qty</label>
                                                     <input type="number" value="1" min="1">
                                                 </div> --}}
-                                                
+                                                @php $counter2 = 1 ;@endphp
                                                 @foreach ($productdata[0]->SubTypeProductid as $anchorid)
                                                 @if($anchorid->product_subtype_status == 1)
-                                                <div class="product-buttons">
+                                                <div class="{{$anchorid->hsn_code}}" style="display:{{($counter2 == 1) ? 'block' : 'none'}}">
                                                     <a class="cart-btn" href="javascript:void(0)" data-value="{{$anchorid->hsn_code}}" style="margin-top: 0px;"> <i class="ion-bag"></i> ADD TO CART</a>
                                                 </div>                                                    
                                                 @endif
-                                                @php
-                                                $counter++    
-                                                @endphp
+                                            @php $counter2++;    @endphp
                                                 @endforeach
                                             </div>
                                             <br/>
@@ -200,9 +200,8 @@ var_dump(session('cart_item'));
                                                     <!--=======  product description  =======-->
 
                                                     <div class="product-description">
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla.</p>
+                                                        <p>{{$productdata[0]->description}}</p>
 
-                                                        <p>Pellentesque aliquet, sem eget laoreet ultrices, ipsum metus feugiat sem, quis fermentum turpis eros eget velit. Donec ac tempus ante. Fusce ultricies massa massa. Fusce aliquam, purus eget sagittis vulputate, sapien libero hendrerit est, sed commodo augue nisi non neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempor, lorem et placerat vestibulum, metus nisi posuere nisl, in accumsan elit odio quis mi. Cras neque metus, consequat et blandit et, luctus a nunc. Etiam gravida vehicula tellus, in imperdiet ligula euismod eget.</p>
                                                     </div>
 
                                                     <!--=======  End of product description  =======-->
@@ -215,121 +214,46 @@ var_dump(session('cart_item'));
                                                             <h4>4.5 <span>(Overall)</span></h4>
                                                             <span>Based on 9 Comments</span>
                                                         </div>
-                                                        <div class="rating-list">
-                                                            <div class="sin-list float-left">
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <span>(5)</span>
-                                                            </div>
-                                                            <div class="sin-list float-left">
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star-o"></i>
-                                                                <span>(3)</span>
-                                                            </div>
-                                                            <div class="sin-list float-left">
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star-o"></i>
-                                                                <i class="fa fa-star-o"></i>
-                                                                <span>(1)</span>
-                                                            </div>
-                                                            <div class="sin-list float-left">
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star-o"></i>
-                                                                <i class="fa fa-star-o"></i>
-                                                                <i class="fa fa-star-o"></i>
-                                                                <span>(0)</span>
-                                                            </div>
-                                                            <div class="sin-list float-left">
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star-o"></i>
-                                                                <i class="fa fa-star-o"></i>
-                                                                <i class="fa fa-star-o"></i>
-                                                                <i class="fa fa-star-o"></i>
-                                                                <span>(0)</span>
-                                                            </div>
                                                         </div>
                                                         <div class="ratings-wrapper">
 
                                                             <div class="sin-ratings">
                                                                 <div class="rating-author">
-                                                                    <h3>Cristopher Lee</h3>
-                                                                    <div class="rating-star">
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <span>(5)</span>
-                                                                    </div>
-                                                                </div>
-                                                                <p>enim ipsam voluptatem quia voluptas sit
-                                                                    aspernatur aut odit aut fugit, sed quia res eos
-                                                                    qui ratione voluptatem sequi Neque porro
-                                                                    quisquam est, qui dolorem ipsum quia dolor sit
-                                                                    amet, consectetur, adipisci veli</p>
-                                                            </div>
-
-                                                            <div class="sin-ratings">
-                                                                <div class="rating-author">
-                                                                    <h3>Rashed Mahmud</h3>
-                                                                    <div class="rating-star">
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <span>(5)</span>
-                                                                    </div>
-                                                                </div>
-                                                                <p>enim ipsam voluptatem quia voluptas sit
-                                                                    aspernatur aut odit aut fugit, sed quia res eos
-                                                                    qui ratione voluptatem sequi Neque porro
-                                                                    quisquam est, qui dolorem ipsum quia dolor sit
-                                                                    amet, consectetur, adipisci veli</p>
-                                                            </div>
-
-                                                            <div class="sin-ratings">
-                                                                <div class="rating-author">
                                                                     <h3>Hasan Mubarak</h3>
-                                                                    <div class="rating-star">
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <span>(5)</span>
-                                                                    </div>
                                                                 </div>
                                                                 <p>enim ipsam voluptatem quia voluptas sit
-                                                                    aspernatur aut odit aut fugit, sed quia res eos
-                                                                    qui ratione voluptatem sequi Neque porro
-                                                                    quisquam est, qui dolorem ipsum quia dolor sit
-                                                                    amet, consectetur, adipisci veli</p>
+                                                                    aspernatur aut odit aut fugit, sed quia res eos</p>
                                                             </div>
 
                                                         </div>
                                                         <div class="rating-form-wrapper fix">
                                                             <h3>Add your Comments</h3>
-                                                            <form action="#">
+                                                            <form id="feedbackform">
                                                                 <div class="rating-form row">
                                                                     <div class="col-12 mb-15">
                                                                         <h5>Rating:</h5>
-                                                                        <div class="rating-star fix">
-                                                                            <i class="fa fa-star-o"></i>
-                                                                            <i class="fa fa-star-o"></i>
-                                                                            <i class="fa fa-star-o"></i>
-                                                                            <i class="fa fa-star-o"></i>
-                                                                            <i class="fa fa-star-o"></i>
-                                                                        </div>
+                                                                        <div class="star-rating">
+                                                                            <input id="star-5" type="radio" name="rating" value="5" />
+                                                                            <label for="star-5" title="5 stars">
+                                                                              <i class="active fa fa-star" aria-hidden="true"></i>
+                                                                            </label>
+                                                                            <input id="star-4" type="radio" name="rating" value="4" />
+                                                                            <label for="star-4" title="4 stars">
+                                                                              <i class="active fa fa-star" aria-hidden="true"></i>
+                                                                            </label>
+                                                                            <input id="star-3" type="radio" name="rating" value="3" />
+                                                                            <label for="star-3" title="3 stars">
+                                                                              <i class="active fa fa-star" aria-hidden="true"></i>
+                                                                            </label>
+                                                                            <input id="star-2" type="radio" name="rating" value="2" />
+                                                                            <label for="star-2" title="2 stars">
+                                                                              <i class="active fa fa-star" aria-hidden="true"></i>
+                                                                            </label>
+                                                                            <input id="star-1" type="radio" name="rating" value="1" />
+                                                                            <label for="star-1" title="1 star">
+                                                                              <i class="active fa fa-star" aria-hidden="true"></i>
+                                                                            </label>
+                                                                          </div>
                                                                     </div>
                                                                     <div class="col-md-6 col-12 form-group">
                                                                         <label for="name">Name:</label>
@@ -343,6 +267,7 @@ var_dump(session('cart_item'));
                                                                         <label for="your-review">Your Review:</label>
                                                                         <textarea name="review" id="your-review" placeholder="Write a review"></textarea>
                                                                     </div>
+                                                                    <input type="hidden" name="pid" id="pid" value="{{$productdata[0]->id}}">
                                                                     <div class="col-12">
                                                                         <input value="add review" type="submit">
                                                                     </div>
