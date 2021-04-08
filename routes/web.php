@@ -19,7 +19,10 @@ Route::post('/remove_from_cart',[\App\Http\Controllers\Front\ProductController::
 Route::post('/add_feedbackreview',[\App\Http\Controllers\Front\ProductController::class,'add_feedback']);
 
 Route::view('/about','front.about',['title' => 'About Us'])->name('about');
-Route::view('/mobilelogin','front.mobilelogin',['title' => 'Login'])->name('login');
+Route::view('/mobilelogin','front.mobilelogin',['title' => 'Login'])->name('mobilelogin');
+Route::view('/termsconditions','front.terms_condition',['title' => 'TermsCondition'])->name('termsconditions');
+Route::view('/privacypolicy','front.privacypolicy',['title' => 'PrivacyPolicy'])->name('privacypolicy');
+Route::view('/aftercheckout','front.aftercheckout',['title' => 'AfterCheckout'])->name('aftercheckout');
 //end
 
 //Front Auth Routes

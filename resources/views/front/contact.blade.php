@@ -108,36 +108,7 @@
         </div>
     </div>
     <!--====================  End of page content area  ====================-->
-    <!--====================  newsletter area ====================-->
-    <div class="newsletter-area section-space--inner">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 offset-lg-2">
-                    <div class="newsletter-wrapper">
-                        <p class="small-text">Special Offers For Subscribers</p>
-                        <h3 class="title">Ten Percent Member Discount</h3>
-                        <p class="short-desc">Subscribe to our newsletters now and stay up to date with new collections, the latest lookbooks and exclusive offers.</p>
-
-                        <div class="newsletter-form">
-                            <form id="mc-form" class="mc-form">
-                                <input type="email" placeholder="Enter Your Email Address Here..." required>
-                                <button type="submit" value="submit">SUBSCRIBE</button>
-                            </form>
-
-                        </div>
-                        <!-- mailchimp-alerts Start -->
-                        <div class="mailchimp-alerts">
-                            <div class="mailchimp-submitting"></div><!-- mailchimp-submitting end -->
-                            <div class="mailchimp-success"></div><!-- mailchimp-success end -->
-                            <div class="mailchimp-error"></div><!-- mailchimp-error end -->
-                        </div>
-                        <!-- mailchimp-alerts end -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--====================  End of newsletter area  ====================-->
+   
     <!-- Google Map -->
     <script src="https://maps.google.com/maps/api/js?sensor=false&amp;libraries=geometry&amp;v=3.22&amp;key=AIzaSyChs2QWiAhnzz0a4OEhzqCXwx_qA9ST_lE"></script>
 

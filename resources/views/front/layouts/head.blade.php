@@ -16,7 +16,7 @@ $singleproducts = \App\Models\Product::where('product_status','=','1')->get();
                      <div class="col-lg-2 col-md-2" style="height: 100%; padding: 0 0; border-right: 1px solid #eee;">
                         <div class="logo">
                             <a href="{{route('homepage')}}">
-                                <img src="assets/img/homedecor.jpg" class="img-fluid" alt="">
+                                <img src="{{asset('assets/img/Ekikai.jpg')}}" class="img-fluid" alt="">
                             </a>
                         </div>
                      </div>
@@ -40,7 +40,7 @@ $singleproducts = \App\Models\Product::where('product_status','=','1')->get();
                                         <a href="tel:+910123456789" style="font-size: 18px;;"><i class="fa fa-phone"></i>&nbsp;<span>+910123456789</span></a>  
                                     </li> 
                                     <li>
-                                    <a href="https://api.whatsapp.com/send?phone=+910123456789" target="_blank" style="font-size: 18px;"><img src="assets/img/whatsapp.png" alt=""><span>Whatsapp us your orders!</span></a>
+                                    <a href="https://api.whatsapp.com/send?phone=+910123456789" target="_blank" style="font-size: 18px;"><img src="{{asset('assets/img/whatsapp.png')}}" alt=""><span>Whatsapp us your orders!</span></a>
                                     </li>
                                     
                             
@@ -55,8 +55,8 @@ $singleproducts = \App\Models\Product::where('product_status','=','1')->get();
 
                                     <div class="search-bar">
                                          <select id ="catdropdown">
-                                    <option value="" style="color: #342a2a;">&nbsp;All Category&nbsp;</option>
-                                    @foreach($categories as $catid => $cat)
+                                       <option value="" style="color: #342a2a;">&nbsp;All Category&nbsp;</option>
+                                       @foreach($categories as $catid => $cat)
                                         <option value="{{$catid}}" style="padding-left: 20px;">{{$cat}}</option>
                                             @endforeach
                                         </select>
@@ -110,7 +110,7 @@ $singleproducts = \App\Models\Product::where('product_status','=','1')->get();
                         </div>
                         </div>
                     
-                        <div class="header-wrapper d-none d-lg-flex navigation-menu-wrapper" style="margin-left:25%;">
+                        <div class="header-wrapper d-none d-lg-flex navigation-menu-wrapper" style="margin-left:10%;">
                             <nav>
                             <ul style="margin-bottom: 0px;">
                                     <li class="menu-item-has-children"><a href="shop-left-sidebar.html">SHOP</a>
@@ -169,15 +169,15 @@ $singleproducts = \App\Models\Product::where('product_status','=','1')->get();
                     <div class="header-mobile-navigation d-block d-lg-none">
 
                         <div class="row align-items-center">
-                            <div class="col4 col-md-4">
+                            <div class="col4 col-md-4" style="width: 30%;">
                                 <div class="header-logo">
                                     <a href="index.html">
-                                        <img src="assets/img/logo.png" class="img-fluid" alt="">
+                                        <img src="assets/img/Ekikai.jpg" class="img-fluid" alt="" style="height: 50px; width:70px;">
                                     </a>
                                 </div>
                             </div>
                              
-                            <div class="col4 col-md-4">
+                            <div class="col4 col-md-4" style="width: 70%;">
                                 <div class="mobile-navigation text-right">
                                     <div class="header-icon-wrapper">
                                         
@@ -209,15 +209,28 @@ $singleproducts = \App\Models\Product::where('product_status','=','1')->get();
                         </div>
                         <br/>
                         <ul>
-                            <li style="margin-top:auto; margin-left:20px;">
+                            <li style="margin-top:auto;">
                                     
-                                                    <select id ="catdropdown" style="width: 30%;">
+                                                    {{-- <select id ="catdropdown" style="width: 30%;">
                                                     <option value="" style="color: #342a2a;">&nbsp;All&nbsp;</option>
                                                     @foreach($categories as $catid => $cat)
                                                            <option value="{{$catid}}" style="padding-left: 20px;">{{$cat}}</option>
                                                             @endforeach
                                                            </select>
-                                                     <input type="text" class="search" placeholder="Search For Products" style="width:70%;">
+                                                     <input type="text" class="search" placeholder="Search For Products" style="width:70%;"> --}}
+
+                                                     <div class="search-bar" style="width: 100%">
+                                                        <select id ="catdropdown">
+                                                      <option value="" style="color: #342a2a;">&nbsp;All&nbsp;</option>
+                                                      @foreach($categories as $catid => $cat)
+                                                       <option value="{{$catid}}" style="padding-left: 20px;">{{$cat}}</option>
+                                                           @endforeach
+                                                       </select>
+                                                       <form>
+                                                           <input name="search" class="search" type="search" style="width: 250px;">
+                                                           <button class="btnn"><i class="fa fa-search"></i></button>
+                                                       </form>
+                                                   </div>
                             </li> 
                         </ul>
 
