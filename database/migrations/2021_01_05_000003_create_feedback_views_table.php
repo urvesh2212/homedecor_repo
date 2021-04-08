@@ -12,6 +12,7 @@ class CreateFeedbackViewsTable extends Migration
             $table->bigIncrements('id');
             $table->string('customerfeedback_email')->nullable();
             $table->longText('description')->nullable();
+            $table->integer('rating')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

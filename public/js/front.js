@@ -57,8 +57,10 @@ $.ajax({
         if(response.status == 200)
         {
             alert(response.msg);
+            $(".cartcounter").text(response.cartcount);
         }else{
             alert(response.msg);
+            $(".cartcounter").text(response.cartcount);
         }
 
     }
@@ -88,8 +90,45 @@ $('.cart-item').on('click',function(){
 $("#checkout-address").on('submit',function(e){
     e.preventDefault();
     NewAddress();
-})
-    
+});
+
+$(".pvariantbtn").on('click',function(){
+var val = $(this).val();
+$(".product-actions div").css('display','none');
+$(".dummyclass div").css('display','none');
+$("."+val).css('display','block');
+});
+  
+//Feedback Form
+$("#feedbackform").on('submit',function(e)
+{
+e.preventDefault();
+var email = $("#email").val();
+var review = $("#your-review").val();
+var rating =  $("input[name='rating']:checked").val();
+var pid = $("#pid").val();
+
+$.ajax({
+    type: "POST",
+    url: "/add_feedbackreview",
+    data: {"email" :email,"review" : review, "rating" : rating, "pid" : pid},
+    dataType: "json",
+    success: function (response) {
+        if(response.status == 200){
+            alert("Successfully Added");
+        //     var data = '<div class="sin-ratings">'+
+        //      + '<div class="rating-author">'+
+        //        +' <h3>tesing</h3>'+
+        //       + '</div>'+
+        //       + '<p>enim ipsam voluptatem quia voluptas</p>'+
+        //              + '</div>+';
+        // }
+        // $(".sin-ratings").append(data);        
+    }
+}
+});
+});
+
 $(document).ready(function(){
     $("#ajax_loader").hide();
 });
