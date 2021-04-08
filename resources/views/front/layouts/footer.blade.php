@@ -70,7 +70,7 @@
                             <div class="row align-items-center no-gutters">
                                 <div class="col-lg-2 col-md-2">
                                     <div class="footer-logo">
-                                       <a href="{{route('homepage')}}"><img src="assets/img/logo-footer.png" class="img-fluid" alt=""></a>
+                                       <a href="{{route('homepage')}}"><img src="{{asset('assets/img/logo-footer.png')}}" class="img-fluid" alt=""></a>
                                    </div>
                                 </div>
 

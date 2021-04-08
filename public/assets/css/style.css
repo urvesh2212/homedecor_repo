@@ -3992,8 +3992,8 @@ select {
 	font-size: 16px;
 	font-weight: 400;
 	line-height: 22px;
-	width: 100px;
-	height: 54px;
+	width: 50px;
+	height: 50px;
 	padding: 0 20px;
 	text-align: center;
 	color: #000;
@@ -4446,19 +4446,18 @@ select {
 	margin-bottom: 40px;
 }
 
-.cart-table th.pro-thumbnail,
-.cart-table td.pro-thumbnail {
+
+.cart-table p.pro-thumbnail {
 	width: 160px;
 	min-width: 120px;
 	max-width: 160px;
 }
 
-.cart-table th.pro-title,
-.cart-table td.pro-title {
+.cart-table p.pro-title {
 	min-width: 200px;
 }
 
-.cart-table td.pro-thumbnail a {
+.cart-table p.pro-thumbnail a {
 	display: block;
 }
 
@@ -4484,7 +4483,11 @@ select {
 	color: #707070;
 }
 
-/* .cart-table p.pro-quantity { /*----------  Additional cart quantity style will be placed here  ----------*/
+.cart-table p.pro-quantity { /*----------  Additional cart quantity style will be placed here  ----------*/
+}
+
+.cart-table p.pro-subtotal{
+	margin:10px 0 0 50px;
 }
 
 .cart-table p.pro-subtotal span {
@@ -4492,7 +4495,8 @@ select {
 	font-weight: 500;
 	display: block;
 	color: #707070;
-} */
+	
+}
 
 .cart-table p.pro-addtocart button {
 	font-weight: 700;
@@ -4682,8 +4686,8 @@ select {
 .cart-summary .cart-summary-button button {
 	line-height: 24px;
 	float: right;
-	width: 140px;
-	height: 36px;
+	width: 200px;
+	height: 50px;
 	margin-top: 10px;
 	margin-left: 20px;
 	padding: 5px 20px;
@@ -6725,6 +6729,31 @@ h3.comment-counter {
 
 /* ---- terms and condition page ----*/
 
+
+
+
+/* ---- cart page address show----*/
+
+
+/* HIDE RADIO */
+[type=radio] { 
+	position: absolute;
+	opacity: 0;
+	width: 0;
+	height: 0;
+  }
+  
+  /* IMAGE STYLES */
+  [type=radio] + button {
+	cursor: pointer;
+  }
+  
+  /* CHECKED STYLES */
+  [type=radio]:checked + button {
+	outline: 2px solid #f00;
+  }
+
+  
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
 
