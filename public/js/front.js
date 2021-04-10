@@ -67,7 +67,7 @@ $.ajax({
 });
 });
 
-$('.cart-item').on('click',function(){
+$('.pro-remove').on('click',function(){
     var hsn = $(this).data('hsn');
     $.ajax({
         type: "POST",
@@ -107,6 +107,7 @@ var email = $("#email").val();
 var review = $("#your-review").val();
 var rating =  $("input[name='rating']:checked").val();
 var pid = $("#pid").val();
+var name = $("#name").val();
 
 $.ajax({
     type: "POST",
@@ -115,19 +116,57 @@ $.ajax({
     dataType: "json",
     success: function (response) {
         if(response.status == 200){
-            alert("Successfully Added");
-        //     var data = '<div class="sin-ratings">'+
-        //      + '<div class="rating-author">'+
-        //        +' <h3>tesing</h3>'+
-        //       + '</div>'+
-        //       + '<p>enim ipsam voluptatem quia voluptas</p>'+
-        //              + '</div>+';
-        // }
-        // $(".sin-ratings").append(data);        
+            var data = '<div class="sin-ratings">'+
+             + '<div class="rating-author">'+
+               +' <h3>'+name+'</h3>'+
+              + '</div>'+
+              '<p>Rated:'+rating+'</p>'+
+              + '<p>'+review+'</p>'+
+                     + '</div>+';
+                     $(".ratings-wrapper").append(data);  
+                     $("#email").val('');
+                     $("#your-review").val('');
+                     $("input[name='rating']").prop('checked',false);
+                     $("#name").val('');
+    }else{
+        alert("error");
     }
 }
 });
 });
+
+
+// cart update btn
+$(".minus").on('click',function(){
+var getid = $(this).data('value');
+var count = $("#pcount_"+getid).val();
+count--;
+if(count <= 1){
+    $("#pcount_"+getid).val(1);
+}else{
+    $("#pcount_"+getid).val(count);
+}
+});
+
+$(".plus").on('click',function(){
+    var getid = $(this).data('value');
+    var count = $("#pcount_"+getid).val();
+    count++;
+    if(count <= 1){
+        $("#pcount_"+getid).val(1);
+    }else{
+        $("#pcount_"+getid).val(count);
+    }
+    });
+
+    $('.addressarea input[type=radio]').on('click',function() {
+        $('.addressarea').css({'background-image':'','opacity':''});
+        if ($(this).is(':checked')) {
+            imageUrl = 'assets/img/success_tick2.png';
+          $(this).closest('label').css({'background-image':'url(' + imageUrl + ')','opacity':'0.2'});
+        }else{
+        }
+      });
 
 $(document).ready(function(){
     $("#ajax_loader").hide();
