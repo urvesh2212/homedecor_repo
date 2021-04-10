@@ -168,6 +168,26 @@ $(".plus").on('click',function(){
         }
       });
 
+//Coupon Code
+$("#couponform").on('submit',function(e){
+    e.preventDefault();
+    var coupon = $("#couponcode").val();
+    $.ajax({
+        type: "POST",
+        url: '/check_coupon',
+        data: {"couponcode" : coupon},
+        dataType: "json",
+        success: function (response) {
+            if(response.status == 200){
+                alert(response.msg);
+                var output = '<span style="color:green;">'+response.msg+'</span>';
+                $("#couponrow").append(output);
+            }else{
+                alert(response.msg);
+            }
+        }
+    });
+})
 $(document).ready(function(){
     $("#ajax_loader").hide();
 });
