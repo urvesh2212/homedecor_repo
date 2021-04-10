@@ -32,42 +32,40 @@
                     <div class="page-wrapper">
                         <div class="page-content-wrapper">
                             <div class="row">
-                                <div class="col-lg-7 col-12">
-                                  <form action="#">
+                                <div class="col-lg-8 col-md-7">
+                                  
                                       <!--=======  cart table  =======-->
   
-                                      <div class="cart-table table-responsive">
-                                          <table class="table">
-                                              <tbody>
+                                      <div class="cart-table">
+                                        
                                                   @foreach ($getproducts as $item)
-                                                  <div class="row" style="margin:0 0;">
+                                                  <div class="row">
                                                     <div class="col-lg-2">
                                                         <p class="pro-thumbnail"><a href="{{route('singleproductroute',['productid' => $item->productid->id,'productname' => str_replace(' ','-',$item->productid->product_name)])}}"><img src="{{$item->productid->getFirstMediaUrl('product_img')}}" class="img-fluid" alt="Product"></a>
                                                         </p>
                                                     </div>
-                                                    <div class="col-lg-5" style="margin-bottom: 5px;">
+                                                    <div class="col-lg-3">
                                                         <p class="pro-title"><a href="">{{$item->productid->product_name}}</a></p>
                                                         <p class="pro-variant">Product Variant:<span>{{$item->productvariantid->product_variant_name}}</span></p>
-                                                        <p class="pro-remove" data-hsn="{{$item->hsn_code}}"><a href="javascript:void(0)">Delete</a></p>
+                                                        <p class="pro-subtotal">Price :&#8377;{{($item->final_price) * (session()->get('cart_item.'.$item->hsn_code.'.qty'))}}</p>
+                                                        <p class="pro-remove" data-hsn="{{$item->hsn_code}}"><a href="javascript:void(0)">Remove</a></p>
                                                     </div>
-                                                    <p class="pro-quantity">
+                                                    
                                                       <div class="quantity-selection">
                                                         <input type="button" value="-" class="minus" data-value="{{$item->hsn_code}}">
                                                           <input type="number" id="pcount_{{$item->hsn_code}}" value="{{session()->get('cart_item.'.$item->hsn_code.'.qty')}}" min="1">
                                                           <input type="button" value="+" class="plus" data-value="{{$item->hsn_code}}">
                                                         </div>
-                                                    </p>&nbsp;&nbsp;
-                                                    <p class="pro-subtotal"><span>&#8377;{{($item->final_price) * (session()->get('cart_item.'.$item->hsn_code.'.qty'))}}</span></p>
+                                                   
+                                                  
                                                   </div>
                                                   @endforeach
-                                              </tbody>
-                                          </table>
+                                                  
                                       </div>
                                       <!--=======  End of cart table  =======-->
-                                  </form>
 
                                 </div>
-                                <div class="col-lg-5 col-12 d-flex">
+                                <div class="col-lg-4 col-md-5" style="height: 250px;">
                                     <!--=======  Cart summery  =======-->
                                 
                                     <div class="cart-summary">
@@ -77,14 +75,35 @@
                                             <p>Shipping Cost <span>&#8377;50</span></p>
                                             <h2>Grand Total <span>&#8377;{{$getproducts->sum('final_price') + 50}}</span></h2>
                                         </div>
+                                        <div class="discount-coupon">
+                                            <h4>Discount Coupon Code</h4>
+                                            <form id="couponform">
+                                                <div class="row" id="couponrow">
+                                                    <div class="col-md-6 col-12">
+                                                        <input type="text" id="couponcode" placeholder="Coupon Code">
+                                                    </div>
+                                                    <div class="col-md-6 col-12">
+                                                        <input type="submit" value="Apply Code">
+                                                    </div>
+                                                </div>
+                                                </div>
+                                                </div>
+                                         
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
+                                
+                                    
+                                
+                                    
+                             
                                      <!--=======  End of Cart summery  =======-->
                             </div>
-
+                                
                                 <div class="row">
-                                        <div class="col-lg-7 col-12">
-                                            <div class="myaccount-content" style="margin-top: 20px;">
+                                        <div class="col-lg-8 col-md-7">
+                                            <div class="myaccount-content">
                                                 <a href="#button" type="button" class=" btn d-inline-block address-btn" value="addnew" id="bt" onclick="toggle(this)">Add New Address</a><br><br/>
                                             </div>
             
@@ -180,33 +199,21 @@
                                                 
                                                 </div> 
                                         </div>
-                                        <div class="col-lg-5 col-12 d-flex">
-                                            <div class="cart-summary">
-                                            <div class="discount-coupon">
-                                                <h4>Discount Coupon Code</h4>
-                                                <form action="#">
-                                                    <div class="row">
-                                                        <div class="col-md-6 col-12">
-                                                            <input type="text" placeholder="Coupon Code">
-                                                        </div>
-                                                        <div class="col-md-6 col-12">
-                                                            <input type="submit" value="Apply Code">
-                                                        </div>
-                                                    </div>
-                                                    
-                                                </form>
-                                            </div>
-                                            </div>
-                                        </div>
+                                    
                                 </div>
 
                             <div class="row">
-
-                                <div class="col-lg-7 col-12" style="margin-top: 10px;">
+                               
+                                <div class="col-lg-12" style="margin-top: 10px;">
+                                    <div class="addtitle" style="text-align: center">
+                                        <h3>OR</h3>
+                                        <h4>Edit Address</h4>
+                                    </div>
+                                    <hr/>
                                     <!--Show Customer Address -->
-                                  <div style="display: flex;flex-wrap:wrap" id="addressdiv">
+                                  <div id="addressdiv">
                                     @foreach ($customeraddress as $item2)
-                                    <label class="addressarea" style="float: left;padding:10%; border:black 1px solid; margin:0 30 10 20;">
+                                    <label class="addressarea" >
                                      <input type="radio" name="test" class="addressbtn"  value="{{$item2->id}}">
                                              <span>Flat No: {{$item2->flatno}}</span></br>
                                              <span>Landmark: {{$item2->landmark}}</span></br>
@@ -222,10 +229,10 @@
                                 </div>
                                     <!--=======  Discount Coupon  =======-->
                                  
-                                        <div class="col-md-5 col-12" style="padding-right:65px;">
+                                        <div class="col-md-12">
                                             <div class="cart-summary">
                                                 <div class="cart-summary-button">
-                                                    <button class="checkout-btn">Checkout</button>
+                                                   <a href="{{route('checkout')}}"><button class="checkout-btn">Checkout</button></a>
                                                 </div> 
                                             </div>        
                                         </div>   

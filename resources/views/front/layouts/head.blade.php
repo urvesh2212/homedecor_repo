@@ -169,7 +169,7 @@ $singleproducts = \App\Models\Product::where('product_status','=','1')->get();
                     <div class="header-mobile-navigation d-block d-lg-none">
 
                         <div class="row align-items-center">
-                            <div class="col4 col-md-4" style="width: 30%;">
+                            <div class="col4 col-md-6" style="width: 30%;">
                                 <div class="header-logo">
                                     <a href="index.html">
                                         <img src="assets/img/Ekikai.jpg" class="img-fluid" alt="" style="height: 50px; width:70px;">
@@ -177,7 +177,7 @@ $singleproducts = \App\Models\Product::where('product_status','=','1')->get();
                                 </div>
                             </div>
                              
-                            <div class="col4 col-md-4" style="width: 70%;">
+                            <div class="col4 col-md-6" style="width: 70%;">
                                 <div class="mobile-navigation text-right">
                                     <div class="header-icon-wrapper">
                                         
