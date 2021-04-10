@@ -1,27 +1,13 @@
 @extends('front.root')
 @section('content')
 <!--====================  breadcrumb area ====================-->
-<div class="breadcrumb-area section-space--half">
-        <div class="container wide">
-            <div class="row">
-                <div class="col-lg-12">
-                    <!--=======  breadcrumb wrpapper  =======-->
-                    <div class="breadcrumb-wrapper breadcrumb-bg">
-                        <!--=======  breadcrumb content  =======-->
-                        <div class="breadcrumb-content">
-                            <h2 class="breadcrumb-content__title">Shop</h2>
-                            <ul class="breadcrumb-content__page-map">
-                                <li><a href="index.html">Home</a></li>
-                                <li class="active">Shop</li>
-                            </ul>
-                        </div>
-                        <!--=======  End of breadcrumb content  =======-->
-                    </div>
-                    <!--=======  End of breadcrumb wrpapper  =======-->
-                </div>
-            </div>
-        </div>
- </div>
+ <div class="breadcrumb-content">
+    <h2 class="breadcrumb-content__title">Shop</h2>
+    <ul class="breadcrumb-content__page-map">
+        <li><a href="index.html">Home</a></li>
+        <li class="active">Shop</li>
+    </ul>
+</div>
     <!--====================  End of breadcrumb area  ====================-->
 
     <!--====================  shop page content area ====================-->
@@ -115,7 +101,7 @@
 
                                                    @foreach ($brands as $item)                              
                                                     <ul>
-                                                        <li><input type="checkbox" id="{{$item->id}}">{{$item->brand_name}}</li>
+                                                        <li><input type="checkbox" id="{{$item->id}}">&nbsp;{{$item->brand_name}}</li>
                                                     </ul>
                                                      @endforeach 
                                                 </div>
@@ -142,7 +128,7 @@
                                                         <div class="single-grid-product__label">
 
                                                         </div>
-                                                        <a href="single-product.html">
+                                                        <a href="{{route('singleproductroute',['productid' => $pdata->id,'productname' => str_replace(' ','-',$pdata->product_name)])}}">
                                                             <img src="{{$pdata->getFirstMediaUrl('product_img','preview')}}" class="img-fluid" alt="">
                                                         </a>
 
