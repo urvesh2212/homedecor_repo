@@ -1704,14 +1704,8 @@ select {
 	background-image: url('../img/hero-slider/slider2-eposi6-1920x933.jpg');
 }
 
-.hero-slider-bg-18 {
-	background-image: url('../img/hero-slider/slider3-eposi6-1920x933.jpg');
-}
 
 /*----------  hero slider  ----------*/
-
-.hero-slider-wrapper .slick-active { /*-- Hero Content --*/
-}
 
 .hero-slider-wrapper .slick-active .hero-slider-content {
 	overflow: hidden;
@@ -3989,12 +3983,12 @@ select {
 }
 
 .quantity-selection input {
-	font-size: 16px;
+	font-size: 12px;
 	font-weight: 400;
 	line-height: 22px;
-	width: 50px;
-	height: 50px;
-	padding: 0 20px;
+	width: 30px;
+	height: 30px;
+	padding: 0 5px;
 	text-align: center;
 	color: #000;
 	border: 1px solid #e5e5e5;
@@ -4463,7 +4457,7 @@ select {
 }
 
 .cart-table .table tbody tr td {
-	padding: 25px 20px;
+	padding: 0px;
 	text-align: center;
 	vertical-align: middle;
 	border: none;
@@ -4509,9 +4503,6 @@ select {
 	font-weight: 500;
 	display: block;
 	color: #707070;
-}
-
-.cart-table p.pro-quantity { /*----------  Additional cart quantity style will be placed here  ----------*/
 }
 
 .cart-table p.pro-subtotal{
@@ -6763,7 +6754,7 @@ h3.comment-counter {
 /* ---- cart page address show----*/
 
 /* HIDE RADIO */
-[type=radio] { 
+#addressdiv [type=radio] { 
 	position: absolute;
 	opacity: 0;
 	width: 0;
@@ -6771,14 +6762,16 @@ h3.comment-counter {
   }
   
   /* IMAGE STYLES */
-  [type=radio] + button {
+ .addressarea [type=radio] + span {
 	cursor: pointer;
   }
   
   /* CHECKED STYLES */
-  [type=radio]:checked + button {
-	outline: 2px solid #f00;
+.addressarea [type=radio]:checked  {
+	opacity: 0.2;
+	background-image: url('assets/img/success_tick2.png');
   }
+
 
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {

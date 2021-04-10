@@ -38,53 +38,28 @@
   
                                       <div class="cart-table table-responsive">
                                           <table class="table">
-                                             
                                               <tbody>
-                                                <div class="row" style="margin:0 0;">
-                                                  <div class="col-lg-2">
-                                                      <p class="pro-thumbnail"><a href="single-product.html"><img src="assets/img/products/big1-1.jpg" class="img-fluid" alt="Product"></a>
-                                                      </p>
-                                                  </div>
-                                                  <div class="col-lg-5" style="margin-bottom: 5px;">
-                                                      <p class="pro-title"><a href="">Cillum dolore tortor nisl fermentum</a></p>
-                                                      <p class="pro-variant">Product Variant:<span>small</span></p>
-                                                      <p class="pro-remove"><a href="#">Delete</a></p>
-                                                  </div>
-                                                  <p class="pro-quantity">
-                                                    <div class="quantity-selection"><input type="number" value="1" min="1"></div>
-                                                  </p>&nbsp;&nbsp;
-                                                  <p class="pro-subtotal"><span>&#8377;29.00</span></p>
-                                                </div>
-                                                <div class="row" style="margin:0 0;">
-                                                    <div class="col-lg-2">
-                                                        <p class="pro-thumbnail"><a href="single-product.html"><img src="assets/img/products/big1-1.jpg" class="img-fluid" alt="Product"></a>
-                                                        </p>
-                                                    </div>
-                                                    <div class="col-lg-5" style="margin-bottom: 5px;">
-                                                        <p class="pro-title"><a href="">Cillum dolore tortor nisl fermentum</a></p>
-                                                        <p class="pro-variant">Product Variant:<span>small</span></p>
-                                                        <p class="pro-remove"><a href="#">Delete</a></p>
-                                                    </div>
-                                                    <p class="pro-quantity">
-                                                      <div class="quantity-selection"><input type="number" value="1" min="1"></div>
-                                                    </p>&nbsp;&nbsp;
-                                                    <p class="pro-subtotal"><span>&#8377;29.00</span></p>
-                                                  </div>
+                                                  @foreach ($getproducts as $item)
                                                   <div class="row" style="margin:0 0;">
                                                     <div class="col-lg-2">
-                                                        <p class="pro-thumbnail"><a href="single-product.html"><img src="assets/img/products/big1-1.jpg" class="img-fluid" alt="Product"></a>
+                                                        <p class="pro-thumbnail"><a href="{{route('singleproductroute',['productid' => $item->productid->id,'productname' => str_replace(' ','-',$item->productid->product_name)])}}"><img src="{{$item->productid->getFirstMediaUrl('product_img')}}" class="img-fluid" alt="Product"></a>
                                                         </p>
                                                     </div>
                                                     <div class="col-lg-5" style="margin-bottom: 5px;">
-                                                        <p class="pro-title"><a href="">Cillum dolore tortor nisl fermentum</a></p>
-                                                        <p class="pro-variant">Product Variant:<span>small</span></p>
-                                                        <p class="pro-remove"><a href="#">Delete</a></p>
+                                                        <p class="pro-title"><a href="">{{$item->productid->product_name}}</a></p>
+                                                        <p class="pro-variant">Product Variant:<span>{{$item->productvariantid->product_variant_name}}</span></p>
+                                                        <p class="pro-remove" data-hsn="{{$item->hsn_code}}"><a href="javascript:void(0)">Delete</a></p>
                                                     </div>
                                                     <p class="pro-quantity">
-                                                      <div class="quantity-selection"><input type="number" value="1" min="1"></div>
+                                                      <div class="quantity-selection">
+                                                        <input type="button" value="-" class="minus" data-value="{{$item->hsn_code}}">
+                                                          <input type="number" id="pcount_{{$item->hsn_code}}" value="{{session()->get('cart_item.'.$item->hsn_code.'.qty')}}" min="1">
+                                                          <input type="button" value="+" class="plus" data-value="{{$item->hsn_code}}">
+                                                        </div>
                                                     </p>&nbsp;&nbsp;
-                                                    <p class="pro-subtotal"><span>&#8377;29.00</span></p>
+                                                    <p class="pro-subtotal"><span>&#8377;{{($item->final_price) * (session()->get('cart_item.'.$item->hsn_code.'.qty'))}}</span></p>
                                                   </div>
+                                                  @endforeach
                                               </tbody>
                                           </table>
                                       </div>
@@ -94,13 +69,13 @@
                                 </div>
                                 <div class="col-lg-5 col-12 d-flex">
                                     <!--=======  Cart summery  =======-->
-
+                                
                                     <div class="cart-summary">
                                         <div class="cart-summary-wrap">
                                             <h4>Cart Summary</h4>
-                                            <p>Sub Total <span>&#8377;1250.00</span></p>
-                                            <p>Shipping Cost <span>&#8377;00.00</span></p>
-                                            <h2>Grand Total <span>&#8377;1250.00</span></h2>
+                                            <p>Sub Total <span>&#8377;{{$getproducts->sum('final_price')}}</span></p>
+                                            <p>Shipping Cost <span>&#8377;50</span></p>
+                                            <h2>Grand Total <span>&#8377;{{$getproducts->sum('final_price') + 50}}</span></h2>
                                         </div>
                                     </div>
                                 </div>
@@ -229,20 +204,19 @@
 
                                 <div class="col-lg-7 col-12" style="margin-top: 10px;">
                                     <!--Show Customer Address -->
-                                  <div style="display: flex;flex-wrap:wrap">
-                                        @foreach ($customeraddress as $item2)
-                                   <label class="btn btn-default" style="float: left;padding:10%; border:black 1px solid; margin:0 30 10 20;">
-                                    <input type="radio" name="test" class="addressbtn"  value="{{$item2->id}}">
-                                            {{-- <button class="btn btn-default" style="float: left;padding:10%; border:black 1px solid; margin:0 30 10 20; "> --}}
-                                            <span>Flat No: {{$item2->flatno}}</span></br>
-                                            <span>Landmark: {{$item2->landmark}}</span></br>
-                                            <span>City: {{$item2->city}}</span></br>
-                                            <span>State: {{$item2->state.','.$item2->country}}</span></br>
-                                            <span>Zip Code: {{$item2->zipcode}}</span></br>
-                                            <a href="{{route('userdashboard')}}"><i class="fa fa-edit"></i>&nbsp;Edit</a>
-                                            {{-- </button> --}}
-                                   </label>
-                                        @endforeach
+                                  <div style="display: flex;flex-wrap:wrap" id="addressdiv">
+                                    @foreach ($customeraddress as $item2)
+                                    <label class="addressarea" style="float: left;padding:10%; border:black 1px solid; margin:0 30 10 20;">
+                                     <input type="radio" name="test" class="addressbtn"  value="{{$item2->id}}">
+                                             <span>Flat No: {{$item2->flatno}}</span></br>
+                                             <span>Landmark: {{$item2->landmark}}</span></br>
+                                             <span>City: {{$item2->city}}</span></br>
+                                             <span>State: {{$item2->state.','.$item2->country}}</span></br>
+                                             <span>Zip Code: {{$item2->zipcode}}</span></br>
+                                             <a href="{{route('userdashboard')}}"><i class="fa fa-edit"></i>&nbsp;Edit</a>
+                                    </label>
+                                         @endforeach
+ 
                                   </div>
                                   
                                 </div>

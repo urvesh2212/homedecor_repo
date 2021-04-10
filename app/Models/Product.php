@@ -103,4 +103,9 @@ class Product extends Model implements HasMedia
     {
         return $this->hasMany(ProductSubType::class, 'product_id', 'id');
     }
+
+    public function product_review()
+    {
+        return $this->hasMany(FeedbackView::class,'product_id','id');
+    }
 }

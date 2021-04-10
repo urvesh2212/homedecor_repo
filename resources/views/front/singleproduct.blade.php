@@ -206,27 +206,39 @@ var_dump(session('cart_item'));
 
                                                     <!--=======  End of product description  =======-->
                                                 </div>
-                                                <div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
                                                     <!--=======  review content  =======-->
 
                                                     <div class="product-rating-wrap">
                                                         <div class="pro-avg-rating">
-                                                            <h4>4.5 <span>(Overall)</span></h4>
-                                                            <span>Based on 9 Comments</span>
+                                                            <h4>{{$productdata[0]->product_review->sum('rating')/count($productdata[0]->product_review)}}<span>(Overall)</span></h4>
+                                                            <span>Based on {{count($productdata[0]->product_review)}} Comments</span>
                                                         </div>
                                                         </div>
                                                         <div class="ratings-wrapper">
-
+                                                            @foreach ($productdata[0]->product_review as $review)
+                                                                
                                                             <div class="sin-ratings">
                                                                 <div class="rating-author">
-                                                                    <h3>Hasan Mubarak</h3>
+                                                                    <h3>{{$review->customers->customer_name}}</h3>
                                                                 </div>
-                                                                <p>enim ipsam voluptatem quia voluptas sit
-                                                                    aspernatur aut odit aut fugit, sed quia res eos</p>
+                                                                <p>Rated: {{$review->rating}}</p>
+                                                                <p>{{$review->description}}</p>
                                                             </div>
-
+                                                            @endforeach
+                                                        
                                                         </div>
+                                                        @if (session()->has('login_status'))
+                                           
                                                         <div class="rating-form-wrapper fix">
+                                                            @else 
+                                                            
+                                                            <a href="javascript: openLoginModal()" style="position: absolute;top:90%;left:50%">
+                                                                <h4 class="title" >Login/Signup</h4>
+                                                            </a> 
+                                                       
+                                                            <div class="rating-form-wrapper fix" style="height:30%;background-color: rgba(0,0,0,0.4);pointer-events:none">
+                                                            
+                                                            @endif
                                                             <h3>Add your Comments</h3>
                                                             <form id="feedbackform">
                                                                 <div class="rating-form row">

@@ -50,7 +50,7 @@ class ProductController extends Controller
         $productid = request()->segment(2);
         $productname = request()->segment(3);
 
-        $productdata = Product::with('SubTypeProductid','brandid')
+        $productdata = Product::with('SubTypeProductid','brandid','product_review','product_review.customers')
         ->where('id','=',$productid)
         ->where('product_status','=','1')->get();
 
@@ -189,16 +189,18 @@ class ProductController extends Controller
     {
         if($req->ajax() && $req->session()->has('login_status'))
         {
-            $feedback = FeedbackView::create([
-                'customerfeedback_email' => $req->email,
-                'description' => $req->review,
-                'rating' => $req->rating,
-                'product_id' => $req->pid,
-                'customerid' => $req->session->get('userid'),
-            ]);
+            $feedback = new FeedbackView();
+            
+            $feedback->customerfeedback_email = $req->email;
+            $feedback->description = $req->review;
+            $feedback->rating = $req->rating;
+            $feedback->product_id = $req->pid;
+             $feedback->customerid = $req->session()->get('userid');
+             $feedback->save();        
 
             if($feedback){
-                return json_encode(['msg' => 'yo','status'=>200]);
+                $appendfeedback = array($req->all());
+                return json_encode(['msg' => $appendfeedback,'status'=>200]);
             }else{
                 return json_encode(['status'=>500]);
             }
