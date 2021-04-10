@@ -17,7 +17,7 @@ Route::post('/add_cart',[\App\Http\Controllers\Front\ProductController::class,'A
 Route::post('/remove_from_cart',[\App\Http\Controllers\Front\ProductController::class,'remove_cart']);
 
 Route::post('/add_feedbackreview',[\App\Http\Controllers\Front\ProductController::class,'add_feedback']);
-
+Route::post('/check_coupon',[\App\Http\Controllers\Front\ProductController::class,'get_coupon']);
 Route::view('/about','front.about',['title' => 'About Us'])->name('about');
 Route::view('/mobilelogin','front.mobilelogin',['title' => 'Login'])->name('mobilelogin');
 Route::view('/termsconditions','front.terms_condition',['title' => 'TermsCondition'])->name('termsconditions');
@@ -25,6 +25,10 @@ Route::view('/privacypolicy','front.privacypolicy',['title' => 'PrivacyPolicy'])
 Route::view('/aftercheckout','front.aftercheckout',['title' => 'AfterCheckout'])->name('aftercheckout');
 //end
 
+//Checkout routes
+Route::get('/checkout',[\App\Http\Controllers\Front\CheckoutController::class,'index'])->middleware('AuthCustomer')->name('checkout');
+
+//end
 //Front Auth Routes
 
 Route::post('/phoneregister',[\App\Http\Controllers\Auth\Front\CustomerLoginController::class,'PhoneRegister']);
