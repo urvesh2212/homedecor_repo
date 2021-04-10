@@ -22,6 +22,8 @@ class FeedbackView extends Model
     protected $fillable = [
         'customerfeedback_email',
         'description',
+        'rating',
+        'customerid',
         'product_id',
         'created_at',
         'updated_at',
@@ -36,5 +38,10 @@ class FeedbackView extends Model
     public function product()
     {
         return $this->belongsTo(Product::class, 'product_id');
+    }
+
+    public function customers()
+    {
+        return $this->belongsTo(\App\Models\Front\Customer::class,'customerid','uid');
     }
 }
