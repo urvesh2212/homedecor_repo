@@ -14,19 +14,11 @@ use App\Models\Brand;
 use App\Models\OfferProduct;
 use App\Models\Front\CustomerAddress;
 use App\Models\FeedbackView;
+use App\Models\ManageCoupon;
 
 
 class ProductController extends Controller
 {
-
-    public function __Construct()
-    {
-        $this->category = ProductCategory::all();
-        $this->subcategory = SubCategory::all();
-        $this->product = Product::all();
-        $this->brand = Brand::all();
-    }   
-
     public function ShowProdcutByCategory()
     {
 
@@ -206,6 +198,23 @@ class ProductController extends Controller
             }
         }
         return false;
+    }
+
+    public function get_coupon(Request $req)
+    {
+        if($req->ajax() && $req->session()->has('login_status'))
+       {
+            $coupon = strip_tags($req->input('couponcode'));
+            $checkcoupon = ManageCoupon::where('coupon_status','=','1')
+            ->where('coupon_code','=',$coupon)->get();
+            if($checkcoupon -> isEmpty()){
+                return response()->json(['msg' => 'Coupon Invalid','status'=> 500]);                
+            }else{
+                return response()->json(['msg' => 'Congrats! You got '.$checkcoupon[0]->coupon_value.' discount.',
+                'status' => 200]);
+
+            }
+        }
     }
 }
 

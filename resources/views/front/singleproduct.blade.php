@@ -207,9 +207,12 @@ var_dump(session('cart_item'));
                                                     <!--=======  End of product description  =======-->
                                                 </div>
                                                     <!--=======  review content  =======-->
+                                                    <div class="tab-content" id="nav-tabContent">
+                                                        <div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
 
                                                     <div class="product-rating-wrap">
                                                         <div class="pro-avg-rating">
+                                                            @if(isset($product[0]->product_review))
                                                             <h4>{{$productdata[0]->product_review->sum('rating')/count($productdata[0]->product_review)}}<span>(Overall)</span></h4>
                                                             <span>Based on {{count($productdata[0]->product_review)}} Comments</span>
                                                         </div>
@@ -225,7 +228,7 @@ var_dump(session('cart_item'));
                                                                 <p>{{$review->description}}</p>
                                                             </div>
                                                             @endforeach
-                                                        
+                                                            @endif
                                                         </div>
                                                         @if (session()->has('login_status'))
                                            
@@ -287,7 +290,8 @@ var_dump(session('cart_item'));
                                                             </form>
                                                         </div>
                                                     </div>
-
+                                                        </div>
+                                                    </div>
                                                     <!--=======  End of review content  =======-->
                                                 </div>
                                             </div>
