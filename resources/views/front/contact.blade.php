@@ -110,7 +110,7 @@
     <!--====================  End of page content area  ====================-->
    
     <!-- Google Map -->
-    <script src="https://maps.google.com/maps/api/js?sensor=false&amp;libraries=geometry&amp;v=3.22&amp;key=AIzaSyChs2QWiAhnzz0a4OEhzqCXwx_qA9ST_lE"></script>
+    <script src="https://maps.google.com/maps/api/js?sensor=false&amp;libraries=geometry&amp;v=3.22&amp;key=AIzaSyB1rSlaN-KORgr5LlycE02Rtmee4u-X6K4"></script>
 
     <script>
         // When the window has finished loading create our google map below

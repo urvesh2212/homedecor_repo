@@ -19,7 +19,7 @@ class CreateCustomerTable extends Migration
             $table->string('customer_name');
             $table->string('customer_number')->nullable()->unique();
             $table->string('customer_password')->nullable()->unique();
-            $table->string('customer_email')->unique();
+            $table->string('customer_email')->nullable()->unique();
             $table->json('wishlist')->nullable();
             $table->json('cart_items')->nullable();
             $table->string('total_orders')->nullable();

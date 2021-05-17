@@ -23,7 +23,7 @@
         <link href="{{URL::asset('login/css/login-register.css')}}" rel="stylesheet" />
 </head>
 
-<body>
+<body style="height: auto;">
 
 @include('front.layouts.head')
 @yield('content')

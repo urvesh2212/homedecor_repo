@@ -27,7 +27,7 @@
                         </div>
 
                         <div class="form-group {{ $errors->has('product_variant_id') ? 'has-error' : '' }}">
-                            <label class="required" for="product_variant_id">{{ trans('cruds.product.fields.product_variant_name') }}</label>
+                            <label class="required" for="product_variant_id">{{ trans('cruds.productsubtype.fields.product_variant_name') }}</label>
                             <select class="form-control select2" name="product_variant_id" id="product_variant_id" required>
                                 @foreach($productvariantdata as $pvid => $pvname)
                                     <option value="{{ $pvid }}" {{ (old('product_variant_id') ? old('product_variant_id') : $pvid ?? '') == $productsubtype->productvariantid->id ? 'selected' : '' }}>{{ $pvname }}</option>

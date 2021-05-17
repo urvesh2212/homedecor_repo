@@ -402,4 +402,26 @@ return [
          'brand_status_helper' => '',
     ]
     ],
+    'validpincode'            => [
+        'title'          => 'pincode',
+        'title_singular' => 'pincode',
+    ],
+    'validpincodes'     => [
+        'title'          => 'Valid Pincode',
+        'title_singular' => 'Valid Pincode',
+        'fields'         => [
+            'id'                   => 'ID',
+            'id_helper'            => ' ',
+            'pin_code'          => 'Pin Code',
+            'pin_code_helper'   => ' ',
+            'pincode_status'        => 'PinCode Status',
+            'pincode_status_helper' => ' ',
+            'created_at'           => 'Created at',
+            'created_at_helper'    => ' ',
+            'updated_at'           => 'Updated at',
+            'updated_at_helper'    => ' ',
+            'deleted_at'           => 'Deleted at',
+            'deleted_at_helper'    => ' ',
+        ],
+    ],
 ];
