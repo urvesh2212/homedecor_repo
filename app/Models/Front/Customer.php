@@ -27,7 +27,12 @@ class Customer extends Model
         'deleted_at',
     ];
 
+    protected $casts = [
 
+        'cart_items' => 'array',
+        'wishlist' => 'array'
+    ];
+    
     public function customerorder(){
 
         return $this->hasMany(\App\Models\Order::class,'customer_id');
