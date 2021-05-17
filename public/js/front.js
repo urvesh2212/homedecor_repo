@@ -159,6 +159,7 @@ $(".plus").on('click',function(){
     }
     });
 
+    //cart address
     $('.addressarea input[type=radio]').on('click',function() {
         $('.addressarea').css({'background-image':'','opacity':''});
         if ($(this).is(':checked')) {
@@ -168,26 +169,58 @@ $(".plus").on('click',function(){
         }
       });
 
+      //singleproduct
+      $('.pvariant input[type=radio]').on('click',function() {
+        $('.pvariant').css({'border':'','opacity':''});
+        if ($(this).is(':checked')) {
+          $(this).closest('label').css({'border':'2px solid #e33','opacity':'0.5'});
+        }else{
+        }
+      });
 //Coupon Code
 $("#couponform").on('submit',function(e){
     e.preventDefault();
     var coupon = $("#couponcode").val();
+    var id = 1; 
     $.ajax({
         type: "POST",
         url: '/check_coupon',
-        data: {"couponcode" : coupon},
+        data: {"couponcode" : coupon,"couponid" : id},
         dataType: "json",
         success: function (response) {
             if(response.status == 200){
-                alert(response.msg);
-                var output = '<span style="color:green;">'+response.msg+'</span>';
-                $("#couponrow").append(output);
+                $("#couponcode").prop('disabled',true);
+                $("#couponcomment").text(response.msg);
+                $("#removecode").show();
+                $("#couponsubmit").hide();
             }else{
                 alert(response.msg);
             }
         }
     });
-})
+});
+
+$("#removecode").on('click',function(e){
+    var id = 2; 
+    $.ajax({
+        type: "POST",
+        url: '/check_coupon',
+        data: {"couponid" : id},
+        dataType: "json",
+        success: function (response) {
+            if(response.status == 200){
+                alert(response.msg);
+                $("#couponcomment").text('');
+                $("#couponcode").prop('disabled',false).val('');
+                $("#removecode").hide();
+                $("#couponsubmit").show();
+            }else{
+                alert(response.msg);
+            }
+        }
+    });
+});
+
 $(document).ready(function(){
     $("#ajax_loader").hide();
 });
