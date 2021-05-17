@@ -5,11 +5,23 @@
         <div style="margin-bottom: 10px;" class="row">
             <div class="col-lg-12">
                 <a class="btn btn-success" href="{{ route('admin.manage-coupons.create') }}">
-                    {{ trans('global.add') }} {{ trans('cruds.manageCoupon.title_singular') }}
+                    {{ trans('global.add') }} {{ trans('cruds.coupon.title_singular') }}
                 </a>
             </div>
         </div>
     @endcan
+    <div class="col-md-12">
+        @if (session('success'))
+        <div class="alert alert-success alert-dismissible" role="alert">
+            {{session('success')}}
+        </div>
+        @endif
+        @if(session('error'))
+        <div class="alert alert-error alert-dismissible" role="alert">
+            {{session('error')}}
+        </div>
+        @endif
+    </div>
     <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">

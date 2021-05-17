@@ -28,6 +28,7 @@ class StoreProductCategoryRequest extends FormRequest
             'category_name'   => [
                 'string',
                 'required',
+                'unique:product_categories',
             ],
             'category_status' => [
                 'required',

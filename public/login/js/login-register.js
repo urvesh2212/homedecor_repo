@@ -186,7 +186,7 @@ function CreateUser() {
         shakeModal(value = null, data = "Password/Confirm Password does not match");
     } else {
         $.ajax({
-            type: "post",
+            type: "POST",
             url: "/phoneregister",
             data: { 'fname': fname, 'lname': lname, 'customer_number': registernumber, 'customer_password': password },
             dataType: "json",

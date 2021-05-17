@@ -1,6 +1,19 @@
 @extends('front.root')
   @section('content')
-
+  <div id='ajax_loader' style="background: #ffffff;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: 5000;
+  top: 0;
+  left: 0;
+  float: left;
+  text-align: center;
+  padding-top: 25%;
+  opacity: .80";
+  >
+      <img src="{{URL::asset('assets/img/spin.gif')}}">
+  </div>
  <!--====================  breadcrumb area ====================-->
  <div class="breadcrumb-content">
     <h2 class="breadcrumb-content__title">Checkout</h2>
@@ -32,19 +45,17 @@
                                                 <div class="checkout-cart-total">
 
                                                     <h4>Product <span>Total</span></h4>
-
+                                                    @foreach ($getproducts as $item)
                                                     <ul>
-                                                        <li>Cillum dolore tortor nisl X 01 <span>&#8377;25.00</span></li>
-                                                        <li>Auctor gravida pellentesque X 02 <span>&#8377;50.00</span></li>
-                                                        <li>Condimentum posuere consectetur X 01 <span>&#8377;29.00</span></li>
-                                                        <li>Habitasse dictumst elementum X 01 <span>&#8377;10.00</span></li>
+                                                       <li>{{($item->productid->product_name) * (session()->get('cart_item.'.$item->hsn_code.'.qty'))}}<span>&#8377;{{$item->final_price}}</span></li>
+                                                        
                                                     </ul>
 
                                                     <p>Sub Total <span>&#8377;104.00</span></p>
                                                     <p>Shipping Fee <span>&#8377;00.00</span></p>
 
                                                     <h4>Grand Total <span>&#8377;104.00</span></h4>
-
+                                                   @endforeach
                                                 </div>
 
                                             </div>
@@ -74,7 +85,7 @@
                                                     </div>
 
                                                     <div class="single-method">
-                                                        <input type="checkbox" id="accept_terms">
+                                                        <input type="checkbox" id="accept_terms" required>
                                                         <label for="accept_terms">I’ve read and accept the terms & conditions</label>
                                                     </div>
 

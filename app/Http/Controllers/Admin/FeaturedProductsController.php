@@ -77,7 +77,7 @@ class FeaturedProductsController extends Controller
     {
         $featuredProduct = FeaturedProduct::create($request->all());
 
-        return redirect()->route('admin.featured-products.index');
+        return redirect()->route('admin.featured-products.index')->with('success','Featured Product Successfully Created.');
     }
 
     public function edit(FeaturedProduct $featuredProduct)
@@ -95,7 +95,7 @@ class FeaturedProductsController extends Controller
     {
         $featuredProduct->update($request->all());
 
-        return redirect()->route('admin.featured-products.index');
+        return redirect()->route('admin.featured-products.index')->with('success',"Successfully Updated");
     }
 
     public function show(FeaturedProduct $featuredProduct)
@@ -113,7 +113,7 @@ class FeaturedProductsController extends Controller
 
         $featuredProduct->delete();
 
-        return back();
+        return back()->with('success',"Successfully Deleted");
     }
 
     public function massDestroy(MassDestroyFeaturedProductRequest $request)

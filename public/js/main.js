@@ -41,7 +41,7 @@ $(document).ready(function () {
       }
     })
     if (shouldExpand) {
-      $(this).addClass('active')
+      $(this).addClass('active menu-open');
     }
   })
 

@@ -1,36 +1,23 @@
 @php 
 $variants = App\Models\ProductVariant::where('product_variant_status','=','1')->get();
+$newproduct = \App\Models\Product::where('product_status','=','1')->orderBy('created_at','desc')->get();
 
-var_dump(session('cart_item'));
+// var_dump(session('cart_item'));
 @endphp
 @extends('front.root')
   @section('content')
 <!--====================  breadcrumb area ====================-->
-<div class="breadcrumb-area section-space--half">
-        <div class="container wide">
-            <div class="row">
-                <div class="col-lg-12">
-                    <!--=======  breadcrumb wrpapper  =======-->
-                    <div class="breadcrumb-wrapper breadcrumb-bg">
-                        <!--=======  breadcrumb content  =======-->
-                        <div class="breadcrumb-content">
-                            <h2 class="breadcrumb-content__title">Single Product</h2>
-                            <ul class="breadcrumb-content__page-map">
-                                <li><a href="index.html">Home</a></li>
-                                <li class="active">Single Product</li>
-                            </ul>
-                        </div>                                                                      
-                        <!--=======  End of breadcrumb content  =======-->
-                    </div>
-                    <!--=======  End of breadcrumb wrpapper  =======-->
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="breadcrumb-content">
+    <h2 class="breadcrumb-content__title">Single Product</h2>
+    <ul class="breadcrumb-content__page-map">
+        <li><a href="index.html">Home</a></li>
+        <li class="active">Single Product</li>
+    </ul>
+</div>
     <!--====================  End of breadcrumb area  ====================-->
     <!--====================  page content area ====================-->
     <div class="page-content-area">
-        <div class="container">
+        <div class="container wide">
             <div class="row">
                 <div class="col-lg-12">
                     <!--=======  page wrapper  =======-->
@@ -138,18 +125,28 @@ var_dump(session('cart_item'));
                                             <div class="product-buttons">  
                                                 <p class="single-info">Product Variant:</p>   
                                                 <span class="product-variant-btn">
+                                                    @php $counter1 = 1; @endphp 
                                                     @foreach ($productdata[0]->SubTypeProductid as $item)
                                                     @foreach ($variants as $item2)
                                                     @if ($item2->id === $item->product_variant_id)
                                                     @if($item->product_subtype_status != 1)
-                                                    <button value="{{$item->hsn_code}}" class="pvariantbtn" style="font-weight:600;line-height:50px;padding:0 35px;transition: .3s;vertical-align:middle;color:#e33;border:2px solid #e33;" type="radio">{{$item2->product_variant_name}}</button>
+                                                    <label class="pvariant">
+                                                    <input value="{{$item->hsn_code}}" class="pvariantbtn" type="radio">
+                                                    {{$item2->product_variant_name}}
+                                                    </label>
                                                     @else 
-                                                    <a><button value="{{$item->hsn_code}}" class="pvariantbtn" type="radio">{{$item2->product_variant_name}}</button></a>      
+                                                        
+                                                        <label class="pvariant" style="border:{{($counter1 == 1) ? '2px solid #e33' : ''}}">
+                                                        <input value="{{$item->hsn_code}}" class="pvariantbtn" type="radio">
+                                                        {{$item2->product_variant_name}}
+                                                        </label>
+                                                          
                                                     @endif      
-                                                    @endif                                                        
+                                                    @endif                    
+                                                    @php $counter1++; @endphp                                    
                                                     @endforeach
                                                     @endforeach
-                                                
+                                                    <label>
                                                 </span>
                                             </div>
 
@@ -196,104 +193,103 @@ var_dump(session('cart_item'));
                                                 </div>
                                             </nav>
                                             <div class="tab-content" id="nav-tabContent">
-                                                <div class="tab-pane fade show active" id="product-description" role="tabpanel" aria-labelledby="description-tab">
-                                                    <!--=======  product description  =======-->
+                                                    <div class="tab-pane fade show active" id="product-description" role="tabpanel" aria-labelledby="description-tab">
+                                                        <!--=======  product description  =======-->
 
-                                                    <div class="product-description">
-                                                        <p>{{$productdata[0]->description}}</p>
+                                                        <div class="product-description">
+                                                            <p>{{$productdata[0]->description}}</p>
 
+                                                        </div>
+
+                                                        <!--=======  End of product description  =======-->
                                                     </div>
-
-                                                    <!--=======  End of product description  =======-->
-                                                </div>
                                                     <!--=======  review content  =======-->
-                                                    <div class="tab-content" id="nav-tabContent">
+                                                  <div class="tab-content" id="nav-tabContent">
                                                         <div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
 
-                                                    <div class="product-rating-wrap">
-                                                        <div class="pro-avg-rating">
-                                                            @if(isset($product[0]->product_review))
-                                                            <h4>{{$productdata[0]->product_review->sum('rating')/count($productdata[0]->product_review)}}<span>(Overall)</span></h4>
-                                                            <span>Based on {{count($productdata[0]->product_review)}} Comments</span>
-                                                        </div>
-                                                        </div>
-                                                        <div class="ratings-wrapper">
-                                                            @foreach ($productdata[0]->product_review as $review)
-                                                                
-                                                            <div class="sin-ratings">
-                                                                <div class="rating-author">
-                                                                    <h3>{{$review->customers->customer_name}}</h3>
+                                                            <div class="product-rating-wrap">
+                                                                <div class="pro-avg-rating">
+                                                                    @if(isset($product[0]->product_review))
+                                                                    <h4>{{$productdata[0]->product_review->sum('rating')/count($productdata[0]->product_review)}}<span>(Overall)</span></h4>
+                                                                    <span>Based on {{count($productdata[0]->product_review)}} Comments</span>
                                                                 </div>
-                                                                <p>Rated: {{$review->rating}}</p>
-                                                                <p>{{$review->description}}</p>
+                                                                <div class="ratings-wrapper">
+                                                                    @foreach ($productdata[0]->product_review as $review)
+                                                                        
+                                                                    <div class="sin-ratings">
+                                                                        <div class="rating-author">
+                                                                            <h3>{{$review->customers->customer_name}}</h3>
+                                                                        </div>
+                                                                        <p>Rated: {{$review->rating}}</p>
+                                                                        <p>{{$review->description}}</p>
+                                                                    </div>
+                                                                    @endforeach
+                                                                    @endif
+                                                                </div>
+                                                                @if (session()->has('login_status'))
+                                                
+                                                                <div class="rating-form-wrapper fix">
+                                                                    @else 
+                                                                    
+                                                                    <a href="javascript: openLoginModal()">
+                                                                        <button class="title">Login/Signup</button>
+                                                                    </a> 
+                                                            
+                                                                    <div class="rating-form-wrapper fix" style="height:50%;background-color: rgba(0,0,0,0.4);pointer-events:none">
+                                                                    
+                                                                        @endif
+                                                                        <h3>Add your Comments</h3>
+                                                                        <form id="feedbackform">
+                                                                            <div class="rating-form row">
+                                                                                <div class="col-12 mb-15">
+                                                                                    <h5>Rating:</h5>
+                                                                                    <div class="star-rating">
+                                                                                        <input id="star-5" type="radio" name="rating" value="5" />
+                                                                                        <label for="star-5" title="5 stars">
+                                                                                        <i class="active fa fa-star" aria-hidden="true"></i>
+                                                                                        </label>
+                                                                                        <input id="star-4" type="radio" name="rating" value="4" />
+                                                                                        <label for="star-4" title="4 stars">
+                                                                                        <i class="active fa fa-star" aria-hidden="true"></i>
+                                                                                        </label>
+                                                                                        <input id="star-3" type="radio" name="rating" value="3" />
+                                                                                        <label for="star-3" title="3 stars">
+                                                                                        <i class="active fa fa-star" aria-hidden="true"></i>
+                                                                                        </label>
+                                                                                        <input id="star-2" type="radio" name="rating" value="2" />
+                                                                                        <label for="star-2" title="2 stars">
+                                                                                        <i class="active fa fa-star" aria-hidden="true"></i>
+                                                                                        </label>
+                                                                                        <input id="star-1" type="radio" name="rating" value="1" />
+                                                                                        <label for="star-1" title="1 star">
+                                                                                        <i class="active fa fa-star" aria-hidden="true"></i>
+                                                                                        </label>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-6 col-12 form-group">
+                                                                                    <label for="name">Name:</label>
+                                                                                    <input id="name" placeholder="Name" type="text">
+                                                                                </div>
+                                                                                <div class="col-md-6 col-12 form-group">
+                                                                                    <label for="email">Email:</label>
+                                                                                    <input id="email" placeholder="Email" type="text">
+                                                                                </div>
+                                                                                <div class="col-12 form-group">
+                                                                                    <label for="your-review">Your Review:</label>
+                                                                                    <textarea name="review" id="your-review" placeholder="Write a review"></textarea>
+                                                                                </div>
+                                                                                <input type="hidden" name="pid" id="pid" value="{{$productdata[0]->id}}">
+                                                                                <div class="col-12">
+                                                                                    <input value="add review" type="submit">
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                            @endforeach
-                                                            @endif
-                                                        </div>
-                                                        @if (session()->has('login_status'))
-                                           
-                                                        <div class="rating-form-wrapper fix">
-                                                            @else 
-                                                            
-                                                            <a href="javascript: openLoginModal()" style="position: absolute;top:90%;left:50%">
-                                                                <h4 class="title" >Login/Signup</h4>
-                                                            </a> 
-                                                       
-                                                            <div class="rating-form-wrapper fix" style="height:30%;background-color: rgba(0,0,0,0.4);pointer-events:none">
-                                                            
-                                                            @endif
-                                                            <h3>Add your Comments</h3>
-                                                            <form id="feedbackform">
-                                                                <div class="rating-form row">
-                                                                    <div class="col-12 mb-15">
-                                                                        <h5>Rating:</h5>
-                                                                        <div class="star-rating">
-                                                                            <input id="star-5" type="radio" name="rating" value="5" />
-                                                                            <label for="star-5" title="5 stars">
-                                                                              <i class="active fa fa-star" aria-hidden="true"></i>
-                                                                            </label>
-                                                                            <input id="star-4" type="radio" name="rating" value="4" />
-                                                                            <label for="star-4" title="4 stars">
-                                                                              <i class="active fa fa-star" aria-hidden="true"></i>
-                                                                            </label>
-                                                                            <input id="star-3" type="radio" name="rating" value="3" />
-                                                                            <label for="star-3" title="3 stars">
-                                                                              <i class="active fa fa-star" aria-hidden="true"></i>
-                                                                            </label>
-                                                                            <input id="star-2" type="radio" name="rating" value="2" />
-                                                                            <label for="star-2" title="2 stars">
-                                                                              <i class="active fa fa-star" aria-hidden="true"></i>
-                                                                            </label>
-                                                                            <input id="star-1" type="radio" name="rating" value="1" />
-                                                                            <label for="star-1" title="1 star">
-                                                                              <i class="active fa fa-star" aria-hidden="true"></i>
-                                                                            </label>
-                                                                          </div>
-                                                                    </div>
-                                                                    <div class="col-md-6 col-12 form-group">
-                                                                        <label for="name">Name:</label>
-                                                                        <input id="name" placeholder="Name" type="text">
-                                                                    </div>
-                                                                    <div class="col-md-6 col-12 form-group">
-                                                                        <label for="email">Email:</label>
-                                                                        <input id="email" placeholder="Email" type="text">
-                                                                    </div>
-                                                                    <div class="col-12 form-group">
-                                                                        <label for="your-review">Your Review:</label>
-                                                                        <textarea name="review" id="your-review" placeholder="Write a review"></textarea>
-                                                                    </div>
-                                                                    <input type="hidden" name="pid" id="pid" value="{{$productdata[0]->id}}">
-                                                                    <div class="col-12">
-                                                                        <input value="add review" type="submit">
-                                                                    </div>
-                                                                </div>
-                                                            </form>
                                                         </div>
                                                     </div>
-                                                        </div>
-                                                    </div>
-                                                    <!--=======  End of review content  =======-->
-                                                </div>
+                                                   <!--=======  End of review content  =======-->
                                             </div>
                                         </div>
 
@@ -303,8 +299,82 @@ var_dump(session('cart_item'));
                             </div>
 
                             <!--=======  End of product description review   =======-->                            <!--====================  single row slider ====================-->
-                            <div class="single-row-slider-area section-space--inner-top">
+                              <div class="single-row-slider-area section-space--inner-top">
+                               
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <!--=======  section title  =======-->
+                                            <div class="section-title-wrapper text-center section-space--half">
+                                                <h2 class="section-title">Related Products</h2>
+                                                <p class="section-subtitle">Mirum est notare quam littera gothica, quam nunc putamus parum claram anteposuerit litterarum formas.</p>
+                                            </div>
+                                            <!--=======  End of section title  =======-->
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <!--=======  single row slider wrapper  =======-->
+                                            <div class="single-row-slider-wrapper">
+                                                <div class="ht-slick-slider" data-slick-setting='{
+                                                    "slidesToShow": 6,
+                                                    "slidesToScroll": 1,
+                                                    "arrows": true,
+                                                    "autoplay": false,
+                                                    "autoplaySpeed": 5000,
+                                                    "speed": 1000,
+                                                    "infinite": false,
+                                                    "prevArrow": {"buttonClass": "slick-prev", "iconClass": "ion-chevron-left" },
+                                                    "nextArrow": {"buttonClass": "slick-next", "iconClass": "ion-chevron-right" }
+                                                }' data-slick-responsive='[
+                                                    {"breakpoint":1501, "settings": {"slidesToShow": 6} },
+                                                    {"breakpoint":1199, "settings": {"slidesToShow": 6, "arrows": false} },
+                                                    {"breakpoint":991, "settings": {"slidesToShow": 3, "arrows": false} },
+                                                    {"breakpoint":767, "settings": {"slidesToShow": 2, "arrows": false} },
+                                                    {"breakpoint":575, "settings": {"slidesToShow": 2, "arrows": false} },
+                                                    {"breakpoint":479, "settings": {"slidesToShow": 1, "arrows": false} }
+                                                ]'>
 
+                                                    @foreach ($relatedproducts as $relateditem => $relatedkey)
+                                                    @if ($relatedkey->id != $productdata[0]->id)
+
+                                                    <div class="col">
+                                                        <!--=======  single grid product  =======-->
+                                                            
+                                                        <div class="single-grid-product">
+                                                            <div class="single-grid-product__image">
+                                                                {{-- <div class="single-grid-product__label">
+                                                                    <span>2</span>% off
+                                                                </div> --}}
+                                                                <a href="single-product.html">
+                                                                    <img src="{{$relatedkey->getFirstMediaUrl('product_img')}}" class="img-fluid" alt="" style="height: 200px;">
+                                                                </a>
+                                                            </div>
+                                                            <div class="single-grid-product__content">
+                                                                {{-- <div class="single-grid-product__category-rating">
+                                                                    <span class="category"><a href="shop-left-sidebar.html"></a></span>
+                                                                </div> --}}
+
+                                                                <h3 class="single-grid-product__title"> <a href="single-product.html">{{$relatedkey->product_name}}</a></h3>
+                                                                {{-- <div class="product-countdown" data-countdown="2020/06/01"></div> --}}
+                                                            </div>
+                                                        </div>
+
+                                                        <!--=======  End of single grid product  =======-->
+                                                    </div>
+                                                    @endif
+                                                    @endforeach
+                                            
+
+
+                                                </div>
+                                            </div>
+                                            <!--=======  End of single row slider wrapper  =======-->
+                                        </div>
+                                    </div>
+                             
+                             </div> 
+                            {{-- <div class="single-row-slider-area section-space">
+                                <div class="container">    
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <!--=======  section title  =======-->
@@ -315,68 +385,59 @@ var_dump(session('cart_item'));
                                         <!--=======  End of section title  =======-->
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <!--=======  single row slider wrapper  =======-->
-                                        <div class="single-row-slider-wrapper">
-                                            <div class="ht-slick-slider" data-slick-setting='{
-                        "slidesToShow": 4,
-                        "slidesToScroll": 1,
-                        "arrows": true,
-                        "autoplay": false,
-                        "autoplaySpeed": 5000,
-                        "speed": 1000,
-                        "infinite": false,
-                        "prevArrow": {"buttonClass": "slick-prev", "iconClass": "ion-chevron-left" },
-                        "nextArrow": {"buttonClass": "slick-next", "iconClass": "ion-chevron-right" }
-                    }' data-slick-responsive='[
-                        {"breakpoint":1501, "settings": {"slidesToShow": 4} },
-                        {"breakpoint":1199, "settings": {"slidesToShow": 4, "arrows": false} },
-                        {"breakpoint":991, "settings": {"slidesToShow": 3, "arrows": false} },
-                        {"breakpoint":767, "settings": {"slidesToShow": 2, "arrows": false} },
-                        {"breakpoint":575, "settings": {"slidesToShow": 2, "arrows": false} },
-                        {"breakpoint":479, "settings": {"slidesToShow": 1, "arrows": false} }
-                    ]'>
-
-                    @foreach ($relatedproducts as $relateditem => $relatedkey)
-                    @if ($relatedkey->id != $productdata[0]->id)
-
-                                                <div class="col">
-                                                    <!--=======  single grid product  =======-->
-                                                        
-                                                    <div class="single-grid-product">
-                                                        <div class="single-grid-product__image">
-                                                            <div class="single-grid-product__label">
-                                                                <span>2</span>% off
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <!--=======  single row slider wrapper  =======-->
+                                            <div class="single-row-slider-wrapper">
+                                                <div class="ht-slick-slider" data-slick-setting='{
+                                                "slidesToShow": 4,
+                                                "slidesToScroll": 1,
+                                                "arrows": true,
+                                                "autoplay": true,
+                                                "autoplaySpeed": 5000,
+                                                "speed": 1000,
+                                                "infinite": true,
+                                                "prevArrow": {"buttonClass": "slick-prev", "iconClass": "ion-chevron-left" },
+                                                "nextArrow": {"buttonClass": "slick-next", "iconClass": "ion-chevron-right" }
+                                            }' data-slick-responsive='[
+                                                {"breakpoint":1501, "settings": {"slidesToShow": 4} },
+                                                {"breakpoint":1199, "settings": {"slidesToShow": 4, "arrows": false} },
+                                                {"breakpoint":991, "settings": {"slidesToShow": 3, "arrows": false} },
+                                                {"breakpoint":767, "settings": {"slidesToShow": 2, "arrows": false} },
+                                                {"breakpoint":575, "settings": {"slidesToShow": 2, "arrows": false} },
+                                                {"breakpoint":479, "settings": {"slidesToShow": 1, "arrows": false} }
+                                            ]'>
+                                                    @foreach($newproduct as $id => $data)
+                                                    <div class="col">
+                                                        <!--=======  single grid product  =======-->
+                                                        <div class="single-grid-product">
+                                                            <div class="single-grid-product__image">
+                                                                <div class="single-grid-product__label">
+                                                                    {{-- <span class="sale">-20%</span> --}}
+{{--                             
+                                                                </div>
+                                                                <a href="{{route('singleproductroute',['productid' => $data->id,'productname' => str_replace(' ','-',$data->product_name)])}}">
+                                                                    <img src="{{$data->getFirstMediaUrl('product_img','preview')}}" class="img-fluid" alt="" loading="lazy">
+                                                                </a>
                                                             </div>
-                                                            <a href="single-product.html">
-                                                                <img src="{{$relatedkey->getFirstMediaUrl('product_img')}}" class="img-fluid" alt="">
-                                                            </a>
-                                                        </div>
-                                                        <div class="single-grid-product__content">
-                                                            <div class="single-grid-product__category-rating">
-                                                                <span class="category"><a href="shop-left-sidebar.html"></a></span>
+                                                            <div class="single-grid-product__content">
+                                                                <div class="single-grid-product__category-rating">
+                                                                    <span class="category"><a href="shop-left-sidebar.html">{{$data->product_name}}</a></span>
+                                                                </div>
+                            
                                                             </div>
-
-                                                            <h3 class="single-grid-product__title"> <a href="single-product.html">{{$relatedkey->product_name}}</a></h3>
-                                                            {{-- <div class="product-countdown" data-countdown="2020/06/01"></div> --}}
                                                         </div>
+                                                        <!--=======  End of single grid product  =======-->
                                                     </div>
-
-                                                    <!--=======  End of single grid product  =======-->
+                                                    @endforeach
                                                 </div>
-                                                @endif
-                                                @endforeach
-                                        
-
-
                                             </div>
+                                            <!--=======  End of single row slider wrapper  =======-->
                                         </div>
-                                        <!--=======  End of single row slider wrapper  =======-->
                                     </div>
                                 </div>
-
-                            </div>
+                            </div> --}}
+                            
                             <!--====================  End of single row slider  ====================-->
                         </div>
                     </div>

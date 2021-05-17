@@ -4,6 +4,7 @@ $categories = \App\Models\ProductCategory::where('category_status','=','1')->ord
 $brands = \App\Models\Brand::where('brand_status','=','1')->get();
 $subcategories = \App\Models\SubCategory::where('subcategory_status','=','1')->orderby('subcategory_name')->get();
 $singleproducts = \App\Models\Product::where('product_status','=','1')->get();
+
 @endphp
 
 
@@ -16,7 +17,7 @@ $singleproducts = \App\Models\Product::where('product_status','=','1')->get();
                      <div class="col-lg-2 col-md-2" style="height: 100%; padding: 0 0; border-right: 1px solid #eee;">
                         <div class="logo">
                             <a href="{{route('homepage')}}">
-                                <img src="{{asset('assets/img/Ekikai.jpg')}}" class="img-fluid" alt="">
+                                <img src="{{asset('assets/img/Ekikai.jpg')}}" class="img-fluid" alt="" style="height: 100px">
                             </a>
                         </div>
                      </div>
@@ -34,13 +35,13 @@ $singleproducts = \App\Models\Product::where('product_status','=','1')->get();
                             <div class="header-icon-wrapper" style="margin: 10px 10px 0 0"> 
                             <ul class="icon-list">
                                     <li>
-                                        <a href="#" style="font-size: 18px;"><i class="fa fa-envelope"></i>&nbsp;<span>homedecor@gmail.com</span></a>
+                                        <a href="mailto:myekikai@gmail.com" style="font-size: 18px;"><i class="fa fa-envelope"></i>&nbsp;<span>myekikai@gmail.com</span></a>
                                     </li>
                                     <li>
-                                        <a href="tel:+910123456789" style="font-size: 18px;;"><i class="fa fa-phone"></i>&nbsp;<span>+910123456789</span></a>  
+                                        <a href="tel:+917337763918" style="font-size: 18px;;"><i class="fa fa-phone"></i>&nbsp;<span>+91 7337763918</span></a>  
                                     </li> 
                                     <li>
-                                    <a href="https://api.whatsapp.com/send?phone=+910123456789" target="_blank" style="font-size: 18px;"><img src="{{asset('assets/img/whatsapp.png')}}" alt=""><span>Whatsapp us your orders!</span></a>
+                                    <a href="https://api.whatsapp.com/send?phone=+917337763918" target="_blank" style="font-size: 18px;"><img src="{{asset('assets/img/whatsapp.png')}}" alt=""><span>Whatsapp us your orders!</span></a>
                                     </li>
                                     
                             
@@ -74,11 +75,16 @@ $singleproducts = \App\Models\Product::where('product_status','=','1')->get();
                                             <span class="cartcounter" style="font-size: 15px;float: right;">
                                                 @if(session()->has('cart_item'))
                                                 {{count(session('cart_item'))}}
-                                                @endif    
+                                                @endif  
                                             </span>
                                         </a>
                                     </div>
                                 </li>
+                                <li>
+                                @if(session()->has('cart_status_msg'))
+                                <span>{{session()->get('cart_status_msg')}}</span>
+                                </li>
+                                @endif
                                 <li>
                                     <div class=" dropdown header-settings-icon">
                                                             @if(session()->has('login_status'))
@@ -151,7 +157,7 @@ $singleproducts = \App\Models\Product::where('product_status','=','1')->get();
 
                                     </li>
 
-                                    <li><a href="#">ABOUT US</a></li>
+                                    <li><a href="{{route("about")}}">ABOUT US</a></li>
 
                                     <li><a href="{{route("contact")}}">CONTACT US</a></li>
 
@@ -169,32 +175,36 @@ $singleproducts = \App\Models\Product::where('product_status','=','1')->get();
                     <div class="header-mobile-navigation d-block d-lg-none">
 
                         <div class="row align-items-center">
-                            <div class="col4 col-md-6" style="width: 30%;">
+                            <div class="col-xs-6" style="width: 30%;">
                                 <div class="header-logo">
-                                    <a href="index.html">
-                                        <img src="assets/img/Ekikai.jpg" class="img-fluid" alt="" style="height: 50px; width:70px;">
+                                    <a href="{{route('homepage')}}">
+                                        <img src="{{asset('assets/img/Ekikai.jpg')}}" class="img-fluid" alt="" style="height: 50px; width:70px;">
                                     </a>
                                 </div>
                             </div>
                              
-                            <div class="col4 col-md-6" style="width: 70%;">
+                            <div class="col-xs-6" style="width: 70%;">
                                 <div class="mobile-navigation text-right">
                                     <div class="header-icon-wrapper">
                                         
                                         <ul class="icon-list justify-content-end">
                                             
                                                 <li>
-                                                    <a href="https://api.whatsapp.com/send?phone=+919740876659" target="_blank" style="font-size: 18px;"><img src="https://pragathiorganic.in/images/whatsapp.svg" alt=""></a>
+                                                    <a href="https://api.whatsapp.com/send?phone=+917337763918" target="_blank" style="font-size: 18px;"><img src="{{asset('assets/img/whatsapp.png')}}" alt=""></a>
                                                     </li>
                                                     <li>
-                                                        <a href="tel:+919740876659" style="font-size: 18px;"><i class="fa fa-phone"></i></a>  
+                                                        <a href="tel:+917337763918" style="font-size: 18px;"><i class="fa fa-phone"></i></a>  
                                                 </li> 
 
                                             <li>
                                                 <div class="header-cart-icon">
-                                                    <a href="cart.html">
+                                                    <a href="{{route('cart')}}">
                                                         <i class="ion-bag"></i>
-                                                        <span class="counter"></span>
+                                                        <span class="counter">
+                                                            @if(session()->has('cart_item'))
+                                                            {{count(session('cart_item'))}}
+                                                            @endif   
+                                                        </span>
                                                     </a>
                                                 </div>
                                             </li>
@@ -235,6 +245,36 @@ $singleproducts = \App\Models\Product::where('product_status','=','1')->get();
                         </ul>
 
                     </div>
+                    {{-- <div class="header-mobile-navigation d-block d-lg-none">
+                        <div class="row align-items-center">
+                            <div class="col-6 col-md-6">
+                                <div class="header-logo">
+                                    <a href="index.html">
+                                        <img src="assets/img/logo.png" class="img-fluid" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-6">
+                                <div class="mobile-navigation text-right">
+                                    <div class="header-icon-wrapper">
+                                        <ul class="icon-list justify-content-end">
+                                            <li>
+                                                <div class="header-cart-icon">
+                                                    <a href="cart.html">
+                                                        <i class="ion-bag"></i>
+                                                        <span class="counter">3</span>
+                                                    </a>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:void(0)" class="mobile-menu-icon" id="mobile-menu-trigger"><i class="fa fa-bars"></i></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> --}}
                     <!--=======  End of mobile navigation area  =======-->
 
                 </div>

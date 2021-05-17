@@ -57,9 +57,6 @@
                     </form>
                 </div>
             </div>
-
-
-
         </div>
     </div>
 </div>
@@ -68,62 +65,62 @@
 @section('scripts')
 <script>
     var uploadedCategoryImgMap = {}
-Dropzone.options.categoryImgDropzone = {
-    url: '{{ route('admin.product-categories.storeMedia') }}',
-    maxFilesize: 10, // MB
-    acceptedFiles: '.jpeg,.jpg,.png,.gif',
-    addRemoveLinks: true,
-    headers: {
-      'X-CSRF-TOKEN': "{{ csrf_token() }}"
-    },
-    params: {
-      size: 10,
-      width: 4096,
-      height: 4096
-    },
-    success: function (file, response) {
-      $('form').append('<input type="hidden" name="category_img[]" value="' + response.name + '">')
-      uploadedCategoryImgMap[file.name] = response.name
-    },
-    removedfile: function (file) {
-      console.log(file)
-      file.previewElement.remove()
-      var name = ''
-      if (typeof file.file_name !== 'undefined') {
-        name = file.file_name
-      } else {
-        name = uploadedCategoryImgMap[file.name]
-      }
-      $('form').find('input[name="category_img[]"][value="' + name + '"]').remove()
-    },
-    init: function () {
-@if(isset($productCategory) && $productCategory->category_img)
-      var files = {!! json_encode($productCategory->category_img) !!}
-          for (var i in files) {
-          var file = files[i]
-          this.options.addedfile.call(this, file)
-          this.options.thumbnail.call(this, file, file.preview)
-          file.previewElement.classList.add('dz-complete')
-          $('form').append('<input type="hidden" name="category_img[]" value="' + file.file_name + '">')
+     Dropzone.options.categoryImgDropzone = {
+        url: '{{ route('admin.product-categories.storeMedia') }}',
+        maxFilesize: 10, // MB
+        acceptedFiles: '.jpeg,.jpg,.png,.gif',
+        addRemoveLinks: true,
+        headers: {
+        'X-CSRF-TOKEN': "{{ csrf_token() }}"
+        },
+        params: {
+        size: 10,
+        width: 4096,
+        height: 4096
+        },
+        success: function (file, response) {
+        $('form').append('<input type="hidden" name="category_img[]" value="' + response.name + '">')
+        uploadedCategoryImgMap[file.name] = response.name
+        },
+        removedfile: function (file) {
+        console.log(file)
+        file.previewElement.remove()
+        var name = ''
+        if (typeof file.file_name !== 'undefined') {
+            name = file.file_name
+        } else {
+            name = uploadedCategoryImgMap[file.name]
         }
-@endif
-    },
-     error: function (file, response) {
-         if ($.type(response) === 'string') {
-             var message = response //dropzone sends it's own error messages in string
-         } else {
-             var message = response.errors.file
-         }
-         file.previewElement.classList.add('dz-error')
-         _ref = file.previewElement.querySelectorAll('[data-dz-errormessage]')
-         _results = []
-         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-             node = _ref[_i]
-             _results.push(node.textContent = message)
-         }
+        $('form').find('input[name="category_img[]"][value="' + name + '"]').remove()
+        },
+        init: function () {
+            @if(isset($productCategory) && $productCategory->category_img)
+                var files = {!! json_encode($productCategory->category_img) !!}
+                    for (var i in files) {
+                    var file = files[i]
+                    this.options.addedfile.call(this, file)
+                    this.options.thumbnail.call(this, file, file.preview)
+                    file.previewElement.classList.add('dz-complete')
+                    $('form').append('<input type="hidden" name="category_img[]" value="' + file.file_name + '">')
+                    }
+            @endif
+            },
+            error: function (file, response) {
+            if ($.type(response) === 'string') {
+                var message = response //dropzone sends it's own error messages in string
+            } else {
+                var message = response.errors.file
+            }
+            file.previewElement.classList.add('dz-error')
+            _ref = file.previewElement.querySelectorAll('[data-dz-errormessage]')
+            _results = []
+            for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+                node = _ref[_i]
+                _results.push(node.textContent = message)
+            }
 
-         return _results
-     }
-}
+            return _results
+       }
+    }
 </script>
 @endsection

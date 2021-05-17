@@ -67,8 +67,9 @@
                  <div class="modal-footer">
                      <div class="forgot login-footer">
                          <span>Looking to
-                             <a href="javascript: showRegisterForm();">create an account</a>
-                             ?</span>
+                             <a href="javascript: showRegisterForm();">create an account ?</a>
+                             </span>
+                            <a href="#">forgot password ?</a>
                      </div>
                      <div class="forgot register-footer" style="display:none">
                          <span>Already have an account?</span>

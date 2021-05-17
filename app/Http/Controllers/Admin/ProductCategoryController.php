@@ -98,8 +98,9 @@ class ProductCategoryController extends Controller
             Media::whereIn('id', $media)->update(['model_id' => $productCategory->id]);
         }
 
-        return redirect()->route('admin.product-categories.index');
+        return redirect()->route('admin.product-categories.index')->with('success','Category Successfully Created.');
     }
+    
 
     public function edit(ProductCategory $productCategory)
     {
@@ -128,7 +129,7 @@ class ProductCategoryController extends Controller
             }
         }
 
-        return redirect()->route('admin.product-categories.index');
+        return redirect()->route('admin.product-categories.index')->with('success',"Successfully Updated");
     }
 
     public function destroy(ProductCategory $productCategory)
@@ -137,7 +138,7 @@ class ProductCategoryController extends Controller
 
         $productCategory->delete();
 
-        return back();
+        return back()->with('success',"Successfully Deleted");
     }
 
     public function massDestroy(MassDestroyProductCategoryRequest $request)

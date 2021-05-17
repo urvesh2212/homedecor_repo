@@ -86,7 +86,7 @@ class BrandController extends Controller
     {
         $brand = Brand::create($request->all());
 
-        return redirect()->route('admin.brand.index');
+        return redirect()->route('admin.brand.index')->with('success','Brand Successfully Created.');
     }
 
     /**
@@ -110,7 +110,7 @@ class BrandController extends Controller
     public function update(UpdateBrandRequest $request, Brand $brand)
     {
         $brand->update($request->all());
-        return redirect()->route('admin.brand.index');
+        return redirect()->route('admin.brand.index')->with('success',"Successfully Updated");
     }
 
     /**
@@ -123,7 +123,7 @@ class BrandController extends Controller
     {
         $brand->delete();
 
-        return back();
+        return back()->with('success',"Successfully Deleted");
     }
 
     public function massDestroy(MassDestroyBrandRequest $request)

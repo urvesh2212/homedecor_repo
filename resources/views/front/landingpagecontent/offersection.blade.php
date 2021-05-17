@@ -1,33 +1,33 @@
 <div class="banner-hover-area section-space">
-        <div class="container">
+        <div class="container wide">
             <div class="row">
                 <div class="col-lg-12">
                     <!--=======  banner hover wrapper  =======-->
                     <div class="banner-hover-wrapper">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <!--=======  single hover banner  =======-->
                                 <div class="single-hover-banner">
                                     <div class="single-hover-banner__image">
                                         <a href="{{URL('shop-catalog/offerproducts')}}">
-                                            <img src="assets/img/banners/img1-middle-eposi1.jpg" class="img-fluid" alt="">
+                                            <img src="assets/img/offer banner.jpg" class="img-fluid" alt="" style="height: 300px;">
                                         </a>
-                                        <div class="single-hover-banner__content">
+                                        {{-- <div class="single-hover-banner__content">
                                             <h4 class="small-text">Black Friday</h4>
                                             <h3 class="big-text">Save Up To 50% Off</h3>
                                             <a class="banner-link" href="">SHOP NOW</a>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                                 <!--=======  End of single hover banner  =======-->
                             </div>
 
-                            <div class="col-md-6">
+                            {{-- <div class="col-md-12">
                                 <!--=======  single hover banner  =======-->
                                 <div class="single-hover-banner">
                                     <div class="single-hover-banner__image">
                                         <a href="shop-left-sidebar.html">
-                                            <img src="assets/img/banners/img2-middle-eposi1.jpg" class="img-fluid" alt="">
+                                            <img src="assets/img/offer banner.jpg" class="img-fluid" alt="">
                                         </a>
                                         <div class="single-hover-banner__content">
                                             <h4 class="small-text">Best Selling !</h4>
@@ -37,7 +37,7 @@
                                     </div>
                                 </div>
                                 <!--=======  End of single hover banner  =======-->
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                     <!--=======  End of banner hover wrapper  =======-->

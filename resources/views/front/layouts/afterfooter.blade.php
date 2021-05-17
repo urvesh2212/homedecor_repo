@@ -20,7 +20,7 @@ $singleproducts = \App\Models\Product::where('product_status','=','1')->get();
                     <input type="search" placeholder="Search ...">
                     <button type="submit"><i class="fa fa-search"></i></button>
                 </form>
-            </div> --}}
+             </div> --}}
 
                <div class=" dropdown header-settings-icon offcanvas-settings">
                                                                @if(session()->has('login_status'))
@@ -45,7 +45,7 @@ $singleproducts = \App\Models\Product::where('product_status','=','1')->get();
                                            <h4 class="title">Login/Signup</h4>
                                         </a></div>
                                         @endif
-                                    </div>
+               </div>
 
             <nav class="offcanvas-navigation">
                 <ul>
@@ -175,8 +175,8 @@ $singleproducts = \App\Models\Product::where('product_status','=','1')->get();
         </form>
     </div> --}}
 
-    <!--=======  End of search form  =======-->
-</div>
+    {{-- <!--=======  End of search form  =======-->
+</div> --}}
 
 <!--====================  End of search overlay  ====================-->
 <!--====================  quick view ====================-->

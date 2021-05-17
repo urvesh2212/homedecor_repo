@@ -99,7 +99,7 @@ class BannerSliderController extends Controller
             Media::whereIn('id', $media)->update(['model_id' => $bannerdata->id]);
         }
 
-        return redirect()->route('admin.manage-banner.index');
+        return redirect()->route('admin.manage-banner.index'->with('success','Banner Successfully Created.'));
     }
 
 
@@ -141,7 +141,7 @@ class BannerSliderController extends Controller
             }
         }
 
-        return redirect()->route('admin.manage-banner.index');
+        return redirect()->route('admin.manage-banner.index')->with('success',"Successfully Updated");
     }
 
     /**
@@ -154,7 +154,7 @@ class BannerSliderController extends Controller
     {
         $manage_banner->delete();
 
-        return back();
+        return back()->with('success',"Successfully Deleted");
     }
 
     public function massDestroy(Request $request)
