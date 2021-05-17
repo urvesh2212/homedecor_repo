@@ -7,9 +7,11 @@ use Illuminate\Http\Request;
 use App\Models\Front\Customer;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use App\Traits\StoreCartDetails;
 
 class CustomerLoginController extends Controller
-{
+{ 
+    use StoreCartDetails;
     /*
     |--------------------------------------------------------------------------
     | Login Controller
@@ -44,8 +46,9 @@ class CustomerLoginController extends Controller
             $customerdata = $this->getdata($req,1);
 
             if($customerdata)
-            {
+            {   
                 session(['userid' => $customerdata->uid, 'displaydata' => $customerdata->customer_name,'login_status' => true]);
+                $this->store_cart_data();
                 return response()->json(['msg' => 200]);
             }else
             {
@@ -66,6 +69,7 @@ class CustomerLoginController extends Controller
             if($customerGmaildata)
             {
                 session(['userid' => $req->uid, 'displaydata' => $req->name,'login_status' => true]);
+                $this->store_cart_data();
                 return response()->json(['msg' => 200]);
             }else{
                 return response()->json(['msg' => 500]);
@@ -89,6 +93,7 @@ class CustomerLoginController extends Controller
                 if(Hash::check($request->customer_password,$customerdata->customer_password))
                 {
                     session(['userid' =>$customerdata->uid,'displaydata' => $customerdata->customer_number,'login_status' => true]);
+                    $this->store_cart_data();
                     return response()->json(['msg' => 200]);
                 }else{
                     return response()->json(['msg' => 201]);
@@ -122,6 +127,7 @@ class CustomerLoginController extends Controller
         if($customerlogindata)
         {
             session(['userid' =>$sessionid,'displaydata' => $request->customer_number,'login_status' => true]);
+            $this->store_cart_data();
             return response()->json(['msg' => 200]);
         }else{
             return response()->json(['msg' => 500]);

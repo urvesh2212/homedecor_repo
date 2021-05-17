@@ -71,19 +71,38 @@
                                     <div class="cart-summary">
                                         <div class="cart-summary-wrap">
                                             <h4>Cart Summary</h4>
+                                            @if(session()->has('coupon_code'))
+                                            <p>Sub Total <span>&#8377;{{$getproducts->sum('final_price')}}</span></p>
+                                            <p>Shipping Cost <span>&#8377;50</span></p>
+                                            <p>Coupon Discount <span>&#8377;{{session()->get('coupon_code.value')}}</span></p>
+                                            <h2>Grand Total <span>&#8377;{{$getproducts->sum('final_price') + 50 - session()->get('coupon_code.value') }}</span></h2>
+                                            @else
                                             <p>Sub Total <span>&#8377;{{$getproducts->sum('final_price')}}</span></p>
                                             <p>Shipping Cost <span>&#8377;50</span></p>
                                             <h2>Grand Total <span>&#8377;{{$getproducts->sum('final_price') + 50}}</span></h2>
+                                            @endif
                                         </div>
                                         <div class="discount-coupon">
                                             <h4>Discount Coupon Code</h4>
                                             <form id="couponform">
                                                 <div class="row" id="couponrow">
                                                     <div class="col-md-6 col-12">
-                                                        <input type="text" id="couponcode" placeholder="Coupon Code">
+                                                        @if(session()->has('coupon_code'))
+                                                        <input type="text" id="couponcode" name="couponcode" value="{{old('couponcode',session()->get('coupon_code.cname'))}}" placeholder="Coupon Code" disabled>
+                                                        <span id="couponcomment" style="color: green">{{'Congrats! You got '.session()->get('coupon_code.value').' discount.'}}</span>
+                                                        @else
+                                                        <input type="text" id="couponcode" name="couponcode" value="{{old('couponcode')}}" placeholder="Coupon Code">
+                                                        <span id="couponcomment" style="color: green"></span>
+                                                        @endif
                                                     </div>
                                                     <div class="col-md-6 col-12">
-                                                        <input type="submit" value="Apply Code">
+                                                        @if(session()->has('coupon_code'))
+                                                        <input type="button" id="removecode" value="X" style="background-color: black">
+                                                        <input type="submit" id="couponsubmit" value="Apply Code" style="display: none">
+                                                        @else
+                                                        <input type="button" id="removecode" value="X" style="background-color: black;display: none">
+                                                        <input type="submit" id="couponsubmit" value="Apply Code">
+                                                        @endif
                                                     </div>
                                                 </div>
                                                 </div>
