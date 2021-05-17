@@ -211,6 +211,15 @@
                     </a>
                 </li>
             @endcan
+            <li class="{{ request()->is("admin/validpincodes") || request()->is("admin/validpincodes/*") ? "active" : "" }}">
+                <a href="{{ route("admin.validpincodes.index") }}">
+                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+
+                    <span>{{ trans('cruds.validpincode.title') }}</span>
+
+                </a>
+            </li>
+
             @if(file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php')))
                 @can('profile_password_edit')
                     <li class="{{ request()->is('profile/password') || request()->is('profile/password/*') ? 'active' : '' }}">

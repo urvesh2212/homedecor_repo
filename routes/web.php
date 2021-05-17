@@ -1,11 +1,16 @@
 <?php
 
+  
+use Illuminate\Support\Facades\Route;
+  
+use App\Http\Controllers\RazorpayPaymentController;
+
 Route::get('/', [\App\Http\Controllers\Front\LandingController::class,'index'])->name('homepage');
 //individual pages
 
 Route::view('/contact','front.contact',['title' => 'Contact Us'])->name('contact');
 Route::view('/checkout','front.checkout',['title' => 'Checkout'])->name('checkout');
-Route::get('/cart',[\App\Http\Controllers\Front\ProductController::class,'show_cart'])->middleware('AuthCustomer')->name('cart');
+Route::get('/cart',[\App\Http\Controllers\Front\ProductController::class,'show_cart'])->name('cart');
 Route::view('/faq','front.faq',['title' => 'faq'])->name('faq');
 Route::get('/shop-catalog/category/{categorycode}/{categoryname}',[\App\Http\Controllers\Front\ProductController::class,'ShowProdcutByCategory']);
 Route::get('product/{productid}/{productname}',[\App\Http\Controllers\Front\ProductController::class,'singleproduct'])->name('singleproductroute');
@@ -36,6 +41,10 @@ Route::post('/phonelogin',[\App\Http\Controllers\Auth\Front\CustomerLoginControl
 Route::post('/GoogleAuth',[\App\Http\Controllers\Auth\Front\CustomerLoginController::class,'Googlelogin']);
 Route::get('/logout',[\App\Http\Controllers\Auth\Front\CustomerLoginController::class,'Logout'])->name('user_logout');
 Route::post('/phoneverify',[\App\Http\Controllers\Auth\Front\CustomerLoginController::class,'VerifyNumber']);
+
+//payment routes
+Route::get('razorpay-payment', [RazorpayPaymentController::class, 'index']);
+Route::post('razorpay-payment', [RazorpayPaymentController::class, 'store'])->name('razorpay.payment.store');
 
 
 //Admin Routes
@@ -137,10 +146,14 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::resource('manage-banner', 'BannerSliderController');
     Route::post('manage-banner/media', 'BannerSliderController@storeMedia')->name('manage-banner.storeMedia');
     Route::post('manage-banner/ckmedia', 'BannerSliderController@storeCKEditorImages')->name('manage-banner.storeCKEditorImages');
+
+    // Valid Pincode
+    Route::delete('validpincodes/destroy', 'ValidPincodeController@massDestroy')->name('validpincodes.massDestroy');
+    Route::resource('validpincodes', 'ValidPincodeController');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
 // Change password
-    if (file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php'))) {
+    if   (file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php'))) {
         Route::get('password', 'ChangePasswordController@edit')->name('password.edit');
         Route::post('password', 'ChangePasswordController@update')->name('password.update');
         Route::post('profile', 'ChangePasswordController@updateProfile')->name('password.updateProfile');

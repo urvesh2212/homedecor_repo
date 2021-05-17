@@ -38,7 +38,7 @@ class OfferProductsController extends Controller
     {
         $offerProduct = OfferProduct::create($request->all());
 
-        return redirect()->route('admin.offer-products.index');
+        return redirect()->route('admin.offer-products.index')->with('success','Offer Product Successfully Created.');
     }
 
     public function edit(OfferProduct $offerProduct)
@@ -56,7 +56,7 @@ class OfferProductsController extends Controller
     {
         $offerProduct->update($request->all());
 
-        return redirect()->route('admin.offer-products.index');
+        return redirect()->route('admin.offer-products.index')->with('success',"Successfully Updated");
     }
 
     public function show(OfferProduct $offerProduct)
@@ -74,7 +74,7 @@ class OfferProductsController extends Controller
 
         $offerProduct->delete();
 
-        return back();
+        return back()->with('success',"Successfully Deleted");
     }
 
     public function massDestroy(MassDestroyOfferProductRequest $request)

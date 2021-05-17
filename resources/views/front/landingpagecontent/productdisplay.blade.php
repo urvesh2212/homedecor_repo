@@ -1,6 +1,6 @@
     <!--====================  single row slider tab ====================-->
     <div class="single-row-slider-tab-area section-space">
-        <div class="container">
+        <div class="container wide">
             <div class="row">
                 <div class="col-lg-12">
                     <!--=======  section title  =======-->
@@ -35,11 +35,11 @@
                             @php $ii = 1; @endphp
                             @foreach ($categories as $item)
                             <div class="tab-pane fade show {{$ii === 1 ? 'active': ''}}" id="product-series-{{$ii}}" role="tabpanel" aria-labelledby="product-tab-{{$ii}}">
-                                <a style="margin-left: 1050px;margin-bottom:20px;background-color:#292929;color:#FFFFFF">View All</a>
+                                <a href="{{URL('shop-catalog/category/'.$item->category_code.'/'.$item->category_name)}}" class="viewall">View All</a>
                                 <!--=======  single row slider wrapper  =======-->
                                 <div class="single-row-slider-wrapper"> 
                                     <div class="ht-slick-slider" data-slick-setting='{
-                                    "slidesToShow": 4,
+                                    "slidesToShow": 6,
                                     "slidesToScroll": 1,
                                     "arrows": true,
                                     "autoplay": false,
@@ -49,15 +49,17 @@
                                     "prevArrow": {"buttonClass": "slick-prev", "iconClass": "ion-chevron-left" },
                                     "nextArrow": {"buttonClass": "slick-next", "iconClass": "ion-chevron-right" }
                                 }' data-slick-responsive='[
-                                    {"breakpoint":1501, "settings": {"slidesToShow": 4} },
-                                    {"breakpoint":1199, "settings": {"slidesToShow": 4, "arrows": false} },
+                                    {"breakpoint":1501, "settings": {"slidesToShow": 6} },
+                                    {"breakpoint":1199, "settings": {"slidesToShow": 6, "arrows": false} },
                                     {"breakpoint":991, "settings": {"slidesToShow": 3, "arrows": false} },
                                     {"breakpoint":767, "settings": {"slidesToShow": 2, "arrows": false} },
                                     {"breakpoint":575, "settings": {"slidesToShow": 2, "arrows": false} },
                                     {"breakpoint":479, "settings": {"slidesToShow": 1, "arrows": false} }
                                 ]'>
                                 @foreach ($item->GetProduct as $item2) 
-                                        <div class="col">
+                                @foreach($variant as $vdata => $variantdata)
+                                @if ($variantdata->id == $item2->id )
+                                        <div class="col" style="width: 180px;">
                                             <!--=======  single grid product  =======-->
                                                
                                            
@@ -65,7 +67,7 @@
 
                                                 <div class="single-grid-product__image">
                                                     <a href="{{route('singleproductroute',['productid' => $item2->id,'productname' => str_replace(' ','-',$item2->product_name)])}}">
-                                                        <img src="{{$item2->getFirstMediaUrl('product_img','preview')}}" class="img-fluid" alt="" loading="lazy">
+                                                        <img src="{{$item2->getFirstMediaUrl('product_img','preview')}}" class="img-fluid" alt="" loading="lazy" style="width: 180px">
                                                     </a>
                                                     
                                                         
@@ -75,14 +77,16 @@
                                                     <div class="single-grid-product__category-rating">
                                                         <span class="category"><a href="shop-left-sidebar.html">{{$item2->product_name}}</a></span>
                                                     </div>
-
-                                                    <h3 class="single-grid-product__title">{{$item2->description}}</h3>
+                                                    <h3 class="single-grid-product__title">Variants:{{'('.$variantdata->product_variant_name.')'}}</h3>
+                                                    {{-- <h3 class="single-grid-product__title"> ({{Str::limit(($item2->description),200)}})<a href="{{route('singleproductroute',['productid' => $item2->id,'productname' => str_replace(' ','-',$item2->product_name)])}}">Read More</a></h3> --}}
                                                     {{-- <p class="single-grid-product__price"><span class="main-price">$120.00</span></p> --}}
                                                 </div>
                                             </div>
 
                                             <!--=======  End of single grid product  =======-->
                                         </div>
+                                        @endif
+                                        @endforeach
                                         @endforeach     
                                     </div>
                                 </div>

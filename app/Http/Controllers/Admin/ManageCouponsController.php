@@ -36,7 +36,7 @@ class ManageCouponsController extends Controller
     {
         $manageCoupon = ManageCoupon::create($request->all());
 
-        return redirect()->route('admin.manage-coupons.index');
+        return redirect()->route('admin.manage-coupons.index')->with('success','Coupon Successfully Created.');
     }
 
     public function edit(ManageCoupon $manageCoupon)
@@ -50,7 +50,7 @@ class ManageCouponsController extends Controller
     {
         $manageCoupon->update($request->all());
 
-        return redirect()->route('admin.manage-coupons.index',['title' =>  $this->title]);
+        return redirect()->route('admin.manage-coupons.index',['title' =>  $this->title])->with('success',"Successfully Updated");
     }
 
     public function show(ManageCoupon $manageCoupon)
@@ -66,7 +66,7 @@ class ManageCouponsController extends Controller
 
         $manageCoupon->delete();
 
-        return back();
+        return back()->with('success',"Successfully Deleted");
     }
 
     public function massDestroy(MassDestroyManageCouponRequest $request)

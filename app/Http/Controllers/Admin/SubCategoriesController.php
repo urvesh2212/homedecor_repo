@@ -142,7 +142,7 @@ class SubCategoriesController extends Controller
             }
         }
 
-        return redirect()->route('admin.sub-categories.index');
+        return redirect()->route('admin.sub-categories.index')->with('success',"Successfully Updated");
     }
 
     public function destroy(SubCategory $subCategory)
@@ -151,7 +151,7 @@ class SubCategoriesController extends Controller
 
         $subCategory->delete();
 
-        return back();
+        return back()->with('success',"Successfully Deleted");
     }
 
     public function massDestroy(MassDestroySubCategoryRequest $request)

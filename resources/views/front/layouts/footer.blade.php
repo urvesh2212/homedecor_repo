@@ -7,7 +7,7 @@
                         <div class="container">
                             <div class="row align-items no-gutters">
 
-                                <div class="col-lg-3 col-md-6 col-sm-6">
+                                <div class="col-lg-4 col-md-4 col-sm-6">
                                     <div class="second-row-item">
                                         <h4>Address</h4>
                                         <p>Ekikai</p>
@@ -17,7 +17,7 @@
                                     
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-md-6 col-sm-6">
+                                <div class="col-lg-4 col-md-4 col-sm-6">
                                     <div class="second-row-item">
                                         <h4>Useful Links</h4>
                                         <ul>
@@ -29,7 +29,7 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-md-6 col-sm-6">
+                                <div class="col-lg-4 col-md-4 col-sm-6">
                                     <div class="second-row-item">
                                             <h4>Business Hours</h4>
                                             <p>Monday 9:00 AM - 9:00 PM</p>
@@ -40,7 +40,7 @@
                                             <p>Saturday 9:00 AM - 9:00 PM</p>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-md-6 col-sm-6">
+                                {{-- <div class="col-lg-3 col-md-6 col-sm-6">
                                     <div class="second-row-item">
                                         <h4>Google map location</h4>
                                         <iframe
@@ -50,7 +50,7 @@
                                             src="https://www.google.com/maps/embed/v1/MAP_MODE?key=" allowfullscreen>
                                         </iframe> 
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>

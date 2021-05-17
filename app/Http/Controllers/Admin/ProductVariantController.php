@@ -69,7 +69,7 @@ class ProductVariantController extends Controller
     {
         $productvariant = ProductVariant::create($request->all());
 
-        return redirect()->route('admin.productvariant.index');
+        return redirect()->route('admin.productvariant.index')->with('success','Product Variant Successfully Created.');
     }
 
     public function edit(ProductVariant $productvariant)
@@ -81,14 +81,14 @@ class ProductVariantController extends Controller
     {
         $productvariant->update($request->all());
 
-        return redirect()->route('admin.productvariant.index');
+        return redirect()->route('admin.productvariant.index')->with('success',"Successfully Updated");
     }
 
     public function destroy(ProductVariant $productvariant)
     {
         $productvariant->delete();
 
-        return back();
+        return back()->with('success',"Successfully Deleted");
     }
 
     public function massDestroy(MassDestroyProductVariantRequest $request)

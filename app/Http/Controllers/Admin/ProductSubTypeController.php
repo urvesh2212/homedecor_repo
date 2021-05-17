@@ -95,7 +95,7 @@ class ProductSubTypeController extends Controller
     {
         $product = ProductSubType::create($request->all());
 
-        return redirect()->route('admin.productsubtype.index',['title' => $this->title]);
+        return redirect()->route('admin.productsubtype.index',['title' => $this->title])->with('success','Product SubType Successfully Created.');
     }
 
     public function edit(ProductSubType $productsubtype)
@@ -115,7 +115,7 @@ class ProductSubTypeController extends Controller
 
        $productsubtype->update($request->all());
 
-       return redirect()->route('admin.productsubtype.index');
+       return redirect()->route('admin.productsubtype.index')->with('success',"Successfully Updated");
     }
 
     public function destroy(ProductSubType $productsubtype)
@@ -123,7 +123,7 @@ class ProductSubTypeController extends Controller
 
         $productsubtype->delete();
 
-        return back();
+        return back()->with('success',"Successfully Deleted");
     }
 
     public function massDestroy(MassDestroyProductSubTypeRequest $request)

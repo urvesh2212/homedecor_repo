@@ -125,11 +125,11 @@
                                                 <!--=======  product grid view  =======-->
                                                 <div class="single-grid-product grid-view-product">
                                                     <div class="single-grid-product__image">
-                                                        <div class="single-grid-product__label">
+                                                        {{-- <div class="single-grid-product__label">
 
-                                                        </div>
+                                                        </div> --}}
                                                         <a href="{{route('singleproductroute',['productid' => $pdata->id,'productname' => str_replace(' ','-',$pdata->product_name)])}}">
-                                                            <img src="{{$pdata->getFirstMediaUrl('product_img','preview')}}" class="img-fluid" alt="">
+                                                            <img src="{{$pdata->getFirstMediaUrl('product_img','preview')}}" class="img-fluid" alt="" style="height:200px; width:200px;">
                                                         </a>
 
 
@@ -148,23 +148,22 @@
                                                 <!--=======  list view product  =======-->
                                                 <div class="single-grid-product single-grid-product--list-view list-view-product">
                                                     <div class="single-grid-product__image single-grid-product--list-view__image">
-                                                        <div class="single-grid-product__label">
+                                                        {{-- <div class="single-grid-product__label">
 
-                                                        </div>
-                                                        <a href="single-product.html">
-                                                            <img src="assets/img/products/5-600x800.jpg" class="img-fluid" alt="">
-                                                            <img src="assets/img/products/5_1-600x800.jpg" class="img-fluid" alt="">
+                                                        </div> --}}
+                                                        <a href="{{route('singleproductroute',['productid' => $pdata->id,'productname' => str_replace(' ','-',$pdata->product_name)])}}">
+                                                            <img src="{{$pdata->getFirstMediaUrl('product_img','preview')}}" class="img-fluid" alt="">
                                                         </a>
 
 
                                                     </div>
                                                     <div class="single-grid-product__content single-grid-product--list-view__content">
 
-                                                        <div class="category"><a href="shop-left-sidebar.html">Decor</a></div>
-                                                        <h3 class="single-grid-product__title single-grid-product--list-view__title"> <a href="single-product.html">Cillum dolore lorem ipsum decoration item</a></h3>
+                                                        <div class="category"><a href="">{{$productdetails[0]->category_name}}</a></div>
+                                                        <h3 class="single-grid-product__title single-grid-product--list-view__title"><a href="single-product.html">{{$pdata->product_name}}</a></h3>
 
-                                                        <p class="single-grid-product__price single-grid-product--list-view__price"><span class="discounted-price">$80.00</span> <span class="main-price discounted">$100.00</span></p>
-                                                        <p class="single-grid-product--list-view__product-short-desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate cupiditate provident praesentium, esse omnis quis!</p>
+                                                        {{-- <p class="single-grid-product__price single-grid-product--list-view__price"><span class="discounted-price">$80.00</span> <span class="main-price discounted">$100.00</span></p>
+                                                        <p class="single-grid-product--list-view__product-short-desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate cupiditate provident praesentium, esse omnis quis!</p> --}}
                                                     </div>
                                                 </div>
                                                 <!--=======  End of list view product  =======-->
@@ -187,6 +186,7 @@
                                                 <li><a href="#">>|</a></li>
                                             </ul>
                                         </div>
+                                        
                                     </div>
                                     <!--=======  End of pagination area  =======-->
                                     <!--=======  End of shop page content  =======-->
